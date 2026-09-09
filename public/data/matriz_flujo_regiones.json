@@ -15,7 +15,7 @@
     {
       "origen": "Bajo Cauca",
       "destino": "Bajo Cauca",
-      "value": 1408
+      "value": 2092
     },
     {
       "origen": "Bajo Cauca",
@@ -25,242 +25,242 @@
     {
       "origen": "Bajo Cauca",
       "destino": "Medellin",
-      "value": 120
+      "value": 199
     },
     {
       "origen": "Bajo Cauca",
       "destino": "Nordeste",
-      "value": 1
+      "value": 4
     },
     {
       "origen": "Bajo Cauca",
       "destino": "Norte",
-      "value": 88
+      "value": 161
     },
     {
       "origen": "Bajo Cauca",
       "destino": "Occidente",
-      "value": 7
-    },
-    {
-      "origen": "Bajo Cauca",
-      "destino": "Oriente",
-      "value": 3
-    },
-    {
-      "origen": "Bajo Cauca",
-      "destino": "Suroeste",
-      "value": 0
-    },
-    {
-      "origen": "Bajo Cauca",
-      "destino": "Uraba",
-      "value": 3
-    },
-    {
-      "origen": "Bajo Cauca",
-      "destino": "Valle De Aburra",
-      "value": 64
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Bajo Cauca",
-      "value": 1
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Magdalena Medio",
-      "value": 993
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Medellin",
-      "value": 359
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Nordeste",
-      "value": 572
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Norte",
-      "value": 6
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Occidente",
-      "value": 0
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Oriente",
-      "value": 25
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Suroeste",
-      "value": 1
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Uraba",
-      "value": 3
-    },
-    {
-      "origen": "Magdalena Medio",
-      "destino": "Valle De Aburra",
-      "value": 198
-    },
-    {
-      "origen": "Medellin",
-      "destino": "Bajo Cauca",
-      "value": 43
-    },
-    {
-      "origen": "Medellin",
-      "destino": "Magdalena Medio",
-      "value": 16
-    },
-    {
-      "origen": "Medellin",
-      "destino": "Medellin",
-      "value": 21583
-    },
-    {
-      "origen": "Medellin",
-      "destino": "Nordeste",
       "value": 8
     },
     {
-      "origen": "Medellin",
-      "destino": "Norte",
-      "value": 17
-    },
-    {
-      "origen": "Medellin",
-      "destino": "Occidente",
-      "value": 10
-    },
-    {
-      "origen": "Medellin",
+      "origen": "Bajo Cauca",
       "destino": "Oriente",
-      "value": 187
+      "value": 5
     },
     {
-      "origen": "Medellin",
+      "origen": "Bajo Cauca",
       "destino": "Suroeste",
-      "value": 10
-    },
-    {
-      "origen": "Medellin",
-      "destino": "Uraba",
-      "value": 51
-    },
-    {
-      "origen": "Medellin",
-      "destino": "Valle De Aburra",
-      "value": 7863
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Bajo Cauca",
-      "value": 241
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Magdalena Medio",
-      "value": 70
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Medellin",
-      "value": 670
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Nordeste",
-      "value": 2286
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Norte",
-      "value": 139
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Occidente",
       "value": 0
     },
     {
-      "origen": "Nordeste",
-      "destino": "Oriente",
+      "origen": "Bajo Cauca",
+      "destino": "Uraba",
+      "value": 5
+    },
+    {
+      "origen": "Bajo Cauca",
+      "destino": "Valle De Aburra",
+      "value": 100
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Bajo Cauca",
+      "value": 3
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Magdalena Medio",
+      "value": 1514
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Medellin",
+      "value": 475
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Nordeste",
+      "value": 787
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Norte",
       "value": 8
     },
     {
-      "origen": "Nordeste",
-      "destino": "Suroeste",
-      "value": 0
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Uraba",
-      "value": 0
-    },
-    {
-      "origen": "Nordeste",
-      "destino": "Valle De Aburra",
-      "value": 465
-    },
-    {
-      "origen": "Norte",
-      "destino": "Bajo Cauca",
-      "value": 16
-    },
-    {
-      "origen": "Norte",
-      "destino": "Magdalena Medio",
-      "value": 2
-    },
-    {
-      "origen": "Norte",
-      "destino": "Medellin",
-      "value": 755
-    },
-    {
-      "origen": "Norte",
-      "destino": "Nordeste",
-      "value": 180
-    },
-    {
-      "origen": "Norte",
-      "destino": "Norte",
-      "value": 2516
-    },
-    {
-      "origen": "Norte",
+      "origen": "Magdalena Medio",
       "destino": "Occidente",
-      "value": 2
+      "value": 0
     },
     {
-      "origen": "Norte",
+      "origen": "Magdalena Medio",
+      "destino": "Oriente",
+      "value": 31
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Suroeste",
+      "value": 1
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Uraba",
+      "value": 4
+    },
+    {
+      "origen": "Magdalena Medio",
+      "destino": "Valle De Aburra",
+      "value": 291
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Bajo Cauca",
+      "value": 112
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Magdalena Medio",
+      "value": 20
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Medellin",
+      "value": 34118
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Nordeste",
+      "value": 11
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Norte",
+      "value": 21
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Occidente",
+      "value": 11
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Oriente",
+      "value": 292
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Suroeste",
+      "value": 13
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Uraba",
+      "value": 89
+    },
+    {
+      "origen": "Medellin",
+      "destino": "Valle De Aburra",
+      "value": 12156
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Bajo Cauca",
+      "value": 330
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Magdalena Medio",
+      "value": 74
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Medellin",
+      "value": 926
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Nordeste",
+      "value": 3563
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Norte",
+      "value": 257
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Occidente",
+      "value": 0
+    },
+    {
+      "origen": "Nordeste",
       "destino": "Oriente",
       "value": 21
     },
     {
-      "origen": "Norte",
+      "origen": "Nordeste",
       "destino": "Suroeste",
-      "value": 0
+      "value": 3
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Uraba",
+      "value": 3
+    },
+    {
+      "origen": "Nordeste",
+      "destino": "Valle De Aburra",
+      "value": 690
     },
     {
       "origen": "Norte",
-      "destino": "Uraba",
+      "destino": "Bajo Cauca",
+      "value": 19
+    },
+    {
+      "origen": "Norte",
+      "destino": "Magdalena Medio",
+      "value": 2
+    },
+    {
+      "origen": "Norte",
+      "destino": "Medellin",
+      "value": 1075
+    },
+    {
+      "origen": "Norte",
+      "destino": "Nordeste",
+      "value": 254
+    },
+    {
+      "origen": "Norte",
+      "destino": "Norte",
+      "value": 4111
+    },
+    {
+      "origen": "Norte",
+      "destino": "Occidente",
+      "value": 3
+    },
+    {
+      "origen": "Norte",
+      "destino": "Oriente",
+      "value": 36
+    },
+    {
+      "origen": "Norte",
+      "destino": "Suroeste",
       "value": 1
     },
     {
       "origen": "Norte",
+      "destino": "Uraba",
+      "value": 3
+    },
+    {
+      "origen": "Norte",
       "destino": "Valle De Aburra",
-      "value": 630
+      "value": 987
     },
     {
       "origen": "Occidente",
@@ -270,12 +270,12 @@
     {
       "origen": "Occidente",
       "destino": "Magdalena Medio",
-      "value": 1
+      "value": 2
     },
     {
       "origen": "Occidente",
       "destino": "Medellin",
-      "value": 870
+      "value": 1269
     },
     {
       "origen": "Occidente",
@@ -285,87 +285,87 @@
     {
       "origen": "Occidente",
       "destino": "Norte",
-      "value": 7
+      "value": 8
     },
     {
       "origen": "Occidente",
       "destino": "Occidente",
-      "value": 2066
+      "value": 3260
     },
     {
       "origen": "Occidente",
       "destino": "Oriente",
-      "value": 24
+      "value": 32
     },
     {
       "origen": "Occidente",
       "destino": "Suroeste",
-      "value": 4
+      "value": 9
     },
     {
       "origen": "Occidente",
       "destino": "Uraba",
-      "value": 6
+      "value": 15
     },
     {
       "origen": "Occidente",
       "destino": "Valle De Aburra",
-      "value": 757
+      "value": 1144
     },
     {
       "origen": "Oriente",
       "destino": "Bajo Cauca",
-      "value": 10
+      "value": 18
     },
     {
       "origen": "Oriente",
       "destino": "Magdalena Medio",
-      "value": 8
+      "value": 15
     },
     {
       "origen": "Oriente",
       "destino": "Medellin",
-      "value": 1956
+      "value": 2812
     },
     {
       "origen": "Oriente",
       "destino": "Nordeste",
-      "value": 73
+      "value": 91
     },
     {
       "origen": "Oriente",
       "destino": "Norte",
-      "value": 23
+      "value": 56
     },
     {
       "origen": "Oriente",
       "destino": "Occidente",
-      "value": 8
+      "value": 11
     },
     {
       "origen": "Oriente",
       "destino": "Oriente",
-      "value": 4889
+      "value": 7726
     },
     {
       "origen": "Oriente",
       "destino": "Suroeste",
-      "value": 3
+      "value": 7
     },
     {
       "origen": "Oriente",
       "destino": "Uraba",
-      "value": 10
+      "value": 12
     },
     {
       "origen": "Oriente",
       "destino": "Valle De Aburra",
-      "value": 1865
+      "value": 2836
     },
     {
       "origen": "Suroeste",
       "destino": "Bajo Cauca",
-      "value": 4
+      "value": 5
     },
     {
       "origen": "Suroeste",
@@ -375,7 +375,7 @@
     {
       "origen": "Suroeste",
       "destino": "Medellin",
-      "value": 1186
+      "value": 1750
     },
     {
       "origen": "Suroeste",
@@ -385,47 +385,47 @@
     {
       "origen": "Suroeste",
       "destino": "Norte",
-      "value": 18
+      "value": 33
     },
     {
       "origen": "Suroeste",
       "destino": "Occidente",
-      "value": 636
+      "value": 830
     },
     {
       "origen": "Suroeste",
       "destino": "Oriente",
-      "value": 14
+      "value": 36
     },
     {
       "origen": "Suroeste",
       "destino": "Suroeste",
-      "value": 1895
+      "value": 3196
     },
     {
       "origen": "Suroeste",
       "destino": "Uraba",
-      "value": 3
+      "value": 4
     },
     {
       "origen": "Suroeste",
       "destino": "Valle De Aburra",
-      "value": 2978
+      "value": 4719
     },
     {
       "origen": "Uraba",
       "destino": "Bajo Cauca",
-      "value": 21
+      "value": 35
     },
     {
       "origen": "Uraba",
       "destino": "Magdalena Medio",
-      "value": 3
+      "value": 5
     },
     {
       "origen": "Uraba",
       "destino": "Medellin",
-      "value": 421
+      "value": 652
     },
     {
       "origen": "Uraba",
@@ -435,17 +435,17 @@
     {
       "origen": "Uraba",
       "destino": "Norte",
-      "value": 1
+      "value": 2
     },
     {
       "origen": "Uraba",
       "destino": "Occidente",
-      "value": 40
+      "value": 57
     },
     {
       "origen": "Uraba",
       "destino": "Oriente",
-      "value": 16
+      "value": 30
     },
     {
       "origen": "Uraba",
@@ -455,62 +455,62 @@
     {
       "origen": "Uraba",
       "destino": "Uraba",
-      "value": 4881
+      "value": 7599
     },
     {
       "origen": "Uraba",
       "destino": "Valle De Aburra",
-      "value": 78
-    },
-    {
-      "origen": "Valle De Aburra",
-      "destino": "Bajo Cauca",
-      "value": 10
-    },
-    {
-      "origen": "Valle De Aburra",
-      "destino": "Magdalena Medio",
-      "value": 5
-    },
-    {
-      "origen": "Valle De Aburra",
-      "destino": "Medellin",
-      "value": 4910
-    },
-    {
-      "origen": "Valle De Aburra",
-      "destino": "Nordeste",
-      "value": 349
-    },
-    {
-      "origen": "Valle De Aburra",
-      "destino": "Norte",
       "value": 111
     },
     {
       "origen": "Valle De Aburra",
+      "destino": "Bajo Cauca",
+      "value": 26
+    },
+    {
+      "origen": "Valle De Aburra",
+      "destino": "Magdalena Medio",
+      "value": 8
+    },
+    {
+      "origen": "Valle De Aburra",
+      "destino": "Medellin",
+      "value": 6977
+    },
+    {
+      "origen": "Valle De Aburra",
+      "destino": "Nordeste",
+      "value": 519
+    },
+    {
+      "origen": "Valle De Aburra",
+      "destino": "Norte",
+      "value": 186
+    },
+    {
+      "origen": "Valle De Aburra",
       "destino": "Occidente",
       "value": 1
     },
     {
       "origen": "Valle De Aburra",
       "destino": "Oriente",
-      "value": 122
+      "value": 192
     },
     {
       "origen": "Valle De Aburra",
       "destino": "Suroeste",
-      "value": 5
-    },
-    {
-      "origen": "Valle De Aburra",
-      "destino": "Uraba",
       "value": 11
     },
     {
       "origen": "Valle De Aburra",
+      "destino": "Uraba",
+      "value": 18
+    },
+    {
+      "origen": "Valle De Aburra",
       "destino": "Valle De Aburra",
-      "value": 7080
+      "value": 11291
     }
   ]
 }

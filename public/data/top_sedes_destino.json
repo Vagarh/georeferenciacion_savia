@@ -1,62 +1,62 @@
 [
   {
     "sede": "Empresa Social Del Estado Hospital Marco Fidel Suarez",
-    "remisiones": 4959
-  },
-  {
-    "sede": "IPS Universitaria Sede Clinica Leon Xiii",
-    "remisiones": 3700
+    "remisiones": 7812
   },
   {
     "sede": "ESE Hospital San Rafael De Itagui",
-    "remisiones": 3456
+    "remisiones": 6472
   },
   {
-    "sede": "ESE Hospital San Rafael De Yolombo",
-    "remisiones": 2955
-  },
-  {
-    "sede": "Clinica Angiosur",
-    "remisiones": 2778
-  },
-  {
-    "sede": "Coraxon Sas",
-    "remisiones": 2742
+    "sede": "IPS Universitaria Sede Clinica Leon Xiii",
+    "remisiones": 4801
   },
   {
     "sede": "ESE Hospital San Vicente De Paul De Caldas",
-    "remisiones": 2657
+    "remisiones": 4571
+  },
+  {
+    "sede": "ESE Hospital San Rafael De Yolombo",
+    "remisiones": 4263
+  },
+  {
+    "sede": "Coraxon Sas",
+    "remisiones": 4219
+  },
+  {
+    "sede": "Clinica Angiosur",
+    "remisiones": 4069
   },
   {
     "sede": "ESE Hospital San Juan De Dios Yarumal",
-    "remisiones": 2323
-  },
-  {
-    "sede": "ESE Hospital General De Medellin Luz Castro De Gutierrez",
-    "remisiones": 2195
-  },
-  {
-    "sede": "Home Group Sas Sede Medellin",
-    "remisiones": 1997
-  },
-  {
-    "sede": "ESE Hospital San Juan De Dios Antioquia (Santa Fe De Antioquia)",
-    "remisiones": 1995
+    "remisiones": 3756
   },
   {
     "sede": "Sociedad Medica Antioquena Sa Soma",
-    "remisiones": 1983
+    "remisiones": 3268
+  },
+  {
+    "sede": "ESE Hospital General De Medellin Luz Castro De Gutierrez",
+    "remisiones": 3260
   },
   {
     "sede": "ESE Hospital Mental De Antioquia",
-    "remisiones": 1814
+    "remisiones": 2876
+  },
+  {
+    "sede": "ESE Hospital San Juan De Dios Antioquia (Santa Fe De Antioquia)",
+    "remisiones": 2865
   },
   {
     "sede": "Hospital Pablo Tobon Uribe",
-    "remisiones": 1767
+    "remisiones": 2759
   },
   {
-    "sede": "Hospital San Jeronimo De Monteria",
-    "remisiones": 1653
+    "sede": "ESE Hospital San Juan De Dios (Rionegro)",
+    "remisiones": 2417
+  },
+  {
+    "sede": "Corporacion Colombia Saludable",
+    "remisiones": 2397
   }
 ]

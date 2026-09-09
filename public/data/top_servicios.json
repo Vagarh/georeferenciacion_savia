@@ -1,42 +1,42 @@
 [
   {
+    "nombre": "Medicina Interna (Consulta Ext)",
+    "count": 18104
+  },
+  {
+    "nombre": "Imagenes Diagnosticas - No Ionizantes",
+    "count": 15040
+  },
+  {
+    "nombre": "Cirugia General (Quirurgico)",
+    "count": 14045
+  },
+  {
     "nombre": "Radiologia E Imagenes Diagnosticas",
     "count": 13625
   },
   {
-    "nombre": "Medicina Interna (Consulta Ext)",
-    "count": 12470
-  },
-  {
-    "nombre": "Cirugia General (Quirurgico)",
-    "count": 9078
-  },
-  {
     "nombre": "Ortopedia Y/O Traumatologia (Consulta Ext)",
-    "count": 7720
+    "count": 11720
   },
   {
     "nombre": "Ginecobstetricia (Consulta Ext)",
-    "count": 5815
-  },
-  {
-    "nombre": "Imagenes Diagnosticas - No Ionizantes",
-    "count": 4968
+    "count": 9120
   },
   {
     "nombre": "Psiquiatria (Consulta Ext)",
-    "count": 4761
+    "count": 7521
+  },
+  {
+    "nombre": "Imagenes Diagnosticas- Ionizantes",
+    "count": 6362
   },
   {
     "nombre": "Pediatria (Consulta Ext)",
-    "count": 4235
-  },
-  {
-    "nombre": "Atencion Domiciliaria De Paciente Agudo",
-    "count": 4157
+    "count": 6199
   },
   {
     "nombre": "Cuidado Intensivo Adultos",
-    "count": 3608
+    "count": 5518
   }
 ]

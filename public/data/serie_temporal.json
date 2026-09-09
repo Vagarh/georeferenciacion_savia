@@ -89,5 +89,61 @@
     "mes_label": "Ene",
     "contrarreferencias": 279,
     "referencias": 7828
+  },
+  {
+    "mes": "2026-02",
+    "remisiones": 7499,
+    "mes_label": "Feb",
+    "contrarreferencias": 215,
+    "referencias": 7284
+  },
+  {
+    "mes": "2026-03",
+    "remisiones": 8269,
+    "mes_label": "Mar",
+    "contrarreferencias": 268,
+    "referencias": 8001
+  },
+  {
+    "mes": "2026-04",
+    "remisiones": 7591,
+    "mes_label": "Abr",
+    "contrarreferencias": 273,
+    "referencias": 7318
+  },
+  {
+    "mes": "2026-05",
+    "remisiones": 7900,
+    "mes_label": "May",
+    "contrarreferencias": 233,
+    "referencias": 7667
+  },
+  {
+    "mes": "2026-06",
+    "remisiones": 7374,
+    "mes_label": "Jun",
+    "contrarreferencias": 215,
+    "referencias": 7159
+  },
+  {
+    "mes": "2026-07",
+    "remisiones": 7492,
+    "mes_label": "Jul",
+    "contrarreferencias": 220,
+    "referencias": 7272
+  },
+  {
+    "mes": "2026-08",
+    "remisiones": 7288,
+    "mes_label": "Ago",
+    "contrarreferencias": 221,
+    "referencias": 7067
+  },
+  {
+    "mes": "2026-09",
+    "remisiones": 2110,
+    "mes_label": "Sep",
+    "contrarreferencias": 52,
+    "referencias": 2058
   }
 ]

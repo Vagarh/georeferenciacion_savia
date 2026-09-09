@@ -1,14 +1,18 @@
 [
   {
     "nivel": "Nivel 1",
-    "value": 68493
+    "value": 106555
   },
   {
     "nivel": "Nivel 2",
-    "value": 14453
+    "value": 22095
   },
   {
     "nivel": "Nivel 3",
-    "value": 17520
+    "value": 27337
+  },
+  {
+    "nivel": "Nivel 4",
+    "value": 2
   }
 ]

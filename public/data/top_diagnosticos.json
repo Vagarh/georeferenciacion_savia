@@ -1,50 +1,50 @@
 [
   {
     "nombre": "Otros Dolores Abdominales Y Los No Especificados",
-    "count": 3301
+    "count": 5224
   },
   {
     "nombre": "Infeccion De Vias Urinarias Sitio No Especificado",
-    "count": 2888
+    "count": 4351
   },
   {
     "nombre": "Insuficiencia Cardiaca Congestiva",
-    "count": 2493
+    "count": 3928
   },
   {
     "nombre": "Hemorragia Gastrointestinal No Especificada",
-    "count": 2269
-  },
-  {
-    "nombre": "Enfermedad Pulmonar Obstructiva Cronica Con Exacerbacion Aguda No Especificada",
-    "count": 1786
+    "count": 3656
   },
   {
     "nombre": "Infarto Agudo Del Miocardio Sin Otra Especificacion",
-    "count": 1615
+    "count": 2652
+  },
+  {
+    "nombre": "Enfermedad Pulmonar Obstructiva Cronica Con Exacerbacion Aguda No Especificada",
+    "count": 2504
   },
   {
     "nombre": "Enfermedad Cerebrovascular No Especificada",
-    "count": 1560
+    "count": 2375
   },
   {
     "nombre": "Neumonia No Especificada",
-    "count": 1514
+    "count": 2237
   },
   {
     "nombre": "Neumonia Bacteriana No Especificada",
-    "count": 1031
+    "count": 1475
   },
   {
     "nombre": "Fiebre No Especificada",
-    "count": 963
-  },
-  {
-    "nombre": "Apendicitis No Especificada",
-    "count": 947
+    "count": 1403
   },
   {
     "nombre": "Sepsis No Especificada",
-    "count": 893
+    "count": 1319
+  },
+  {
+    "nombre": "Dolor Localizado En Otras Partes Inferiores Del Abdomen",
+    "count": 1273
   }
 ]
