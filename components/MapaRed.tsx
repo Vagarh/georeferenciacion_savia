@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
-import { Plus, Minus, Maximize2, Waypoints } from "lucide-react";
+import { Plus, Minus, Maximize2, Waypoints, Globe2 } from "lucide-react";
 import {
   crearProyeccion,
   colorRegion,
@@ -39,6 +39,7 @@ export default function MapaRed({
     permitirComunidad ? modoColorInicial : "region"
   );
   const [animar, setAnimar] = useState(true);
+  const [verExternos, setVerExternos] = useState(true);
   const [hover, setHover] = useState<string | null>(null);
   const [vista, setVista] = useState({ k: 1, tx: 0, ty: 0 });
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -324,9 +325,7 @@ export default function MapaRed({
     ? [posHover[0] * vista.k + vista.tx, posHover[1] * vista.k + vista.ty]
     : null;
 
-  const arcoPath = (f: TMapaRed["flujos"][number]) => {
-    const [x1, y1] = proy(f.olon, f.olat);
-    const [x2, y2] = proy(f.dlon, f.dlat);
+  const curva = (x1: number, y1: number, x2: number, y2: number) => {
     const mx = (x1 + x2) / 2;
     const my = (y1 + y2) / 2;
     const dx = x2 - x1;
@@ -337,6 +336,39 @@ export default function MapaRed({
     const cy = my + (dx / norm) * curv;
     return `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`;
   };
+
+  const arcoPath = (f: TMapaRed["flujos"][number]) => {
+    const [x1, y1] = proy(f.olon, f.olat);
+    const [x2, y2] = proy(f.dlon, f.dlat);
+    return curva(x1, y1, x2, y2);
+  };
+
+  // --- Lugares fuera de Antioquia (borde del recuadro) ---
+  const externos = useMemo(() => {
+    if (!data.externos) return [];
+    const pos = new Map(nodos.map((n) => [n.nombre, proy(n.lon, n.lat)]));
+    const m = 18;
+    const arm = (
+      arr: NonNullable<TMapaRed["externos"]>["destinos"],
+      tipo: "salida" | "entrada"
+    ) =>
+      arr.map((e) => {
+        const [rx, ry] = proy(e.lon, e.lat);
+        // pequeño desfase por tipo para que no se solapen salida y entrada
+        const dy = tipo === "salida" ? -9 : 9;
+        const x = clamp(rx, m, ANCHO - m);
+        const y = clamp(ry + dy, m, ALTO - m);
+        const a = (e.ancla && pos.get(e.ancla)) || [ANCHO / 2, ALTO * 0.62];
+        return { ...e, tipo, x, y, ax: a[0], ay: a[1] };
+      });
+    return [
+      ...arm(data.externos.destinos, "salida"),
+      ...arm(data.externos.origenes, "entrada"),
+    ];
+  }, [data.externos, nodos, proy]);
+  const maxExterno = Math.max(1, ...externos.map((e) => e.valor));
+  const colorExterno = (t: "salida" | "entrada") =>
+    t === "salida" ? "#d97706" : "#0ea5e9";
 
   return (
     <div className="relative">
@@ -400,6 +432,20 @@ export default function MapaRed({
             <Waypoints size={13} />
             Flujo animado
           </button>
+          {data.externos && (
+            <button
+              onClick={() => setVerExternos((a) => !a)}
+              className={clsx(
+                "inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-xs font-bold transition-colors",
+                verExternos
+                  ? "border-amber-500 bg-amber-50 text-amber-700"
+                  : "border-brand-gray3 bg-white text-brand-muted hover:bg-brand-low"
+              )}
+            >
+              <Globe2 size={13} />
+              Fuera de Antioquia
+            </button>
+          )}
         </div>
         <p className="text-[11px] text-brand-gray1">
           Rueda para acercar · arrastra para desplazar · tamaño del punto =
@@ -591,6 +637,68 @@ export default function MapaRed({
               })}
             </g>
 
+            {/* Lugares fuera de Antioquia, en el borde del recuadro */}
+            {verExternos && externos.length > 0 && (
+              <g>
+                {externos.map((e, i) => {
+                  const col = colorExterno(e.tipo);
+                  const t = e.valor / maxExterno;
+                  const s = (4 + Math.sqrt(t) * 8) / Math.sqrt(vista.k);
+                  const desde =
+                    e.tipo === "salida" ? [e.ax, e.ay] : [e.x, e.y];
+                  const hasta =
+                    e.tipo === "salida" ? [e.x, e.y] : [e.ax, e.ay];
+                  return (
+                    <g
+                      key={`ext-${i}`}
+                      opacity={hover ? 0.18 : 1}
+                      className="pointer-events-none"
+                    >
+                      <path
+                        d={curva(desde[0], desde[1], hasta[0], hasta[1])}
+                        fill="none"
+                        stroke={col}
+                        strokeWidth={(0.6 + Math.sqrt(t) * 2.6) / Math.sqrt(vista.k)}
+                        strokeOpacity={0.38}
+                        strokeDasharray={`${4 / vista.k} ${4 / vista.k}`}
+                        strokeLinecap="round"
+                      />
+                      <rect
+                        x={e.x - s}
+                        y={e.y - s}
+                        width={s * 2}
+                        height={s * 2}
+                        transform={`rotate(45 ${e.x} ${e.y})`}
+                        fill="#fff"
+                        stroke={col}
+                        strokeWidth={1.6 / Math.sqrt(vista.k)}
+                      >
+                        <title>
+                          {e.tipo === "salida" ? "Salen a " : "Vienen de "}
+                          {e.nombre}: {fmtEntero(e.valor)}
+                        </title>
+                      </rect>
+                      <text
+                        x={e.x}
+                        y={e.y - s - 4 / vista.k}
+                        textAnchor="middle"
+                        style={{
+                          fontSize: 9.5 / Math.sqrt(vista.k),
+                          fontWeight: 800,
+                          paintOrder: "stroke",
+                          stroke: "#fbfdfb",
+                          strokeWidth: 3 / vista.k,
+                        }}
+                        fill={col}
+                      >
+                        {e.nombre}
+                      </text>
+                    </g>
+                  );
+                })}
+              </g>
+            )}
+
             {/* Etiquetas de los mayores hubs (sin solaparse) */}
             <g className="pointer-events-none">
               {(() => {
@@ -682,6 +790,18 @@ export default function MapaRed({
                 Comunidad {id}
               </span>
             ))}
+        {verExternos && data.externos && (
+          <>
+            <span className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-muted">
+              <span className="w-2.5 h-2.5 rotate-45 border-2 bg-white border-amber-600" />
+              Sale del departamento
+            </span>
+            <span className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-muted">
+              <span className="w-2.5 h-2.5 rotate-45 border-2 bg-white border-sky-500" />
+              Entra al departamento
+            </span>
+          </>
+        )}
       </div>
       {modoColor === "comunidad" && (
         <p className="mt-2 text-[11px] text-brand-gray1">
@@ -689,6 +809,16 @@ export default function MapaRed({
           entre sí (detección de comunidades Louvain sobre el grafo de
           remisiones). Es el mismo circuito que analiza la vista{" "}
           <b>Redes · RAS</b>, proyectado sobre el mapa.
+        </p>
+      )}
+      {verExternos && data.externos && (
+        <p className="mt-2 text-[11px] text-brand-gray1">
+          Los rombos en el borde son remisiones que cruzan la frontera de
+          Antioquia:{" "}
+          <b>{fmtEntero(data.externos.total_salidas)}</b> salen del departamento
+          (sobre todo a Montería) y{" "}
+          <b>{fmtEntero(data.externos.total_entradas)}</b> llegan desde otros
+          departamentos. Su posición es aproximada — solo indica la dirección.
         </p>
       )}
     </div>

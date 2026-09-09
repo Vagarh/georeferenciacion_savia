@@ -353,6 +353,25 @@ export interface ComunidadMapa {
   regiones: string[];
 }
 
+/** Lugar fuera de Antioquia que emite o recibe remisiones. */
+export interface LugarExterno {
+  nombre: string;
+  lon: number;
+  lat: number;
+  valor: number;
+  /** municipio de Antioquia con el que más intercambia (para dibujar el arco). */
+  ancla: string | null;
+}
+
+export interface ExternosMapa {
+  total_salidas: number;
+  total_entradas: number;
+  pct_salidas: number;
+  pct_entradas: number;
+  destinos: LugarExterno[];
+  origenes: LugarExterno[];
+}
+
 // --- Flujo de remisión por diagnóstico ---
 export interface DiagMunicipio {
   nombre: string;
@@ -387,6 +406,7 @@ export interface MapaRed {
   nodos: NodoMapa[];
   flujos: FlujoMapa[];
   comunidades?: ComunidadMapa[];
+  externos?: ExternosMapa;
   bbox: { minLon: number; maxLon: number; minLat: number; maxLat: number };
   resumen: {
     municipios: number;

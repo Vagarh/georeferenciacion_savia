@@ -130,6 +130,7 @@ export default function AnalisisTemporal() {
       {/* Serie general con promedio */}
       <ChartCard
         titulo="Remisiones por mes"
+        alcance="filtros"
         subtitulo={`Volumen total y promedio del rango${
           activos > 0 ? " · filtrado" : ""
         }`}
@@ -203,6 +204,7 @@ export default function AnalisisTemporal() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ChartCard
           titulo="Remisiones por región del prestador"
+          alcance="filtros"
           subtitulo={`Distribución territorial${activos > 0 ? " · filtrada" : ""}`}
         >
           <div className="h-[320px]">
@@ -259,7 +261,8 @@ export default function AnalisisTemporal() {
 
         <ChartCard
           titulo="Distribución de la oportunidad de cierre"
-          subtitulo="Remisiones por días hasta el cierre · período completo"
+          alcance="completo"
+          subtitulo="Remisiones por días hasta el cierre · no responde a los filtros"
         >
           <div className="h-[320px]">
             <ResponsiveContainer width="100%" height="100%">

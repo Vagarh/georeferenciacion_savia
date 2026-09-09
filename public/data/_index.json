@@ -1,6 +1,7 @@
 {
-  "generado": "2026-09-09T13:51:54",
+  "generado": "2026-09-09T14:54:32",
   "archivos": [
+    "antioquia.json",
     "clustering_comparacion.json",
     "clustering_perfil.json",
     "comunidades_louvain.json",

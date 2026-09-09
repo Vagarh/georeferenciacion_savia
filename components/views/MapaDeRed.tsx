@@ -8,6 +8,7 @@ import {
   Network,
   Crosshair,
   Waypoints,
+  Globe2,
 } from "lucide-react";
 import KPICard from "@/components/KPICard";
 import Hero from "@/components/Hero";
@@ -23,8 +24,60 @@ import {
   HECHOS_RAW_VACIO,
   DIMS_VACIAS,
   type HechosRaw,
+  type LugarExterno,
   type MapaRed as TMapaRed,
 } from "@/lib/datos";
+
+function FronteraLista({
+  titulo,
+  subtitulo,
+  color,
+  items,
+}: {
+  titulo: string;
+  subtitulo: string;
+  color: string;
+  items: LugarExterno[];
+}) {
+  const max = Math.max(1, ...items.map((i) => i.valor));
+  return (
+    <div>
+      <div className="flex items-center gap-2 mb-1">
+        <span
+          className="w-2.5 h-2.5 rotate-45 border-2 bg-white"
+          style={{ borderColor: color }}
+        />
+        <h5 className="text-sm font-bold text-savia-forest">{titulo}</h5>
+      </div>
+      <p className="text-[11px] text-brand-gray1 mb-3">{subtitulo}</p>
+      <div className="space-y-2">
+        {items.map((it) => (
+          <div key={it.nombre} className="space-y-1">
+            <div className="flex justify-between text-xs">
+              <span className="font-semibold text-savia-forest">
+                {it.nombre}
+                {it.ancla && (
+                  <span className="ml-1.5 font-medium text-brand-gray1">
+                    ↔ {it.ancla}
+                  </span>
+                )}
+              </span>
+              <span className="font-bold tabular-nums text-brand-charcoal">
+                {fmtEntero(it.valor)}
+              </span>
+            </div>
+            <div className="h-1.5 w-full bg-brand-low rounded-full overflow-hidden">
+              <div
+                className="h-full rounded-full"
+                style={{ width: `${(it.valor / max) * 100}%`, background: color }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const VACIO: TMapaRed = {
   meses: [],
@@ -213,6 +266,47 @@ export default function MapaDeRed() {
           </p>
         </ChartCard>
       </section>
+
+      {data.externos && (
+        <ChartCard
+          titulo="Frontera departamental"
+          subtitulo={`${fmtPct(
+            data.externos.pct_salidas + data.externos.pct_entradas,
+            1
+          )} de las remisiones cruzan el límite de Antioquia`}
+          accion={
+            <span className="badge-green">
+              <Globe2 size={13} /> Fuera de Antioquia
+            </span>
+          }
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+            <FronteraLista
+              titulo="Salen de Antioquia"
+              subtitulo={`${fmtEntero(
+                data.externos.total_salidas
+              )} remisiones · ${fmtPct(data.externos.pct_salidas, 1)}`}
+              color="#d97706"
+              items={data.externos.destinos}
+            />
+            <FronteraLista
+              titulo="Entran a Antioquia"
+              subtitulo={`${fmtEntero(
+                data.externos.total_entradas
+              )} remisiones · ${fmtPct(data.externos.pct_entradas, 1)}`}
+              color="#0ea5e9"
+              items={data.externos.origenes}
+            />
+          </div>
+          <p className="mt-5 text-[11px] text-brand-gray1">
+            El destino más frecuente fuera del departamento es{" "}
+            <b>Montería</b> (Córdoba), que atiende a pacientes del Urabá y el
+            Bajo Cauca por cercanía. En sentido contrario, la mayoría de las
+            remisiones que entran vienen de <b>Córdoba</b> y se resuelven en el
+            Valle de Aburrá. En el mapa aparecen como rombos en el borde.
+          </p>
+        </ChartCard>
+      )}
 
       <PanelInsights
         items={[

@@ -22,7 +22,7 @@ import {
 import KPICard from "@/components/KPICard";
 import Hero from "@/components/Hero";
 import FiltroBar from "@/components/FiltroBar";
-import { Leyenda } from "@/components/ChartCard";
+import { Leyenda, AlcancePill } from "@/components/ChartCard";
 import ChartTooltip from "@/components/ChartTooltip";
 import { useDatos } from "@/lib/useDatos";
 import { useFiltros, agregar } from "@/lib/filtros";
@@ -146,9 +146,12 @@ export default function ResumenEjecutivo() {
         <div className="md:col-span-8 card animate-fade-up delay-300">
           <div className="flex justify-between items-start mb-8">
             <div>
-              <h4 className="text-xl font-bold text-savia-forest">
-                Evolución Mensual
-              </h4>
+              <div className="flex items-center gap-2 flex-wrap">
+                <h4 className="text-xl font-bold text-savia-forest">
+                  Evolución Mensual
+                </h4>
+                <AlcancePill alcance="filtros" />
+              </div>
               <p className="text-sm text-brand-muted">
                 {usaMuni
                   ? "Volumen mensual del municipio"
@@ -233,7 +236,13 @@ export default function ResumenEjecutivo() {
         <div className="md:col-span-4 bg-savia-forest text-white p-8 rounded-xl shadow-card-lg space-y-8 relative overflow-hidden animate-fade-up delay-300">
           <div className="absolute top-0 right-0 w-32 h-32 bg-savia-green opacity-30 rounded-full blur-3xl -mr-16 -mt-16" />
           <div className="relative z-10">
-            <h4 className="text-xl font-bold mb-1">Régimen de Afiliación</h4>
+            <div className="flex items-center gap-2 flex-wrap mb-1">
+              <h4 className="text-xl font-bold">Régimen de Afiliación</h4>
+              <span className="inline-flex items-center gap-1 rounded-full border border-white/25 bg-white/10 px-2 py-0.5 text-[10px] font-bold text-white/80 whitespace-nowrap">
+                <span className="w-1.5 h-1.5 rounded-full bg-savia-lime" />
+                Responde a filtros
+              </span>
+            </div>
             <p className="text-xs text-white/60">Distribución de las remisiones</p>
           </div>
 
@@ -286,11 +295,15 @@ export default function ResumenEjecutivo() {
       <section className="bg-white rounded-xl shadow-card border border-brand-gray3 overflow-hidden animate-fade-up">
         <div className="p-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div>
-            <h4 className="text-xl font-bold text-savia-forest">
-              Principales Diagnósticos de Remisión
-            </h4>
+            <div className="flex items-center gap-2 flex-wrap">
+              <h4 className="text-xl font-bold text-savia-forest">
+                Principales Diagnósticos de Remisión
+              </h4>
+              <AlcancePill alcance="completo" />
+            </div>
             <p className="text-sm text-brand-muted">
-              Diagnóstico principal registrado en la solicitud · período completo
+              Diagnóstico principal registrado en la solicitud · no responde a
+              los filtros (ver <i>Flujo por Diagnóstico</i>)
             </p>
           </div>
           <span className="badge-green">
@@ -343,45 +356,85 @@ export default function ResumenEjecutivo() {
       </section>
 
       {/* Insights */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-up">
-        <div className="card border-l-4 border-l-savia-green bg-savia-ice/40">
-          <div className="w-10 h-10 rounded-lg bg-savia-mint flex items-center justify-center text-savia-deep mb-4">
-            <Building2 size={20} />
-          </div>
-          <h5 className="text-sm font-bold text-savia-forest mb-2">
-            Cobertura de la red
-          </h5>
-          <p className="text-xs text-brand-muted leading-relaxed">
-            {fmtEntero(resumen?.sedes_origen)} sedes remiten hacia{" "}
-            {fmtEntero(resumen?.sedes_destino)} sedes receptoras en{" "}
-            {fmtEntero(resumen?.municipios_origen)} municipios de Antioquia.
-          </p>
+      <section className="space-y-3 animate-fade-up">
+        <div className="flex items-center gap-2">
+          <h4 className="text-sm font-black uppercase tracking-widest text-brand-gray1">
+            Lectura e insights
+          </h4>
+          {hayHechos && activos > 0 && (
+            <span className="inline-flex items-center gap-1 rounded-full border border-savia-mint bg-savia-ice px-2 py-0.5 text-[10px] font-bold text-savia-deep">
+              <span className="w-1.5 h-1.5 rounded-full bg-savia-green" />
+              recalculados con los filtros
+            </span>
+          )}
         </div>
-        <div className="card border-l-4 border-l-savia-gold bg-amber-50/30">
-          <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
-            <Timer size={20} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="card border-l-4 border-l-savia-green bg-savia-ice/40">
+            <div className="w-10 h-10 rounded-lg bg-savia-mint flex items-center justify-center text-savia-deep mb-4">
+              <Building2 size={20} />
+            </div>
+            <h5 className="text-sm font-bold text-savia-forest mb-2">
+              Cobertura de la red
+            </h5>
+            <p className="text-xs text-brand-muted leading-relaxed">
+              {fmtEntero(resumen?.sedes_origen)} sedes remiten hacia{" "}
+              {fmtEntero(resumen?.sedes_destino)} sedes receptoras en{" "}
+              {fmtEntero(resumen?.municipios_origen)} municipios de Antioquia.
+              <span className="text-brand-gray1"> (estructural, período completo)</span>
+            </p>
           </div>
-          <h5 className="text-sm font-bold text-savia-forest mb-2">
-            Oportunidad de cierre
-          </h5>
-          <p className="text-xs text-brand-muted leading-relaxed">
-            La mitad de las remisiones se cierran en{" "}
-            {fmtDecimal(resumen?.tiempo_mediana_cierre)} día(s). La cola de casos
-            &gt; 15 días es el foco de mejora del proceso.
-          </p>
-        </div>
-        <div className="card border-l-4 border-l-savia-teal bg-savia-ice/40">
-          <div className="w-10 h-10 rounded-lg bg-savia-mint flex items-center justify-center text-savia-teal mb-4">
-            <ChevronRight size={20} />
+          <div className="card border-l-4 border-l-savia-gold bg-amber-50/30">
+            <div className="w-10 h-10 rounded-lg bg-amber-50 flex items-center justify-center text-amber-600 mb-4">
+              <Timer size={20} />
+            </div>
+            <h5 className="text-sm font-bold text-savia-forest mb-2">
+              Oportunidad de cierre
+            </h5>
+            <p className="text-xs text-brand-muted leading-relaxed">
+              {hayHechos && activos > 0 ? (
+                <>
+                  Con los filtros aplicados, el tiempo medio de cierre es de{" "}
+                  <b>{fmtDecimal(agg.tiempoPromedio)} día(s)</b> sobre{" "}
+                  {fmtEntero(agg.cerradas)} eventos cerrados. La mediana global
+                  del proceso es {fmtDecimal(resumen?.tiempo_mediana_cierre)}.
+                </>
+              ) : (
+                <>
+                  La mitad de las remisiones se cierran en{" "}
+                  {fmtDecimal(resumen?.tiempo_mediana_cierre)} día(s). La cola de
+                  casos &gt; 15 días es el foco de mejora del proceso.
+                </>
+              )}
+            </p>
           </div>
-          <h5 className="text-sm font-bold text-savia-forest mb-2">
-            Predominio de referencia
-          </h5>
-          <p className="text-xs text-brand-muted leading-relaxed">
-            {fmtPct(resumen?.pct_referencias, 0)} del flujo son referencias. Un
-            registro más completo de contrarreferencias mejoraría la trazabilidad
-            del retorno del paciente.
-          </p>
+          <div className="card border-l-4 border-l-savia-teal bg-savia-ice/40">
+            <div className="w-10 h-10 rounded-lg bg-savia-mint flex items-center justify-center text-savia-teal mb-4">
+              <ChevronRight size={20} />
+            </div>
+            <h5 className="text-sm font-bold text-savia-forest mb-2">
+              Predominio de referencia
+            </h5>
+            <p className="text-xs text-brand-muted leading-relaxed">
+              {usaMuni ? (
+                <>
+                  El desglose referencia / contrarreferencia no está disponible
+                  al filtrar por municipio.
+                </>
+              ) : (
+                <>
+                  <b>
+                    {fmtPct(
+                      hayHechos ? agg.pctReferencias : resumen?.pct_referencias,
+                      0
+                    )}
+                  </b>{" "}
+                  del flujo {activos > 0 ? "filtrado " : ""}son referencias. Un
+                  registro más completo de contrarreferencias mejoraría la
+                  trazabilidad del retorno del paciente.
+                </>
+              )}
+            </p>
+          </div>
         </div>
       </section>
     </div>

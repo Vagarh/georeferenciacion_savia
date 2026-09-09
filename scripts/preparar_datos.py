@@ -904,6 +904,134 @@ def _resolver_centroides(df: pd.DataFrame) -> tuple[dict, dict]:
     return cent_por_nombre, info_por_nombre
 
 
+# Coordenadas aproximadas (lon, lat) de lugares fuera de Antioquia que aparecen
+# como origen o destino de remisiones. Sirven solo para situar un marcador en el
+# borde del mapa; no son un dato clínico.
+LUGARES_EXT = {
+    "MONTERIA": (-75.88, 8.75),
+    "CORDOBA": (-75.88, 8.75),
+    "MONTELIBANO": (-75.42, 7.98),
+    "LA DORADA": (-74.66, 5.45),
+    "CALDAS(DPTO)": (-75.51, 5.24),
+    "MANIZALES": (-75.51, 5.07),
+    "BARRANCABERMEJA": (-73.85, 7.06),
+    "BUCARAMANGA": (-73.12, 7.12),
+    "PIEDECUESTA": (-73.05, 6.99),
+    "SANTANDER": (-73.30, 6.90),
+    "BOGOTA": (-74.08, 4.65),
+    "BOGOTA D.C.": (-74.08, 4.65),
+    "CUNDINAMARCA": (-74.20, 4.90),
+    "PUERTO BOYACA": (-74.59, 5.98),
+    "BOYACA": (-73.40, 5.60),
+    "CUCUTA": (-72.51, 7.90),
+    "NORTE DE SANTANDER": (-72.70, 8.00),
+    "QUIBDO": (-76.65, 5.69),
+    "CHOCO": (-76.90, 5.90),
+    "CALI": (-76.53, 3.44),
+    "VALLE DEL CAUCA": (-76.30, 3.80),
+    "PEREIRA": (-75.69, 4.81),
+    "RISARALDA": (-75.85, 5.10),
+    "IBAGUE": (-75.23, 4.44),
+    "TOLIMA": (-75.10, 4.20),
+    "CARTAGENA": (-75.51, 10.42),
+    "BOLIVAR": (-74.50, 9.20),
+    "BARRANQUILLA": (-74.80, 10.98),
+    "ATLANTICO": (-74.90, 10.70),
+    "SINCELEJO": (-75.40, 9.30),
+    "SUCRE": (-75.10, 9.20),
+    "VALLEDUPAR": (-73.25, 10.46),
+    "CESAR": (-73.60, 9.50),
+    "RIOHACHA": (-72.91, 11.54),
+    "LA GUAJIRA": (-72.60, 11.20),
+    "VILLAVICENCIO": (-73.63, 4.14),
+    "META": (-73.20, 3.80),
+    "NEIVA": (-75.28, 2.93),
+    "HUILA": (-75.60, 2.50),
+    "SANTA MARTA": (-74.20, 11.24),
+    "MAGDALENA": (-74.40, 10.20),
+}
+
+
+def _lugar_ext(nombre: str) -> tuple[float, float] | None:
+    """Coordenada aproximada para un municipio/departamento fuera de Antioquia."""
+    return LUGARES_EXT.get(_sin_tildes(nombre))
+
+
+def _calcular_externos(
+    df: pd.DataFrame, cent_por_nombre: dict, info_por_nombre: dict
+) -> dict:
+    """Remisiones que cruzan la frontera del departamento (origen o destino).
+
+    ``Departamento_Destino`` viene 100 % vacío en la fuente, así que el destino
+    fuera de Antioquia se detecta porque su ``Municipio_Destino`` no figura entre
+    los municipios prestadores del departamento. El origen fuera se toma de
+    ``Departamento_Prestador``.
+    """
+    total = len(df)
+    ant_muni = set(cent_por_nombre.keys())
+
+    def _bonito(clave):
+        if not clave:
+            return None
+        return info_por_nombre.get(clave, (str(clave).title(), None))[0]
+
+    dd_norm = df["Municipio_Destino"].map(_sin_tildes)
+    mask_dest_ext = (dd_norm != "") & (~dd_norm.isin(ant_muni))
+    sal = df[mask_dest_ext]
+    destinos = []
+    for nom, sub in sal.groupby("Municipio_Destino"):
+        coord = _lugar_ext(str(nom))
+        if not coord:
+            continue
+        # principal municipio de Antioquia que alimenta esa salida
+        oa = sub["Municipio_Prestador"].map(_sin_tildes)
+        oa = oa[oa.isin(ant_muni)]
+        origen_ant = oa.value_counts().index[0] if len(oa) else None
+        destinos.append(
+            {
+                "nombre": _titulo(str(nom)),
+                "lon": coord[0],
+                "lat": coord[1],
+                "valor": int(len(sub)),
+                "ancla": _bonito(origen_ant),
+            }
+        )
+    destinos.sort(key=lambda x: x["valor"], reverse=True)
+
+    dep_o = df["Departamento_Prestador"].fillna("").map(
+        lambda s: _sin_tildes(s)
+    )
+    mask_orig_ext = (dep_o != "") & (dep_o != "ANTIOQUIA")
+    ent = df[mask_orig_ext]
+    origenes = []
+    for dep, sub in ent.groupby("Departamento_Prestador"):
+        coord = _lugar_ext(str(dep))
+        if not coord:
+            continue
+        da = sub["Municipio_Destino"].map(_sin_tildes)
+        da = da[da.isin(ant_muni)]
+        destino_ant = da.value_counts().index[0] if len(da) else None
+        origenes.append(
+            {
+                "nombre": _titulo(str(dep)),
+                "lon": coord[0],
+                "lat": coord[1],
+                "valor": int(len(sub)),
+                "ancla": _bonito(destino_ant),
+            }
+        )
+    origenes.sort(key=lambda x: x["valor"], reverse=True)
+
+    return {
+        "total_salidas": int(mask_dest_ext.sum()),
+        "total_entradas": int(mask_orig_ext.sum()),
+        "pct_salidas": _num(int(mask_dest_ext.sum()) / total * 100 if total else 0),
+        "pct_entradas": _num(int(mask_orig_ext.sum()) / total * 100 if total else 0),
+        "destinos": destinos[:9],
+        "origenes": origenes[:9],
+    }
+
+
 def generar_mapa(df: pd.DataFrame) -> None:
     """Mapa de red: municipios como nodos y flujos de remisión como arcos.
 
@@ -1020,6 +1148,7 @@ def generar_mapa(df: pd.DataFrame) -> None:
             "nodos": nodos,
             "flujos": flujos,
             "comunidades": comunidades_info,
+            "externos": _calcular_externos(df, cent_por_nombre, info_por_nombre),
             "bbox": bbox,
             "resumen": {
                 "municipios": len(nodos),
