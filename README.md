@@ -149,35 +149,34 @@ npm run build && npm run start
 ```
 
 Navegación por vista con hash: `http://localhost:3000/#geografico`,
-`#temporal`, `#clustering`, `#redes`, `#zaid`.
+`#diagnosticos`, `#temporal`, `#niveles`, `#clustering`, `#redes`, `#zaid`.
 
 ## ☁️ Despliegue en Vercel
 
-El repositorio vive en un **GitLab interno** (IP privada) que Vercel no puede
-alcanzar, así que **no** se conecta por git. El proyecto usa
-`output: "export"` (sitio 100 % estático en `out/`) y se sube ese `out/` como
-archivos estáticos.
+El dashboard vive en un repositorio de GitHub propio
+(`Vagarh/georeferenciacion_savia`) — copia de esta carpeta, sin el CSV con PII.
+El proyecto de Vercel está **conectado a ese repo por Git**: cada `git push` a
+`master` dispara un build (`next build`) y un despliegue a producción. No usa
+`output: "export"`; `vercel.json` fija `"framework": "nextjs"` y Vercel sirve la
+app de forma nativa (páginas estáticas SSG, sin funciones serverless porque todo
+es client-side).
 
 ```bash
 cd Analisis_geoespacial/dashboard
 
-npm run datos            # regenera public/data/*.json (si los CSV cambiaron)
-
-npm run deploy:preview   # build + sube out/ → URL de PREVIEW *.vercel.app
-npm run deploy           # build + sube out/ → PRODUCCIÓN (--prod)
+npm run datos     # regenera public/data/*.json si cambiaron los CSV del proyecto
+git add -A && git commit -m "data: actualizar agregados"
+git push          # Vercel redespliega solo
 ```
 
-Equivale a `next build && npx vercel deploy out [--prod]`.
-
-- **Primera vez sin cuenta configurada**: `npx vercel deploy out --temporary`
-  crea un despliegue anónimo (URL temporal, expira en ~1 h) con un enlace para
-  *reclamarlo* y guardarlo en tu cuenta. Con cuenta: `npx vercel login` una vez
-  y luego `npm run deploy`.
-- Se sube la carpeta `out/` tal cual: `index.html` + `_next/` + `data/*.json`.
-  **No** poner un `vercel.json` con `cleanUrls` — rompe el routing de `/`.
-- Los `data/*.json` son agregados y anónimos; el CSV con PII nunca entra aquí.
-- Alternativa por navegador: vercel.com → *Add New Project* → *Deploy without
-  Git* y arrastrar la carpeta `out/` (tras `npm run build`).
+- **Despliegue manual** (sin pasar por git): `npm run deploy` (`npx vercel --prod`)
+  tras `npx vercel login` la primera vez.
+- Los `data/*.json` son agregados y anónimos; el CSV con PII nunca entra al repo.
+- `vercel.json` solo debe fijar `framework`. **No** añadir `cleanUrls` ni
+  `outputDirectory` — rompen el routing de `/`.
+- Para regenerar los datos hace falta el proyecto padre (`../notebooks`,
+  `../datos/procesados`, `../sistema_cluster`); el repo de GitHub trae los JSON
+  ya generados, así que el dashboard corre sin ese paso.
 
 ## 🎨 Diseño
 

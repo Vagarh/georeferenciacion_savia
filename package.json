@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "npx serve out",
+    "start": "next start",
     "lint": "next lint",
     "datos": "python scripts/preparar_datos.py",
-    "deploy": "next build && npx vercel deploy out --prod",
-    "deploy:preview": "next build && npx vercel deploy out"
+    "deploy": "npx vercel --prod",
+    "deploy:preview": "npx vercel"
   },
   "dependencies": {
     "clsx": "^2.1.1",
