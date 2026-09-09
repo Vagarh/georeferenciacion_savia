@@ -1,0 +1,102 @@
+[
+  {
+    "origen": "Hospital Pablo Tobon Uribe",
+    "destino": "Hospital Pablo Tobon Uribe",
+    "flujo": 119
+  },
+  {
+    "origen": "Empresa Social Del Estado Hospital Marco Fidel Suarez",
+    "destino": "Empresa Social Del Estado Hospital Marco Fidel Suarez",
+    "flujo": 73
+  },
+  {
+    "origen": "Unidad Hospitalaria De Castilla Jaime Tobon Arbelaez - Metrosalud",
+    "destino": "ESE Hospital San Rafael De Itagui",
+    "flujo": 63
+  },
+  {
+    "origen": "ESE Hospital General De Medellin Luz Castro De Gutierrez",
+    "destino": "ESE Hospital General De Medellin Luz Castro De Gutierrez",
+    "flujo": 56
+  },
+  {
+    "origen": "Unidad Hospitalaria De Belen Hector Abad Gomez - Metrosalud",
+    "destino": "Coraxon Sas",
+    "flujo": 56
+  },
+  {
+    "origen": "Unidad Hospitalaria De Belen Hector Abad Gomez - Metrosalud",
+    "destino": "Unidad Hospitalaria De Belen Hector Abad Gomez - Metrosalud",
+    "flujo": 53
+  },
+  {
+    "origen": "Unidad Hospitalaria De Belen Hector Abad Gomez - Metrosalud",
+    "destino": "ESE Hospital San Rafael De Itagui",
+    "flujo": 50
+  },
+  {
+    "origen": "ESE Hospital La Maria",
+    "destino": "ESE Hospital La Maria",
+    "flujo": 49
+  },
+  {
+    "origen": "ESE Hospital Manuel Uribe Angel",
+    "destino": "ESE Hospital Manuel Uribe Angel",
+    "flujo": 49
+  },
+  {
+    "origen": "ESE Hospital San Rafael De Itagui",
+    "destino": "ESE Hospital San Rafael De Itagui",
+    "flujo": 48
+  },
+  {
+    "origen": "Unidad Hospitalaria De Castilla Jaime Tobon Arbelaez - Metrosalud",
+    "destino": "Coraxon Sas",
+    "flujo": 46
+  },
+  {
+    "origen": "ESE Hospital La Maria",
+    "destino": "Clinica Angiosur",
+    "flujo": 45
+  },
+  {
+    "origen": "ESE Hospital San Juan De Dios (Rionegro)",
+    "destino": "ESE Hospital San Juan De Dios (Rionegro)",
+    "flujo": 44
+  },
+  {
+    "origen": "Unidad Hospitalaria Nuevo Occidente - Metrosalud",
+    "destino": "ESE Hospital San Rafael De Itagui",
+    "flujo": 43
+  },
+  {
+    "origen": "Unidad Hospitalaria De Castilla Jaime Tobon Arbelaez - Metrosalud",
+    "destino": "Unidad Hospitalaria De Castilla Jaime Tobon Arbelaez - Metrosalud",
+    "flujo": 43
+  },
+  {
+    "origen": "Unidad Hospitalaria Buenos Aires Braulio Henao Mejia",
+    "destino": "Unidad Hospitalaria Buenos Aires Braulio Henao Mejia",
+    "flujo": 41
+  },
+  {
+    "origen": "Unidad Hospitalaria Nuevo Occidente - Metrosalud",
+    "destino": "Unidad Hospitalaria Nuevo Occidente - Metrosalud",
+    "flujo": 38
+  },
+  {
+    "origen": "Unidad Hospitalaria Santa Cruz Victor Cardenas Jaramillo - Metrosalud",
+    "destino": "Coraxon Sas",
+    "flujo": 38
+  },
+  {
+    "origen": "Unidad Hospitalaria Santa Cruz Victor Cardenas Jaramillo - Metrosalud",
+    "destino": "ESE Hospital San Rafael De Itagui",
+    "flujo": 37
+  },
+  {
+    "origen": "Clinica Genezen Sede Puerto Berrio",
+    "destino": "ESE Hospital San Rafael De Yolombo",
+    "flujo": 35
+  }
+]

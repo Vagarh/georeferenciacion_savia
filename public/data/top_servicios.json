@@ -1,0 +1,42 @@
+[
+  {
+    "nombre": "Radiologia E Imagenes Diagnosticas",
+    "count": 13625
+  },
+  {
+    "nombre": "Medicina Interna (Consulta Ext)",
+    "count": 12470
+  },
+  {
+    "nombre": "Cirugia General (Quirurgico)",
+    "count": 9078
+  },
+  {
+    "nombre": "Ortopedia Y/O Traumatologia (Consulta Ext)",
+    "count": 7720
+  },
+  {
+    "nombre": "Ginecobstetricia (Consulta Ext)",
+    "count": 5815
+  },
+  {
+    "nombre": "Imagenes Diagnosticas - No Ionizantes",
+    "count": 4968
+  },
+  {
+    "nombre": "Psiquiatria (Consulta Ext)",
+    "count": 4761
+  },
+  {
+    "nombre": "Pediatria (Consulta Ext)",
+    "count": 4235
+  },
+  {
+    "nombre": "Atencion Domiciliaria De Paciente Agudo",
+    "count": 4157
+  },
+  {
+    "nombre": "Cuidado Intensivo Adultos",
+    "count": 3608
+  }
+]

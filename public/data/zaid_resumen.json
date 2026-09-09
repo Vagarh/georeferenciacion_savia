@@ -1,0 +1,11 @@
+{
+  "num_zaid": 64,
+  "total_sedes": 310,
+  "sedes_zona_mayor": 29,
+  "promedio_sedes": 4.84,
+  "coherencia": {
+    "adjusted_rand_index": 0.05,
+    "normalized_mutual_info": 0.12,
+    "coherencia_promedio": 0.09
+  }
+}

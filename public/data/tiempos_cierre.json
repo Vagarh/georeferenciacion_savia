@@ -1,0 +1,52 @@
+{
+  "histograma": [
+    {
+      "rango": "<1 día",
+      "value": 39045
+    },
+    {
+      "rango": "1 día",
+      "value": 20621
+    },
+    {
+      "rango": "2 días",
+      "value": 12045
+    },
+    {
+      "rango": "3–4",
+      "value": 12910
+    },
+    {
+      "rango": "5–6",
+      "value": 6333
+    },
+    {
+      "rango": "7–9",
+      "value": 4505
+    },
+    {
+      "rango": "10–14",
+      "value": 2758
+    },
+    {
+      "rango": "15–19",
+      "value": 1064
+    },
+    {
+      "rango": "20–29",
+      "value": 771
+    },
+    {
+      "rango": "30+",
+      "value": 373
+    }
+  ],
+  "estadisticos": {
+    "media": 2.42,
+    "mediana": 1.0,
+    "p25": 0.0,
+    "p75": 3.0,
+    "p90": 6.0,
+    "max": 256.0
+  }
+}

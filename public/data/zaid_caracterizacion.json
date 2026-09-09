@@ -1,0 +1,386 @@
+[
+  {
+    "zaid": "ZAID 15",
+    "num_sedes": 29,
+    "cluster_principal": 1,
+    "comunidad_principal": 1
+  },
+  {
+    "zaid": "ZAID 21",
+    "num_sedes": 22,
+    "cluster_principal": 0,
+    "comunidad_principal": 0
+  },
+  {
+    "zaid": "ZAID 12",
+    "num_sedes": 20,
+    "cluster_principal": 1,
+    "comunidad_principal": 5
+  },
+  {
+    "zaid": "ZAID 9",
+    "num_sedes": 20,
+    "cluster_principal": 1,
+    "comunidad_principal": 3
+  },
+  {
+    "zaid": "ZAID 2",
+    "num_sedes": 17,
+    "cluster_principal": 1,
+    "comunidad_principal": 6
+  },
+  {
+    "zaid": "ZAID 7",
+    "num_sedes": 16,
+    "cluster_principal": 3,
+    "comunidad_principal": 0
+  },
+  {
+    "zaid": "ZAID 29",
+    "num_sedes": 16,
+    "cluster_principal": 0,
+    "comunidad_principal": 2
+  },
+  {
+    "zaid": "ZAID 28",
+    "num_sedes": 11,
+    "cluster_principal": 0,
+    "comunidad_principal": 4
+  },
+  {
+    "zaid": "ZAID 31",
+    "num_sedes": 10,
+    "cluster_principal": 1,
+    "comunidad_principal": 2
+  },
+  {
+    "zaid": "ZAID 14",
+    "num_sedes": 10,
+    "cluster_principal": 0,
+    "comunidad_principal": 3
+  },
+  {
+    "zaid": "ZAID 18",
+    "num_sedes": 9,
+    "cluster_principal": 2,
+    "comunidad_principal": 4
+  },
+  {
+    "zaid": "ZAID 30",
+    "num_sedes": 7,
+    "cluster_principal": 3,
+    "comunidad_principal": 2
+  },
+  {
+    "zaid": "ZAID 5",
+    "num_sedes": 7,
+    "cluster_principal": 4,
+    "comunidad_principal": 0
+  },
+  {
+    "zaid": "ZAID 23",
+    "num_sedes": 6,
+    "cluster_principal": 0,
+    "comunidad_principal": 1
+  },
+  {
+    "zaid": "ZAID 17",
+    "num_sedes": 6,
+    "cluster_principal": 3,
+    "comunidad_principal": 4
+  },
+  {
+    "zaid": "ZAID 8",
+    "num_sedes": 6,
+    "cluster_principal": 3,
+    "comunidad_principal": 7
+  },
+  {
+    "zaid": "ZAID 41",
+    "num_sedes": 6,
+    "cluster_principal": 0,
+    "comunidad_principal": 7
+  },
+  {
+    "zaid": "ZAID 51",
+    "num_sedes": 6,
+    "cluster_principal": 1,
+    "comunidad_principal": 7
+  },
+  {
+    "zaid": "ZAID 39",
+    "num_sedes": 6,
+    "cluster_principal": 0,
+    "comunidad_principal": 8
+  },
+  {
+    "zaid": "ZAID 25",
+    "num_sedes": 4,
+    "cluster_principal": 0,
+    "comunidad_principal": 6
+  },
+  {
+    "zaid": "ZAID 45",
+    "num_sedes": 4,
+    "cluster_principal": 1,
+    "comunidad_principal": 4
+  },
+  {
+    "zaid": "ZAID 20",
+    "num_sedes": 4,
+    "cluster_principal": 2,
+    "comunidad_principal": 2
+  },
+  {
+    "zaid": "ZAID 22",
+    "num_sedes": 4,
+    "cluster_principal": 0,
+    "comunidad_principal": 5
+  },
+  {
+    "zaid": "ZAID 52",
+    "num_sedes": 4,
+    "cluster_principal": 3,
+    "comunidad_principal": 5
+  },
+  {
+    "zaid": "ZAID 35",
+    "num_sedes": 3,
+    "cluster_principal": 3,
+    "comunidad_principal": 3
+  },
+  {
+    "zaid": "ZAID 36",
+    "num_sedes": 3,
+    "cluster_principal": 3,
+    "comunidad_principal": 1
+  },
+  {
+    "zaid": "ZAID 50",
+    "num_sedes": 3,
+    "cluster_principal": 1,
+    "comunidad_principal": 0
+  },
+  {
+    "zaid": "ZAID 19",
+    "num_sedes": 3,
+    "cluster_principal": 2,
+    "comunidad_principal": 3
+  },
+  {
+    "zaid": "ZAID 16",
+    "num_sedes": 3,
+    "cluster_principal": 2,
+    "comunidad_principal": 1
+  },
+  {
+    "zaid": "ZAID 24",
+    "num_sedes": 3,
+    "cluster_principal": 2,
+    "comunidad_principal": 0
+  },
+  {
+    "zaid": "ZAID 0",
+    "num_sedes": 3,
+    "cluster_principal": 3,
+    "comunidad_principal": 6
+  },
+  {
+    "zaid": "ZAID 10",
+    "num_sedes": 2,
+    "cluster_principal": 4,
+    "comunidad_principal": 4
+  },
+  {
+    "zaid": "ZAID 62",
+    "num_sedes": 2,
+    "cluster_principal": 3,
+    "comunidad_principal": 10
+  },
+  {
+    "zaid": "ZAID 46",
+    "num_sedes": 2,
+    "cluster_principal": 2,
+    "comunidad_principal": 7
+  },
+  {
+    "zaid": "ZAID 13",
+    "num_sedes": 2,
+    "cluster_principal": 4,
+    "comunidad_principal": 5
+  },
+  {
+    "zaid": "ZAID 1",
+    "num_sedes": 2,
+    "cluster_principal": 2,
+    "comunidad_principal": 6
+  },
+  {
+    "zaid": "ZAID 26",
+    "num_sedes": 2,
+    "cluster_principal": 2,
+    "comunidad_principal": 9
+  },
+  {
+    "zaid": "ZAID 6",
+    "num_sedes": 1,
+    "cluster_principal": 4,
+    "comunidad_principal": 6
+  },
+  {
+    "zaid": "ZAID 3",
+    "num_sedes": 1,
+    "cluster_principal": 4,
+    "comunidad_principal": 7
+  },
+  {
+    "zaid": "ZAID 11",
+    "num_sedes": 1,
+    "cluster_principal": 4,
+    "comunidad_principal": 3
+  },
+  {
+    "zaid": "ZAID 27",
+    "num_sedes": 1,
+    "cluster_principal": 0,
+    "comunidad_principal": 9
+  },
+  {
+    "zaid": "ZAID 4",
+    "num_sedes": 1,
+    "cluster_principal": 4,
+    "comunidad_principal": 1
+  },
+  {
+    "zaid": "ZAID 33",
+    "num_sedes": 1,
+    "cluster_principal": 3,
+    "comunidad_principal": 15
+  },
+  {
+    "zaid": "ZAID 40",
+    "num_sedes": 1,
+    "cluster_principal": 2,
+    "comunidad_principal": 8
+  },
+  {
+    "zaid": "ZAID 38",
+    "num_sedes": 1,
+    "cluster_principal": 3,
+    "comunidad_principal": 8
+  },
+  {
+    "zaid": "ZAID 37",
+    "num_sedes": 1,
+    "cluster_principal": 3,
+    "comunidad_principal": 9
+  },
+  {
+    "zaid": "ZAID 34",
+    "num_sedes": 1,
+    "cluster_principal": 2,
+    "comunidad_principal": 10
+  },
+  {
+    "zaid": "ZAID 32",
+    "num_sedes": 1,
+    "cluster_principal": 4,
+    "comunidad_principal": 2
+  },
+  {
+    "zaid": "ZAID 47",
+    "num_sedes": 1,
+    "cluster_principal": 1,
+    "comunidad_principal": 17
+  },
+  {
+    "zaid": "ZAID 44",
+    "num_sedes": 1,
+    "cluster_principal": 1,
+    "comunidad_principal": 16
+  },
+  {
+    "zaid": "ZAID 42",
+    "num_sedes": 1,
+    "cluster_principal": 3,
+    "comunidad_principal": 11
+  },
+  {
+    "zaid": "ZAID 43",
+    "num_sedes": 1,
+    "cluster_principal": 0,
+    "comunidad_principal": 11
+  },
+  {
+    "zaid": "ZAID 48",
+    "num_sedes": 1,
+    "cluster_principal": 2,
+    "comunidad_principal": 12
+  },
+  {
+    "zaid": "ZAID 53",
+    "num_sedes": 1,
+    "cluster_principal": 1,
+    "comunidad_principal": 18
+  },
+  {
+    "zaid": "ZAID 54",
+    "num_sedes": 1,
+    "cluster_principal": 2,
+    "comunidad_principal": 5
+  },
+  {
+    "zaid": "ZAID 49",
+    "num_sedes": 1,
+    "cluster_principal": 0,
+    "comunidad_principal": 12
+  },
+  {
+    "zaid": "ZAID 55",
+    "num_sedes": 1,
+    "cluster_principal": 1,
+    "comunidad_principal": 19
+  },
+  {
+    "zaid": "ZAID 56",
+    "num_sedes": 1,
+    "cluster_principal": 1,
+    "comunidad_principal": 20
+  },
+  {
+    "zaid": "ZAID 58",
+    "num_sedes": 1,
+    "cluster_principal": 3,
+    "comunidad_principal": 13
+  },
+  {
+    "zaid": "ZAID 57",
+    "num_sedes": 1,
+    "cluster_principal": 1,
+    "comunidad_principal": 8
+  },
+  {
+    "zaid": "ZAID 59",
+    "num_sedes": 1,
+    "cluster_principal": 0,
+    "comunidad_principal": 13
+  },
+  {
+    "zaid": "ZAID 60",
+    "num_sedes": 1,
+    "cluster_principal": 3,
+    "comunidad_principal": 14
+  },
+  {
+    "zaid": "ZAID 61",
+    "num_sedes": 1,
+    "cluster_principal": 0,
+    "comunidad_principal": 14
+  },
+  {
+    "zaid": "ZAID 63",
+    "num_sedes": 1,
+    "cluster_principal": 3,
+    "comunidad_principal": 21
+  }
+]

@@ -1,0 +1,45 @@
+# Dependencias
+/node_modules
+/.pnp
+.pnp.js
+
+# Build de Next.js
+/.next/
+/out/
+/build
+next-env.d.ts.bak
+
+# Producción
+/dist
+
+# Depuración
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Entorno local
+.env
+.env*.local
+.vercel
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+*.pem
+
+# TypeScript
+*.tsbuildinfo
+
+# Python (script de datos)
+__pycache__/
+*.pyc
+
+# NOTA: public/data/*.json SÍ se versiona (datos agregados y anonimizados).
+# El CSV original con PII (notebooks/resultados_regulaciones.csv) nunca se
+# copia aquí ni se sube a Vercel.
+
+# El .gitignore de la carpeta padre (plantilla Python) ignora `lib/`; aquí
+# `lib/` es código fuente del dashboard y SÍ debe versionarse.
+!lib/
+!lib/**

@@ -1,0 +1,93 @@
+[
+  {
+    "mes": "2025-01",
+    "remisiones": 8075,
+    "mes_label": "Ene",
+    "contrarreferencias": 342,
+    "referencias": 7733
+  },
+  {
+    "mes": "2025-02",
+    "remisiones": 7328,
+    "mes_label": "Feb",
+    "contrarreferencias": 289,
+    "referencias": 7039
+  },
+  {
+    "mes": "2025-03",
+    "remisiones": 7941,
+    "mes_label": "Mar",
+    "contrarreferencias": 329,
+    "referencias": 7612
+  },
+  {
+    "mes": "2025-04",
+    "remisiones": 7759,
+    "mes_label": "Abr",
+    "contrarreferencias": 274,
+    "referencias": 7485
+  },
+  {
+    "mes": "2025-05",
+    "remisiones": 8281,
+    "mes_label": "May",
+    "contrarreferencias": 270,
+    "referencias": 8011
+  },
+  {
+    "mes": "2025-06",
+    "remisiones": 7496,
+    "mes_label": "Jun",
+    "contrarreferencias": 261,
+    "referencias": 7235
+  },
+  {
+    "mes": "2025-07",
+    "remisiones": 7935,
+    "mes_label": "Jul",
+    "contrarreferencias": 312,
+    "referencias": 7623
+  },
+  {
+    "mes": "2025-08",
+    "remisiones": 7637,
+    "mes_label": "Ago",
+    "contrarreferencias": 236,
+    "referencias": 7401
+  },
+  {
+    "mes": "2025-09",
+    "remisiones": 7650,
+    "mes_label": "Sep",
+    "contrarreferencias": 239,
+    "referencias": 7411
+  },
+  {
+    "mes": "2025-10",
+    "remisiones": 7637,
+    "mes_label": "Oct",
+    "contrarreferencias": 204,
+    "referencias": 7433
+  },
+  {
+    "mes": "2025-11",
+    "remisiones": 7069,
+    "mes_label": "Nov",
+    "contrarreferencias": 161,
+    "referencias": 6908
+  },
+  {
+    "mes": "2025-12",
+    "remisiones": 7551,
+    "mes_label": "Dic",
+    "contrarreferencias": 230,
+    "referencias": 7321
+  },
+  {
+    "mes": "2026-01",
+    "remisiones": 8107,
+    "mes_label": "Ene",
+    "contrarreferencias": 279,
+    "referencias": 7828
+  }
+]

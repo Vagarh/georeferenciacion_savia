@@ -1,0 +1,42 @@
+[
+  {
+    "region": "Medellin",
+    "remisiones": 37596
+  },
+  {
+    "region": "Valle De Aburra",
+    "remisiones": 14615
+  },
+  {
+    "region": "Oriente",
+    "remisiones": 10403
+  },
+  {
+    "region": "Uraba",
+    "remisiones": 8523
+  },
+  {
+    "region": "Suroeste",
+    "remisiones": 7592
+  },
+  {
+    "region": "Norte",
+    "remisiones": 4650
+  },
+  {
+    "region": "Occidente",
+    "remisiones": 4341
+  },
+  {
+    "region": "Nordeste",
+    "remisiones": 4306
+  },
+  {
+    "region": "Magdalena Medio",
+    "remisiones": 2559
+  },
+  {
+    "region": "Bajo Cauca",
+    "remisiones": 2329
+  }
+]

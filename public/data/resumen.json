@@ -1,0 +1,19 @@
+{
+  "total_remisiones": 100466,
+  "sedes_origen": 690,
+  "sedes_destino": 556,
+  "municipios_origen": 32,
+  "tiempo_promedio_cierre": 2.42,
+  "tiempo_mediana_cierre": 1.0,
+  "tasa_efectividad": 54.75981924233074,
+  "tasa_resolucion": 56.65516708717367,
+  "cerradas": 55015,
+  "canceladas": 42090,
+  "anuladas": 3360,
+  "referencias": 97040,
+  "contrarreferencias": 3426,
+  "pct_referencias": 96.58989110743933,
+  "edad_promedio": 51.92,
+  "periodo": "Enero 2025 – Enero 2026",
+  "actualizado": "2026-09-09 13:51"
+}

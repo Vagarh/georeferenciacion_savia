@@ -1,0 +1,147 @@
+{
+  "referencia": {
+    "total": 97040,
+    "sube": 33307,
+    "igual": 40824,
+    "baja": 5957,
+    "sin_dato": 16952,
+    "pct_sube": 41.58800319648387,
+    "pct_igual": 50.9739286784537,
+    "pct_baja": 7.438068125062432,
+    "dias_promedio": 2.44,
+    "tasa_resolucion": 56.52,
+    "celdas": [
+      {
+        "o": 1,
+        "d": 1,
+        "value": 26329
+      },
+      {
+        "o": 1,
+        "d": 2,
+        "value": 16798
+      },
+      {
+        "o": 1,
+        "d": 3,
+        "value": 12996
+      },
+      {
+        "o": 1,
+        "d": 4,
+        "value": 3
+      },
+      {
+        "o": 2,
+        "d": 1,
+        "value": 815
+      },
+      {
+        "o": 2,
+        "d": 2,
+        "value": 7485
+      },
+      {
+        "o": 2,
+        "d": 3,
+        "value": 3502
+      },
+      {
+        "o": 2,
+        "d": 4,
+        "value": 3
+      },
+      {
+        "o": 3,
+        "d": 1,
+        "value": 725
+      },
+      {
+        "o": 3,
+        "d": 2,
+        "value": 4417
+      },
+      {
+        "o": 3,
+        "d": 3,
+        "value": 7010
+      },
+      {
+        "o": 3,
+        "d": 4,
+        "value": 5
+      }
+    ]
+  },
+  "contrarreferencia": {
+    "total": 3426,
+    "sube": 916,
+    "igual": 979,
+    "baja": 843,
+    "sin_dato": 688,
+    "pct_sube": 33.45507669831994,
+    "pct_igual": 35.75602629656684,
+    "pct_baja": 30.78889700511322,
+    "dias_promedio": 2.01,
+    "tasa_resolucion": 60.55,
+    "celdas": [
+      {
+        "o": 1,
+        "d": 1,
+        "value": 492
+      },
+      {
+        "o": 1,
+        "d": 2,
+        "value": 574
+      },
+      {
+        "o": 1,
+        "d": 3,
+        "value": 258
+      },
+      {
+        "o": 2,
+        "d": 1,
+        "value": 13
+      },
+      {
+        "o": 2,
+        "d": 2,
+        "value": 206
+      },
+      {
+        "o": 2,
+        "d": 3,
+        "value": 84
+      },
+      {
+        "o": 3,
+        "d": 1,
+        "value": 98
+      },
+      {
+        "o": 3,
+        "d": 2,
+        "value": 732
+      },
+      {
+        "o": 3,
+        "d": 3,
+        "value": 281
+      }
+    ]
+  },
+  "niveles_origen": [
+    1,
+    2,
+    3
+  ],
+  "niveles_destino": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "nota": "El nivel de complejidad del destino no siempre queda registrado; esas remisiones se cuentan en 'sin_dato' y no entran en los porcentajes de movilidad."
+}

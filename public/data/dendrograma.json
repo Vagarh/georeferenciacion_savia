@@ -1,0 +1,538 @@
+{
+  "arbol": {
+    "nombre": "",
+    "altura": 1.0,
+    "cluster": 0,
+    "children": [
+      {
+        "nombre": "",
+        "altura": 0.5785,
+        "cluster": 1,
+        "children": [
+          {
+            "nombre": "Empresa Social Del Estado Hospital Francisco Valderrama",
+            "altura": 0.0,
+            "cluster": 1
+          },
+          {
+            "nombre": "",
+            "altura": 0.5488,
+            "cluster": 1,
+            "children": [
+              {
+                "nombre": "",
+                "altura": 0.257,
+                "cluster": 1,
+                "children": [
+                  {
+                    "nombre": "Hospital San Jeronimo De Monteria",
+                    "altura": 0.0,
+                    "cluster": 1
+                  },
+                  {
+                    "nombre": "Fundacion Amigos De La Salud",
+                    "altura": 0.0,
+                    "cluster": 1
+                  }
+                ]
+              },
+              {
+                "nombre": "",
+                "altura": 0.483,
+                "cluster": 1,
+                "children": [
+                  {
+                    "nombre": "Clinica Pajonal Limitada",
+                    "altura": 0.0,
+                    "cluster": 1
+                  },
+                  {
+                    "nombre": "",
+                    "altura": 0.4215,
+                    "cluster": 1,
+                    "children": [
+                      {
+                        "nombre": "Clinica Central Fundadores Apartado",
+                        "altura": 0.0,
+                        "cluster": 1
+                      },
+                      {
+                        "nombre": "ESE Hospital Oscar Emiro Vergara Cruz (San Pedro De Uraba)",
+                        "altura": 0.0,
+                        "cluster": 1
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "nombre": "",
+        "altura": 0.7377,
+        "cluster": 0,
+        "children": [
+          {
+            "nombre": "",
+            "altura": 0.5628,
+            "cluster": 2,
+            "children": [
+              {
+                "nombre": "Hospital Pablo Tobon Uribe",
+                "altura": 0.0,
+                "cluster": 2
+              },
+              {
+                "nombre": "",
+                "altura": 0.155,
+                "cluster": 2,
+                "children": [
+                  {
+                    "nombre": "Corporacion Colombia Saludable",
+                    "altura": 0.0,
+                    "cluster": 2
+                  },
+                  {
+                    "nombre": "",
+                    "altura": 0.0805,
+                    "cluster": 2,
+                    "children": [
+                      {
+                        "nombre": "Home Group Sas Sede Medellin",
+                        "altura": 0.0,
+                        "cluster": 2
+                      },
+                      {
+                        "nombre": "Preventiva Salud S.A.S",
+                        "altura": 0.0,
+                        "cluster": 2
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "nombre": "",
+            "altura": 0.7232,
+            "cluster": 0,
+            "children": [
+              {
+                "nombre": "",
+                "altura": 0.4236,
+                "cluster": 3,
+                "children": [
+                  {
+                    "nombre": "ESE Hospital San Vicente De Paul Barbosa",
+                    "altura": 0.0,
+                    "cluster": 3
+                  },
+                  {
+                    "nombre": "",
+                    "altura": 0.3359,
+                    "cluster": 3,
+                    "children": [
+                      {
+                        "nombre": "ESE Hospital San Rafael De Yolombo",
+                        "altura": 0.0,
+                        "cluster": 3
+                      },
+                      {
+                        "nombre": "Clinica Genezen Sede Puerto Berrio",
+                        "altura": 0.0,
+                        "cluster": 3
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "nombre": "",
+                "altura": 0.6487,
+                "cluster": 0,
+                "children": [
+                  {
+                    "nombre": "",
+                    "altura": 0.6045,
+                    "cluster": 4,
+                    "children": [
+                      {
+                        "nombre": "Clinica San Juan De Dios La Ceja",
+                        "altura": 0.0,
+                        "cluster": 4
+                      },
+                      {
+                        "nombre": "",
+                        "altura": 0.5407,
+                        "cluster": 4,
+                        "children": [
+                          {
+                            "nombre": "ESE Hospital San Juan De Dios (Rionegro)",
+                            "altura": 0.0,
+                            "cluster": 4
+                          },
+                          {
+                            "nombre": "Fundación Hospital San Vicente De Paul Rionegro",
+                            "altura": 0.0,
+                            "cluster": 4
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "nombre": "",
+                    "altura": 0.6214,
+                    "cluster": 0,
+                    "children": [
+                      {
+                        "nombre": "",
+                        "altura": 0.4005,
+                        "cluster": 5,
+                        "children": [
+                          {
+                            "nombre": "ESE Hospital San Rafael (Andes)",
+                            "altura": 0.0,
+                            "cluster": 5
+                          },
+                          {
+                            "nombre": "",
+                            "altura": 0.3497,
+                            "cluster": 5,
+                            "children": [
+                              {
+                                "nombre": "ESE Hospital San Juan De Dios Antioquia (Santa Fe De Antioquia)",
+                                "altura": 0.0,
+                                "cluster": 5
+                              },
+                              {
+                                "nombre": "ESE Hospital Ivan Restrepo Gomez (Urrao)",
+                                "altura": 0.0,
+                                "cluster": 5
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "nombre": "",
+                        "altura": 0.5674,
+                        "cluster": 6,
+                        "children": [
+                          {
+                            "nombre": "ESE Hospital Manuel Uribe Angel",
+                            "altura": 0.0,
+                            "cluster": 6
+                          },
+                          {
+                            "nombre": "",
+                            "altura": 0.558,
+                            "cluster": 6,
+                            "children": [
+                              {
+                                "nombre": "",
+                                "altura": 0.4524,
+                                "cluster": 6,
+                                "children": [
+                                  {
+                                    "nombre": "ESE Hospital Del Sur Gabriel Jaramillo Piedrahita",
+                                    "altura": 0.0,
+                                    "cluster": 6
+                                  },
+                                  {
+                                    "nombre": "",
+                                    "altura": 0.4182,
+                                    "cluster": 6,
+                                    "children": [
+                                      {
+                                        "nombre": "",
+                                        "altura": 0.3757,
+                                        "cluster": 6,
+                                        "children": [
+                                          {
+                                            "nombre": "",
+                                            "altura": 0.3641,
+                                            "cluster": 6,
+                                            "children": [
+                                              {
+                                                "nombre": "Unidad Hospitalaria De Belen Hector Abad Gomez - Metrosalud",
+                                                "altura": 0.0,
+                                                "cluster": 6
+                                              },
+                                              {
+                                                "nombre": "",
+                                                "altura": 0.3419,
+                                                "cluster": 6,
+                                                "children": [
+                                                  {
+                                                    "nombre": "Unidad Hospitalaria De Castilla Jaime Tobon Arbelaez - Metrosalud",
+                                                    "altura": 0.0,
+                                                    "cluster": 6
+                                                  },
+                                                  {
+                                                    "nombre": "Unidad Hospitalaria Nuevo Occidente - Metrosalud",
+                                                    "altura": 0.0,
+                                                    "cluster": 6
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "nombre": "",
+                                            "altura": 0.3697,
+                                            "cluster": 6,
+                                            "children": [
+                                              {
+                                                "nombre": "Unidad Hospitalaria Santa Cruz Victor Cardenas Jaramillo - Metrosalud",
+                                                "altura": 0.0,
+                                                "cluster": 6
+                                              },
+                                              {
+                                                "nombre": "Unidad Hospitalaria San Cristobal Leonardo Betancur Taborda - Metrosalud",
+                                                "altura": 0.0,
+                                                "cluster": 6
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "nombre": "",
+                                        "altura": 0.3953,
+                                        "cluster": 6,
+                                        "children": [
+                                          {
+                                            "nombre": "Unidad Hospitalaria Buenos Aires Braulio Henao Mejia - Metrosalud",
+                                            "altura": 0.0,
+                                            "cluster": 6
+                                          },
+                                          {
+                                            "nombre": "Unidad Hospitalaria San Javier Jesus Pelaez Botero - Metrosalud",
+                                            "altura": 0.0,
+                                            "cluster": 6
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "nombre": "",
+                                "altura": 0.506,
+                                "cluster": 6,
+                                "children": [
+                                  {
+                                    "nombre": "ESE Hospital San Juan De Dios Yarumal",
+                                    "altura": 0.0,
+                                    "cluster": 6
+                                  },
+                                  {
+                                    "nombre": "",
+                                    "altura": 0.435,
+                                    "cluster": 6,
+                                    "children": [
+                                      {
+                                        "nombre": "",
+                                        "altura": 0.2495,
+                                        "cluster": 6,
+                                        "children": [
+                                          {
+                                            "nombre": "Coraxon Sas",
+                                            "altura": 0.0,
+                                            "cluster": 6
+                                          },
+                                          {
+                                            "nombre": "",
+                                            "altura": 0.1888,
+                                            "cluster": 6,
+                                            "children": [
+                                              {
+                                                "nombre": "ESE Hospital San Rafael De Itagui",
+                                                "altura": 0.0,
+                                                "cluster": 6
+                                              },
+                                              {
+                                                "nombre": "",
+                                                "altura": 0.0946,
+                                                "cluster": 6,
+                                                "children": [
+                                                  {
+                                                    "nombre": "Clinica Angiosur",
+                                                    "altura": 0.0,
+                                                    "cluster": 6
+                                                  },
+                                                  {
+                                                    "nombre": "Angiosur Sas",
+                                                    "altura": 0.0,
+                                                    "cluster": 6
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "nombre": "",
+                                        "altura": 0.3831,
+                                        "cluster": 6,
+                                        "children": [
+                                          {
+                                            "nombre": "ESE Hospital Venancio Diaz Diaz (Sabaneta)",
+                                            "altura": 0.0,
+                                            "cluster": 6
+                                          },
+                                          {
+                                            "nombre": "",
+                                            "altura": 0.3687,
+                                            "cluster": 6,
+                                            "children": [
+                                              {
+                                                "nombre": "ESE Hospital La Maria",
+                                                "altura": 0.0,
+                                                "cluster": 6
+                                              },
+                                              {
+                                                "nombre": "",
+                                                "altura": 0.3567,
+                                                "cluster": 6,
+                                                "children": [
+                                                  {
+                                                    "nombre": "",
+                                                    "altura": 0.2528,
+                                                    "cluster": 6,
+                                                    "children": [
+                                                      {
+                                                        "nombre": "Empresa Social Del Estado Hospital Marco Fidel Suarez",
+                                                        "altura": 0.0,
+                                                        "cluster": 6
+                                                      },
+                                                      {
+                                                        "nombre": "Intergastro Sa",
+                                                        "altura": 0.0,
+                                                        "cluster": 6
+                                                      }
+                                                    ]
+                                                  },
+                                                  {
+                                                    "nombre": "",
+                                                    "altura": 0.3427,
+                                                    "cluster": 6,
+                                                    "children": [
+                                                      {
+                                                        "nombre": "Fundacion Hospitalaria San Vicente De Paul",
+                                                        "altura": 0.0,
+                                                        "cluster": 6
+                                                      },
+                                                      {
+                                                        "nombre": "",
+                                                        "altura": 0.3208,
+                                                        "cluster": 6,
+                                                        "children": [
+                                                          {
+                                                            "nombre": "ESE Hospital San Vicente De Paul De Caldas",
+                                                            "altura": 0.0,
+                                                            "cluster": 6
+                                                          },
+                                                          {
+                                                            "nombre": "",
+                                                            "altura": 0.2896,
+                                                            "cluster": 6,
+                                                            "children": [
+                                                              {
+                                                                "nombre": "Clinica Del Prado Sa",
+                                                                "altura": 0.0,
+                                                                "cluster": 6
+                                                              },
+                                                              {
+                                                                "nombre": "",
+                                                                "altura": 0.2752,
+                                                                "cluster": 6,
+                                                                "children": [
+                                                                  {
+                                                                    "nombre": "ESE Hospital General De Medellin Luz Castro De Gutierrez",
+                                                                    "altura": 0.0,
+                                                                    "cluster": 6
+                                                                  },
+                                                                  {
+                                                                    "nombre": "",
+                                                                    "altura": 0.2378,
+                                                                    "cluster": 6,
+                                                                    "children": [
+                                                                      {
+                                                                        "nombre": "",
+                                                                        "altura": 0.1706,
+                                                                        "cluster": 6,
+                                                                        "children": [
+                                                                          {
+                                                                            "nombre": "IPS Universitaria Sede Clinica Leon Xiii",
+                                                                            "altura": 0.0,
+                                                                            "cluster": 6
+                                                                          },
+                                                                          {
+                                                                            "nombre": "Sociedad Medica Antioquena Sa Soma",
+                                                                            "altura": 0.0,
+                                                                            "cluster": 6
+                                                                          }
+                                                                        ]
+                                                                      },
+                                                                      {
+                                                                        "nombre": "",
+                                                                        "altura": 0.2126,
+                                                                        "cluster": 6,
+                                                                        "children": [
+                                                                          {
+                                                                            "nombre": "ESE Hospital Mental De Antioquia",
+                                                                            "altura": 0.0,
+                                                                            "cluster": 6
+                                                                          },
+                                                                          {
+                                                                            "nombre": "Corporacion Hospital Infantil Concejo De Medellin",
+                                                                            "altura": 0.0,
+                                                                            "cluster": 6
+                                                                          }
+                                                                        ]
+                                                                      }
+                                                                    ]
+                                                                  }
+                                                                ]
+                                                              }
+                                                            ]
+                                                          }
+                                                        ]
+                                                      }
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "num_hojas": 45,
+  "k": 6,
+  "metodo": "ward · distancia euclídea sobre perfil de flujo normalizado"
+}

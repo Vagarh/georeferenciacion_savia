@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "Otros Dolores Abdominales Y Los No Especificados",
+    "count": 3301
+  },
+  {
+    "nombre": "Infeccion De Vias Urinarias Sitio No Especificado",
+    "count": 2888
+  },
+  {
+    "nombre": "Insuficiencia Cardiaca Congestiva",
+    "count": 2493
+  },
+  {
+    "nombre": "Hemorragia Gastrointestinal No Especificada",
+    "count": 2269
+  },
+  {
+    "nombre": "Enfermedad Pulmonar Obstructiva Cronica Con Exacerbacion Aguda No Especificada",
+    "count": 1786
+  },
+  {
+    "nombre": "Infarto Agudo Del Miocardio Sin Otra Especificacion",
+    "count": 1615
+  },
+  {
+    "nombre": "Enfermedad Cerebrovascular No Especificada",
+    "count": 1560
+  },
+  {
+    "nombre": "Neumonia No Especificada",
+    "count": 1514
+  },
+  {
+    "nombre": "Neumonia Bacteriana No Especificada",
+    "count": 1031
+  },
+  {
+    "nombre": "Fiebre No Especificada",
+    "count": 963
+  },
+  {
+    "nombre": "Apendicitis No Especificada",
+    "count": 947
+  },
+  {
+    "nombre": "Sepsis No Especificada",
+    "count": 893
+  }
+]
