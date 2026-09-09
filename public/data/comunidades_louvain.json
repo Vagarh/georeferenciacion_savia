@@ -1,50 +1,86 @@
 [
   {
+    "comunidad": "C36",
+    "sedes": 195
+  },
+  {
+    "comunidad": "C8",
+    "sedes": 140
+  },
+  {
     "comunidad": "C2",
-    "sedes": 55
+    "sedes": 119
   },
   {
-    "comunidad": "C10",
-    "sedes": 49
+    "comunidad": "C6",
+    "sedes": 71
   },
   {
-    "comunidad": "C4",
-    "sedes": 44
+    "comunidad": "C1",
+    "sedes": 67
   },
   {
-    "comunidad": "C7",
+    "comunidad": "C3",
+    "sedes": 64
+  },
+  {
+    "comunidad": "C0",
+    "sedes": 40
+  },
+  {
+    "comunidad": "C5",
     "sedes": 32
   },
   {
     "comunidad": "C9",
-    "sedes": 30
+    "sedes": 14
   },
   {
-    "comunidad": "C11",
-    "sedes": 29
+    "comunidad": "C41",
+    "sedes": 5
   },
   {
-    "comunidad": "C5",
-    "sedes": 27
+    "comunidad": "C24",
+    "sedes": 4
   },
   {
-    "comunidad": "C0",
-    "sedes": 19
+    "comunidad": "C30",
+    "sedes": 4
   },
   {
-    "comunidad": "C8",
-    "sedes": 9
+    "comunidad": "C10",
+    "sedes": 4
   },
   {
-    "comunidad": "C3",
-    "sedes": 8
+    "comunidad": "C18",
+    "sedes": 4
   },
   {
-    "comunidad": "C1",
+    "comunidad": "C31",
+    "sedes": 3
+  },
+  {
+    "comunidad": "C37",
+    "sedes": 3
+  },
+  {
+    "comunidad": "C34",
     "sedes": 2
   },
   {
-    "comunidad": "C13",
+    "comunidad": "C7",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C21",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C22",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C23",
     "sedes": 2
   },
   {
@@ -52,11 +88,83 @@
     "sedes": 2
   },
   {
-    "comunidad": "C6",
+    "comunidad": "C19",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C20",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C16",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C15",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C26",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C38",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C33",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C35",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C29",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C32",
+    "sedes": 2
+  },
+  {
+    "comunidad": "C4",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C13",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C25",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C11",
     "sedes": 1
   },
   {
     "comunidad": "C14",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C17",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C27",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C28",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C39",
+    "sedes": 1
+  },
+  {
+    "comunidad": "C40",
     "sedes": 1
   }
 ]

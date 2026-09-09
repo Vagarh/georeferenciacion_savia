@@ -9,6 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "datos": "python scripts/preparar_datos.py",
+    "actualizar": "python scripts/actualizar_todo.py",
+    "actualizar:local": "python scripts/actualizar_todo.py --saltar-extraccion",
     "deploy": "npx vercel --prod",
     "deploy:preview": "npx vercel"
   },

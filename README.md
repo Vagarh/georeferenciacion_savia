@@ -105,23 +105,34 @@ dashboard/
 
 ## 🔄 Refrescar los datos (traer meses más recientes)
 
-El rango de la extracción vive en `../notebooks/regulaciones.sql`
-(`WHERE CAST(AN9.fecha_hora_crea AS DATE) BETWEEN '2025-01-01' AND curdate()`).
-Para actualizar el CSV y los JSON:
+Un solo comando recalcula **todo** —extracción, clustering RAD/RAS/ZAID y
+todos los JSON del dashboard—:
 
 ```bash
-cd Analisis_geoespacial/notebooks
+cd Analisis_geoespacial/dashboard
 setx SAVIA_DB_PASSWORD "tu_contraseña"     # una sola vez; abre terminal nueva
 # conéctate a la VPN corporativa
-python actualizar_datos.py                 # regenera resultados_regulaciones.csv
 
-cd ../dashboard
-python scripts/preparar_datos.py           # regenera public/data/*.json
+npm run actualizar                        # o: python scripts/actualizar_todo.py
+
 git add -A && git commit -m "data: refrescar hasta <mes>" && git push
 ```
 
-Vercel redespliega solo. Para congelar un corte fijo, cambia `curdate()` por
-una fecha en `regulaciones.sql` (p. ej. `'2026-08-31'`).
+`actualizar_todo.py` ejecuta en orden:
+
+1. `../notebooks/actualizar_datos.py` → extrae remisiones desde la BD a
+   `../notebooks/resultados_regulaciones.csv` (VPN + `SAVIA_DB_PASSWORD`).
+2. `../sistema_cluster/ejecutar_analisis.py --sin-reporte` → recalcula RAD,
+   RAS y ZAID sobre el CSV nuevo → `../sistema_cluster/output/clusters/*.csv`.
+3. `scripts/preparar_datos.py` → regenera `public/data/*.json`.
+
+Flags: `--saltar-extraccion` (ya tengo el CSV; también `npm run actualizar:local`),
+`--saltar-clustering` (no recalcular RAD/RAS/ZAID).
+
+El rango de la extracción vive en `../notebooks/regulaciones.sql`
+(`WHERE CAST(AN9.fecha_hora_crea AS DATE) BETWEEN '2025-01-01' AND curdate()`);
+para congelar un corte fijo, cambia `curdate()` por una fecha (p. ej.
+`'2026-08-31'`). Vercel redespliega solo tras el `git push`.
 
 ## 🔗 Fuentes de datos
 

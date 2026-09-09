@@ -1,38 +1,38 @@
 [
   {
     "metodo": "kmeans_reduced",
-    "silhouette": 0.2718321273839386,
-    "calinski_harabasz": 86.31747077758803,
-    "davies_bouldin": 1.3793489618172028
-  },
-  {
-    "metodo": "hierarchical_reduced",
-    "silhouette": 0.2671643429807195,
-    "calinski_harabasz": 76.13482726595029,
-    "davies_bouldin": 1.4972502087094015
+    "silhouette": 0.3140850057536253,
+    "calinski_harabasz": 243.62232939143567,
+    "davies_bouldin": 1.0184034941280002
   },
   {
     "metodo": "kmeans",
-    "silhouette": 0.2561690938918076,
-    "calinski_harabasz": 77.20268017469638,
-    "davies_bouldin": 1.2034756532010007
+    "silhouette": 0.2943655298342779,
+    "calinski_harabasz": 222.7911610684257,
+    "davies_bouldin": 1.0813374223223913
   },
   {
-    "metodo": "hierarchical",
-    "silhouette": 0.2464437348983201,
-    "calinski_harabasz": 68.36183043646072,
-    "davies_bouldin": 1.5552047020049762
+    "metodo": "hierarchical_reduced",
+    "silhouette": 0.2811774520875166,
+    "calinski_harabasz": 215.13691106290125,
+    "davies_bouldin": 1.126753824639302
   },
   {
     "metodo": "kmedians_reduced",
-    "silhouette": 0.2418879538279831,
-    "calinski_harabasz": 74.90605887568168,
-    "davies_bouldin": 1.4710312253718103
+    "silhouette": 0.2432418071713254,
+    "calinski_harabasz": 133.37384040532243,
+    "davies_bouldin": 1.754899850193322
+  },
+  {
+    "metodo": "hierarchical",
+    "silhouette": 0.2196960847937928,
+    "calinski_harabasz": 186.31350407839872,
+    "davies_bouldin": 1.180388308519151
   },
   {
     "metodo": "kmedians",
-    "silhouette": 0.2368388467956654,
-    "calinski_harabasz": 68.31498145961385,
-    "davies_bouldin": 1.5219307074046335
+    "silhouette": 0.122954935828113,
+    "calinski_harabasz": 136.76676452466387,
+    "davies_bouldin": 2.1041589509880625
   }
 ]

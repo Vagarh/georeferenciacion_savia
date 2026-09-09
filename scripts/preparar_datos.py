@@ -733,17 +733,23 @@ def generar_clustering_perfil() -> None:
                 "Reciben pacientes pero cierran una fracción baja de los "
                 "eventos: foco de revisión de registro y de resolución."
             )
-        elif orig / (dest + 1) > 1.8 and nivel < 1.6:
-            etiqueta = "Emisores de baja complejidad"
+        elif (orig + dest) > 200 and orig > dest:
+            etiqueta = "Nodos emisores de alto volumen"
             rasgo = (
-                "Sobre todo derivan pacientes hacia niveles superiores; poca "
-                "capacidad resolutiva local — típicas de zonas rurales."
+                "Emiten muchísimas más remisiones de las que reciben y cubren "
+                "varios municipios: son los grandes puntos de entrada a la red."
             )
         elif (orig + dest) > 60:
             etiqueta = "Nodos de alto tráfico bidireccional"
             rasgo = (
                 "Emiten y reciben en volúmenes altos: sostienen buena parte "
                 "del intercambio de la red con complejidad media."
+            )
+        elif orig / (dest + 1) > 1.5 and nivel < 1.7:
+            etiqueta = "Emisores de baja complejidad"
+            rasgo = (
+                "Sobre todo derivan pacientes hacia niveles superiores; poca "
+                "capacidad resolutiva local — típicas de zonas rurales."
             )
         else:
             etiqueta = "Sedes de mediana complejidad"
