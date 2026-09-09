@@ -397,6 +397,13 @@ export interface MapaRed {
   };
 }
 
+/** Contorno del departamento de Antioquia para el fondo del mapa. */
+export interface AntioquiaGeo {
+  nombre: string;
+  bbox: { minLon: number; maxLon: number; minLat: number; maxLat: number };
+  outline: [number, number][];
+}
+
 // --- Dendrograma ---
 export interface DendroNodo {
   nombre: string;

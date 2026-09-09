@@ -10,7 +10,9 @@ import {
   fmtEntero,
   COLOR_REGION,
   type MapaRed as TMapaRed,
+  type AntioquiaGeo,
 } from "@/lib/datos";
+import { useDatos } from "@/lib/useDatos";
 import { useFiltros } from "@/lib/filtros";
 
 type Metrica = "total" | "origen" | "destino";
@@ -44,11 +46,28 @@ export default function MapaRed({
     null
   );
   const { filtros } = useFiltros();
+  const [geo] = useDatos<AntioquiaGeo | null>("antioquia", null);
 
+  // Proyecta con el bbox del departamento cuando está disponible: así el
+  // contorno de Antioquia enmarca el mapa y los nodos caen en su posición real.
   const proy = useMemo(
-    () => crearProyeccion(data.bbox, ANCHO, ALTO, 40),
-    [data.bbox]
+    () => crearProyeccion(geo?.bbox ?? data.bbox, ANCHO, ALTO, 28),
+    [geo, data.bbox]
   );
+
+  const contornoPath = useMemo(() => {
+    if (!geo?.outline?.length) return "";
+    return (
+      "M " +
+      geo.outline
+        .map(([lon, lat]) => {
+          const [x, y] = proy(lon, lat);
+          return `${x.toFixed(1)} ${y.toFixed(1)}`;
+        })
+        .join(" L ") +
+      " Z"
+    );
+  }, [geo, proy]);
 
   // --- Rango de meses activo (recalcula volúmenes por período) ---
   const meses = data.meses ?? [];
@@ -396,7 +415,7 @@ export default function MapaRed({
         </p>
       )}
 
-      <div className="relative rounded-xl border border-brand-gray3 bg-gradient-to-b from-[#f2f8f4] to-[#e7f2ec] overflow-hidden">
+      <div className="relative rounded-xl border border-brand-gray3 bg-gradient-to-b from-[#e8f0ed] to-[#dae6e2] overflow-hidden">
         {/* Controles de zoom */}
         <div className="absolute right-3 top-3 z-10 flex flex-col gap-1.5">
           <button
@@ -445,12 +464,33 @@ export default function MapaRed({
                 <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
+            <filter id="landShadow" x="-15%" y="-15%" width="130%" height="130%">
+              <feDropShadow
+                dx="0"
+                dy="3"
+                stdDeviation="6"
+                floodColor="#0b3d2c"
+                floodOpacity="0.14"
+              />
+            </filter>
           </defs>
 
           {/* fondo para captar el arrastre */}
           <rect x={0} y={0} width={ANCHO} height={ALTO} fill="transparent" />
 
           <g transform={`translate(${vista.tx} ${vista.ty}) scale(${vista.k})`}>
+            {/* Silueta del departamento de Antioquia */}
+            {contornoPath && (
+              <path
+                d={contornoPath}
+                fill="#fbfdfb"
+                stroke="#a9ccbb"
+                strokeWidth={1.3 / vista.k}
+                strokeLinejoin="round"
+                filter="url(#landShadow)"
+                pointerEvents="none"
+              />
+            )}
             {nodosOrden[0] && !haySeleccion && (
               (() => {
                 const [x, y] = proy(nodosOrden[0].lon, nodosOrden[0].lat);
@@ -572,7 +612,7 @@ export default function MapaRed({
                         fontSize: 10.5 / Math.sqrt(vista.k),
                         fontWeight: 800,
                         paintOrder: "stroke",
-                        stroke: "#f2f8f4",
+                        stroke: "#fbfdfb",
                         strokeWidth: 3 / vista.k,
                       }}
                       className="fill-savia-forest"

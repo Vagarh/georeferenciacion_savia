@@ -52,6 +52,13 @@ su municipio para el modo de color por circuito de remisión. El mapa es SVG pur
 con una proyección equirectangular — sin dependencias de mapas ni servidores de
 teselas, por lo que funciona igual en local y en Vercel.
 
+El fondo del mapa es la **silueta del departamento de Antioquia**
+(`public/data/antioquia.json`, ~7 KB): el contorno departamental de los
+*Departamentos de Colombia* (gist `john-guerra/43c7656821069d00dcbc`)
+simplificado con `shapely` a ~400 puntos. Es un archivo estático — no lo
+regenera `preparar_datos.py` — y la proyección usa su bounding box para que los
+municipios caigan en su posición geográfica real dentro del departamento.
+
 Al elegir una subregión o un municipio en la barra de filtros, el mapa deja
 visibles solo esos nodos y los municipios conectados a ellos por remisión
 (el resto se oculta) y acerca automáticamente la vista a esa zona. También se
