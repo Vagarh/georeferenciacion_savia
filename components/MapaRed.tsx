@@ -448,9 +448,53 @@ export default function MapaRed({
           )}
         </div>
         <p className="text-[11px] text-brand-gray1">
-          Rueda para acercar · arrastra para desplazar · tamaño del punto =
-          volumen
+          Rueda para acercar · arrastra para desplazar
         </p>
+      </div>
+
+      {/* Cómo leer el mapa */}
+      <div className="mb-3 flex flex-wrap items-center gap-x-5 gap-y-1.5 rounded-lg border border-brand-gray3 bg-brand-low/60 px-3 py-2 text-[11px] font-semibold text-brand-muted">
+        <span className="text-[10px] font-black uppercase tracking-widest text-brand-gray1">
+          Cómo leer
+        </span>
+        <span className="flex items-center gap-1.5">
+          <svg width="26" height="10" aria-hidden>
+            <circle cx="5" cy="5" r="4" fill="#00954c" opacity="0.75" />
+            <circle cx="19" cy="5" r="2.4" fill="#00954c" opacity="0.75" />
+          </svg>
+          Municipio · tamaño = volumen
+        </span>
+        <span className="flex items-center gap-1.5">
+          <svg width="26" height="10" aria-hidden>
+            <line x1="1" y1="5" x2="25" y2="5" stroke="#00954c" strokeWidth="2.5" strokeOpacity="0.6" />
+          </svg>
+          Arco continuo = flujo entre municipios (grosor = intensidad)
+        </span>
+        <span className="flex items-center gap-1.5">
+          <svg width="26" height="10" aria-hidden>
+            <line x1="1" y1="5" x2="25" y2="5" stroke="#00693b" strokeWidth="2.5" strokeDasharray="2 4" />
+          </svg>
+          Punteado animado = los 8 corredores más cargados
+        </span>
+        {animar && (
+          <span className="flex items-center gap-1.5">
+            <svg width="26" height="10" aria-hidden>
+              <circle cx="7" cy="5" r="2.2" fill="#0b3d2c" />
+              <circle cx="15" cy="5" r="2.2" fill="#0b3d2c" opacity="0.6" />
+              <circle cx="22" cy="5" r="2.2" fill="#0b3d2c" opacity="0.3" />
+            </svg>
+            Puntos que corren = sentido y ritmo del flujo
+          </span>
+        )}
+        {verExternos && data.externos && (
+          <span className="flex items-center gap-1.5">
+            <svg width="26" height="12" aria-hidden>
+              <line x1="1" y1="6" x2="16" y2="6" stroke="#d97706" strokeWidth="1.6" strokeDasharray="3 3" />
+              <rect x="16" y="2" width="8" height="8" transform="rotate(45 20 6)" fill="#fff" stroke="#d97706" strokeWidth="1.6" />
+            </svg>
+            Rombo en el borde = cruza la frontera del departamento
+          </span>
+        )}
       </div>
 
       {haySeleccion && (

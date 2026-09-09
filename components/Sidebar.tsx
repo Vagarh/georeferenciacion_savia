@@ -11,6 +11,7 @@ import {
   Boxes,
   Share2,
   Layers,
+  FileText,
 } from "lucide-react";
 import type { View } from "@/app/page";
 
@@ -24,6 +25,7 @@ const NAV: { id: View; label: string; icon: React.ReactNode }[] = [
   { id: "clustering", label: "Clustering · RAD", icon: <Boxes size={18} /> },
   { id: "redes", label: "Redes · RAS", icon: <Share2 size={18} /> },
   { id: "zaid", label: "Zonas · ZAID", icon: <Layers size={18} /> },
+  { id: "informe", label: "Informe Final", icon: <FileText size={18} /> },
 ];
 
 export default function Sidebar({

@@ -20,6 +20,7 @@ prestadoras de Antioquia, integrando:
 | **Clustering · RAD** | Explicación del método + comparación de 6 técnicas (Silhouette, Calinski-Harabasz, Davies-Bouldin) + **tarjetas de arquetipo por clúster** (perfil operativo) + **dendrograma jerárquico** (Ward) con línea de corte |
 | **Redes · RAS** | **Comunidades de remisión proyectadas sobre el mapa** (con filtros geográficos) + comparación de 4 algoritmos de detección de comunidades (modularidad, tamaños) |
 | **Zonas · ZAID** | Zonas de consenso RAD + RAS y coherencia entre particiones |
+| **Informe Final** | Resumen narrativo que se **reescribe con los filtros** (período, subregión, municipio, régimen, tipo, complejidad): volumen, distribución territorial, referencia/contrarreferencia, oportunidad, movilidad de niveles, frontera departamental, estructura de la red y focos de gestión derivados de las cifras |
 
 ### Filtros
 
@@ -101,6 +102,26 @@ dashboard/
 ├── tailwind.config.js  next.config.js  tsconfig.json  vercel.json
 └── package.json
 ```
+
+## 🔄 Refrescar los datos (traer meses más recientes)
+
+El rango de la extracción vive en `../notebooks/regulaciones.sql`
+(`WHERE CAST(AN9.fecha_hora_crea AS DATE) BETWEEN '2025-01-01' AND curdate()`).
+Para actualizar el CSV y los JSON:
+
+```bash
+cd Analisis_geoespacial/notebooks
+setx SAVIA_DB_PASSWORD "tu_contraseña"     # una sola vez; abre terminal nueva
+# conéctate a la VPN corporativa
+python actualizar_datos.py                 # regenera resultados_regulaciones.csv
+
+cd ../dashboard
+python scripts/preparar_datos.py           # regenera public/data/*.json
+git add -A && git commit -m "data: refrescar hasta <mes>" && git push
+```
+
+Vercel redespliega solo. Para congelar un corte fijo, cambia `curdate()` por
+una fecha en `regulaciones.sql` (p. ej. `'2026-08-31'`).
 
 ## 🔗 Fuentes de datos
 

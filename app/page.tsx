@@ -12,6 +12,7 @@ import FlujoNiveles from "@/components/views/FlujoNiveles";
 import AnalisisClustering from "@/components/views/AnalisisClustering";
 import AnalisisRedes from "@/components/views/AnalisisRedes";
 import ZonasZAID from "@/components/views/ZonasZAID";
+import InformeFinal from "@/components/views/InformeFinal";
 import { FiltrosProvider } from "@/lib/filtros";
 import { cargarJson, type Resumen } from "@/lib/datos";
 
@@ -24,7 +25,8 @@ export type View =
   | "niveles"
   | "clustering"
   | "redes"
-  | "zaid";
+  | "zaid"
+  | "informe";
 
 const viewLabels: Record<View, string> = {
   resumen: "Resumen Ejecutivo",
@@ -36,6 +38,7 @@ const viewLabels: Record<View, string> = {
   clustering: "Clustering · RAD",
   redes: "Redes · RAS",
   zaid: "Zonas · ZAID",
+  informe: "Informe Final",
 };
 
 const VIEWS: View[] = [
@@ -48,6 +51,7 @@ const VIEWS: View[] = [
   "clustering",
   "redes",
   "zaid",
+  "informe",
 ];
 
 export default function Home() {
@@ -96,6 +100,8 @@ export default function Home() {
         return <AnalisisRedes />;
       case "zaid":
         return <ZonasZAID />;
+      case "informe":
+        return <InformeFinal />;
       default:
         return <ResumenEjecutivo />;
     }
