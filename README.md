@@ -103,36 +103,83 @@ dashboard/
 └── package.json
 ```
 
-## 🔄 Refrescar los datos (traer meses más recientes)
+## 🔄 Actualizar los datos y volver a desplegar (runbook)
 
-Un solo comando recalcula **todo** —extracción, clustering RAD/RAS/ZAID y
-todos los JSON del dashboard—:
+Procedimiento completo, desde traer meses nuevos de la base de datos hasta que
+Vercel publique el dashboard actualizado. Un solo comando (`npm run actualizar`)
+recalcula **todo**: extracción → clustering RAD/RAS/ZAID → todos los JSON.
 
-```bash
-cd Analisis_geoespacial/dashboard
-setx SAVIA_DB_PASSWORD "tu_contraseña"     # una sola vez; abre terminal nueva
-# conéctate a la VPN corporativa
+### Paso 0 · Requisitos (una sola vez)
 
-npm run actualizar                        # o: python scripts/actualizar_todo.py
+```powershell
+# 1. Guardar la contraseña de la BD como variable de entorno (NO va al repo)
+setx SAVIA_DB_PASSWORD "tu_contraseña"     # cierra y abre una terminal nueva
 
-git add -A && git commit -m "data: refrescar hasta <mes>" && git push
+# 2. Instalar dependencias de Node y de Python del proyecto padre
+cd Analisis_geoespacial\dashboard
+npm install
 ```
 
-`actualizar_todo.py` ejecuta en orden:
+### Paso 1 · (Opcional) Ajustar el rango de fechas
 
-1. `../notebooks/actualizar_datos.py` → extrae remisiones desde la BD a
-   `../notebooks/resultados_regulaciones.csv` (VPN + `SAVIA_DB_PASSWORD`).
-2. `../sistema_cluster/ejecutar_analisis.py --sin-reporte` → recalcula RAD,
-   RAS y ZAID sobre el CSV nuevo → `../sistema_cluster/output/clusters/*.csv`.
-3. `scripts/preparar_datos.py` → regenera `public/data/*.json`.
+El rango de la extracción vive en `..\notebooks\regulaciones.sql`:
 
-Flags: `--saltar-extraccion` (ya tengo el CSV; también `npm run actualizar:local`),
-`--saltar-clustering` (no recalcular RAD/RAS/ZAID).
+```sql
+WHERE CAST(AN9.fecha_hora_crea AS DATE) BETWEEN '2025-01-01' AND curdate()
+```
 
-El rango de la extracción vive en `../notebooks/regulaciones.sql`
-(`WHERE CAST(AN9.fecha_hora_crea AS DATE) BETWEEN '2025-01-01' AND curdate()`);
-para congelar un corte fijo, cambia `curdate()` por una fecha (p. ej.
-`'2026-08-31'`). Vercel redespliega solo tras el `git push`.
+`curdate()` trae siempre hasta hoy. Para congelar un corte fijo, cámbialo por una
+fecha, p. ej. `'2026-08-31'`.
+
+### Paso 2 · Conectarse a la VPN corporativa
+
+La extracción se conecta a la BD `system_savia`. Sin VPN, el paso 3 falla en la
+conexión.
+
+### Paso 3 · Recalcular todo
+
+```powershell
+cd Analisis_geoespacial\dashboard
+npm run actualizar
+```
+
+Equivale a `python scripts\actualizar_todo.py`, que ejecuta en orden y se detiene
+si algún paso falla:
+
+| # | Comando | Qué hace | Salida |
+|---|---|---|---|
+| 1 | `..\notebooks\actualizar_datos.py` | extrae remisiones desde la BD (VPN + `SAVIA_DB_PASSWORD`) | `..\notebooks\resultados_regulaciones.csv` |
+| 2 | `..\sistema_cluster\ejecutar_analisis.py --sin-reporte` | recalcula **RAD · RAS · ZAID** sobre el CSV nuevo | `..\sistema_cluster\output\clusters\*.csv` |
+| 3 | `scripts\preparar_datos.py` | regenera todos los JSON del dashboard | `public\data\*.json` |
+
+Variantes:
+
+```powershell
+npm run actualizar:local          # ya tengo el CSV: salta el paso 1 (no necesita VPN)
+python scripts\actualizar_todo.py --saltar-clustering   # no recalcular RAD/RAS/ZAID
+python scripts\actualizar_todo.py --saltar-extraccion --saltar-clustering  # solo JSON
+```
+
+### Paso 4 · Verificar el build
+
+```powershell
+npm run build          # debe terminar en "✓ Compiled successfully"
+```
+
+### Paso 5 · Publicar (dispara el despliegue en Vercel)
+
+```powershell
+git add -A
+git commit -m "data: refrescar hasta <mes>"
+git push
+```
+
+El `git push` a `master` en `Vagarh/georeferenciacion_savia` dispara
+automáticamente el build y el despliegue a producción en Vercel. No hay que
+ejecutar nada más; en ~1–2 min la web queda actualizada.
+
+> **Despliegue manual** (sin git): `npm run deploy` (`npx vercel --prod`) tras
+> `npx vercel login` la primera vez.
 
 ## 🔗 Fuentes de datos
 
@@ -220,6 +267,7 @@ visualizaciones son específicas de este proyecto.
 
 ## 👤 Autor y Estado
 
-Autor: Área de Analítica y Ciencias del Dato — Savia Salud EPS
-Creado: 2026-09-09 · Última actualización: 2026-09-09
-Estado: **En desarrollo** (validación local previa a despliegue en Vercel)
+Autor: **Juan Felipe Cardona Arango** — Analista de Negocio Empresarial,
+Coordinación de Analítica y Gestión del Dato, Savia Salud EPS
+Creado: 2026-09-09 · Última actualización: 2026-09-10
+Estado: **En producción** (desplegado en Vercel · `Vagarh/georeferenciacion_savia`)

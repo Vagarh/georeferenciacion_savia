@@ -80,6 +80,15 @@ export default function Sidebar({
           <br />
           Antioquia · régimen subsidiado y contributivo
         </p>
+        <p className="mt-3 pt-3 border-t border-brand-gray3 text-[10px] text-brand-muted leading-relaxed">
+          <span className="font-semibold text-brand-gray1">Juan Felipe Cardona Arango</span>
+          <br />
+          Analista de Negocio Empresarial
+          <br />
+          Coordinación de Analítica y Gestión del Dato
+          <br />
+          Savia Salud EPS
+        </p>
       </div>
     </aside>
   );
