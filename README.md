@@ -66,6 +66,14 @@ visibles solo esos nodos y los municipios conectados a ellos por remisión
 puede hacer zoom con la rueda y desplazar arrastrando; el botón de encuadre
 restablece la vista.
 
+El selector **«Corredores mostrados»** (arriba del mapa) limita el dibujo a los
+_Top 10 / 25 / 50_ corredores más cargados —o a los 20 más livianos— y oculta el
+resto de arcos y los municipios que no tocan. El **filtro de período** de la
+barra reagrega la serie mensual de cada nodo y flujo (`useMapaPeriodo`), de modo
+que acortar el rango de meses recalcula de verdad los volúmenes del mapa, los
+KPIs, las listas de corredores y los insights de la vista; el rango activo se
+muestra como una etiqueta sobre el mapa.
+
 `flujo_diagnosticos.json` recoge, para los 12 diagnósticos principales más
 frecuentes, los flujos de remisión entre municipios, las rutas sede→sede más
 intensas y la matriz entre subregiones. La vista *Flujo por Diagnóstico*

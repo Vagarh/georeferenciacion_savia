@@ -17,6 +17,7 @@ import FiltroBar from "@/components/FiltroBar";
 import MapaRed from "@/components/MapaRed";
 import PanelInsights from "@/components/PanelInsights";
 import { useDatos } from "@/lib/useDatos";
+import { useMapaPeriodo } from "@/lib/mapaPeriodo";
 import {
   fmtEntero,
   fmtPct,
@@ -100,24 +101,33 @@ export default function MapaDeRed() {
   const dims = rawH.dims ?? DIMS_VACIAS;
   const hayHechos = (rawH.filas?.length ?? 0) > 0;
 
-  const topFlujos = [...data.flujos]
+  // Nodos y flujos reagregados al rango de meses activo: así el filtro de
+  // fecha cambia también los KPIs, las listas y los insights de esta vista,
+  // no solo el mapa.
+  const { nodos, flujos, recortado } = useMapaPeriodo(data);
+  const sufijoPeriodo = recortado ? " · todo el período" : "";
+
+  const topFlujos = [...flujos]
+    .filter((f) => f.o !== f.d)
     .sort((a, b) => b.valor - a.valor)
     .slice(0, 12);
   const maxFlujo = topFlujos[0]?.valor ?? 1;
 
-  const topEmisores = [...data.nodos]
+  const topEmisores = [...nodos]
     .sort((a, b) => b.origen - a.origen)
     .slice(0, 6);
 
+  const municipiosActivos = nodos.filter((n) => n.origen + n.destino > 0).length;
+
   // Métricas para los insights
-  const totalOrigen = data.nodos.reduce((s, n) => s + n.origen, 0) || 1;
-  const medellin = data.nodos.find((n) => n.nombre.startsWith("Medell"));
+  const totalOrigen = nodos.reduce((s, n) => s + n.origen, 0) || 1;
+  const medellin = nodos.find((n) => n.nombre.startsWith("Medell"));
   const pctMedellin = medellin
     ? ((medellin.origen + medellin.destino) /
-        data.nodos.reduce((s, n) => s + n.origen + n.destino, 0)) *
+        (nodos.reduce((s, n) => s + n.origen + n.destino, 0) || 1)) *
       100
     : 0;
-  const top5Emisores = [...data.nodos]
+  const top5Emisores = [...nodos]
     .sort((a, b) => b.origen - a.origen)
     .slice(0, 5)
     .reduce((s, n) => s + n.origen, 0);
@@ -142,7 +152,7 @@ export default function MapaDeRed() {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <KPICard
           title="Municipios en la red"
-          value={fmtEntero(data.resumen.municipios)}
+          value={fmtEntero(recortado ? municipiosActivos : data.resumen.municipios)}
           subtitle="Con remisiones emitidas o recibidas"
           icon={<MapPinned size={18} />}
           delay={0}
@@ -152,7 +162,7 @@ export default function MapaDeRed() {
           value={fmtPct(data.resumen.pct_intermunicipal, 0)}
           subtitle={`${fmtEntero(
             data.resumen.flujos_intermunicipales
-          )} remisiones cruzan de municipio`}
+          )} remisiones cruzan de municipio${sufijoPeriodo}`}
           trend="neutral"
           trendLabel="del total"
           icon={<Route size={18} />}
@@ -163,7 +173,7 @@ export default function MapaDeRed() {
         <KPICard
           title="Comunidades RAS"
           value={fmtEntero(numComunidades)}
-          subtitle="Circuitos de remisión detectados (Louvain)"
+          subtitle={`Circuitos de remisión detectados (Louvain)${sufijoPeriodo}`}
           icon={<Waypoints size={18} />}
           iconBg="#eaf2df"
           iconColor="#5c8a1f"
@@ -194,7 +204,9 @@ export default function MapaDeRed() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ChartCard
           titulo="Corredores de remisión más intensos"
-          subtitulo="Top 12 flujos entre municipios distintos"
+          subtitulo={`Top 12 flujos entre municipios distintos${
+            recortado ? " · recalculado al período filtrado" : ""
+          }`}
         >
           <div className="space-y-2.5">
             {topFlujos.map((f, i) => (

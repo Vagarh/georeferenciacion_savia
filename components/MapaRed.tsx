@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
-import { Plus, Minus, Maximize2, Waypoints, Globe2 } from "lucide-react";
+import { Plus, Minus, Maximize2, Waypoints, Globe2, Filter } from "lucide-react";
 import {
   crearProyeccion,
   colorRegion,
@@ -14,9 +14,19 @@ import {
 } from "@/lib/datos";
 import { useDatos } from "@/lib/useDatos";
 import { useFiltros } from "@/lib/filtros";
+import { useMapaPeriodo } from "@/lib/mapaPeriodo";
 
 type Metrica = "total" | "origen" | "destino";
 type ModoColor = "region" | "comunidad";
+type FocoFlujo = "todos" | "top10" | "top25" | "top50" | "livianos";
+
+const FOCO_OPCIONES: { id: FocoFlujo; label: string; corto: string }[] = [
+  { id: "todos", label: "Todos los corredores", corto: "todos los corredores" },
+  { id: "top10", label: "Top 10 corredores", corto: "el Top 10 de corredores" },
+  { id: "top25", label: "Top 25 corredores", corto: "el Top 25 de corredores" },
+  { id: "top50", label: "Top 50 corredores", corto: "el Top 50 de corredores" },
+  { id: "livianos", label: "20 más livianos", corto: "los 20 corredores más livianos" },
+];
 
 const ANCHO = 960;
 const ALTO = 640;
@@ -40,6 +50,7 @@ export default function MapaRed({
   );
   const [animar, setAnimar] = useState(true);
   const [verExternos, setVerExternos] = useState(true);
+  const [focoFlujo, setFocoFlujo] = useState<FocoFlujo>("todos");
   const [hover, setHover] = useState<string | null>(null);
   const [vista, setVista] = useState({ k: 1, tx: 0, ty: 0 });
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -70,48 +81,21 @@ export default function MapaRed({
     );
   }, [geo, proy]);
 
-  // --- Rango de meses activo (recalcula volúmenes por período) ---
-  const meses = data.meses ?? [];
-  const rango = useMemo(() => {
-    if (!meses.length) return null;
-    const desde = filtros.mesDesde ?? meses[0];
-    const hasta = filtros.mesHasta ?? meses[meses.length - 1];
-    const iDesde = Math.max(0, meses.indexOf(desde));
-    const iHasta =
-      meses.indexOf(hasta) < 0 ? meses.length - 1 : meses.indexOf(hasta);
-    if (iDesde <= 0 && iHasta >= meses.length - 1) return null;
-    return [iDesde, iHasta] as [number, number];
-  }, [meses, filtros.mesDesde, filtros.mesHasta]);
+  // --- Recorte por período (rango de meses de los filtros) ---
+  // El hook reagrega la serie mensual de cada nodo y flujo al rango activo,
+  // así que acortar el período cambia de verdad los volúmenes del mapa.
+  const { nodos, flujos: flujosPeriodo, rango, meses } = useMapaPeriodo(data);
+  const flujos = flujosPeriodo;
 
-  const enRango = useCallback(
-    (i: number) => !rango || (i >= rango[0] && i <= rango[1]),
-    [rango]
-  );
-
-  const nodos = useMemo(() => {
-    if (!rango) return data.nodos;
-    return data.nodos.map((n) => {
-      let o = 0;
-      let d = 0;
-      for (const [i, so, sd] of n.serie ?? [])
-        if (enRango(i)) {
-          o += so;
-          d += sd;
-        }
-      return { ...n, origen: o, destino: d };
-    });
-  }, [data.nodos, rango, enRango]);
-
-  const flujos = useMemo(() => {
-    if (!rango) return data.flujos;
-    return data.flujos
-      .map((f) => {
-        let v = 0;
-        for (const [i, sv] of f.serie ?? []) if (enRango(i)) v += sv;
-        return { ...f, valor: v };
-      })
-      .filter((f) => f.valor > 0);
-  }, [data.flujos, rango, enRango]);
+  const etiquetaPeriodo = useMemo(() => {
+    if (!rango) return null;
+    const bonito = (m: string) => {
+      const [y, mm] = m.split("-");
+      const ABR = ["", "Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+      return `${ABR[Number(mm)]} ${y.slice(2)}`;
+    };
+    return `${bonito(meses[rango[0]])} – ${bonito(meses[rango[1]])}`;
+  }, [rango, meses]);
 
   // --- Selección geográfica: subregión / municipio ---
   const haySeleccion =
@@ -162,13 +146,39 @@ export default function MapaRed({
     [metrica]
   );
 
+  // Corredores en foco: top N (o cola) por volumen entre los ya filtrados
+  // por período y selección geográfica.
+  const flujosVisibles = useMemo(() => {
+    const base = flujos.filter(flujoVisible);
+    if (focoFlujo === "todos") return base;
+    const orden = [...base].sort((a, b) => b.valor - a.valor);
+    if (focoFlujo === "livianos") return orden.slice(-20);
+    const n = focoFlujo === "top10" ? 10 : focoFlujo === "top25" ? 25 : 50;
+    return orden.slice(0, n);
+  }, [flujos, flujoVisible, focoFlujo]);
+
+  // Al enfocar corredores, el mapa solo deja los municipios que esos arcos tocan
+  // (más los de la selección geográfica, si la hay).
+  const nombresEnFoco = useMemo(() => {
+    if (focoFlujo === "todos") return null;
+    const s = new Set<string>();
+    for (const f of flujosVisibles) {
+      s.add(f.o);
+      s.add(f.d);
+    }
+    return s;
+  }, [focoFlujo, flujosVisibles]);
+
   const nodosVisibles = useMemo(
-    () => nodos.filter((n) => visible(n.nombre)),
-    [nodos, visible]
-  );
-  const flujosVisibles = useMemo(
-    () => flujos.filter(flujoVisible),
-    [flujos, flujoVisible]
+    () =>
+      nodos.filter(
+        (n) =>
+          visible(n.nombre) &&
+          (!nombresEnFoco ||
+            nombresEnFoco.has(n.nombre) ||
+            seleccionados.has(n.nombre))
+      ),
+    [nodos, visible, nombresEnFoco, seleccionados]
   );
 
   const maxNodo = useMemo(
@@ -446,10 +456,37 @@ export default function MapaRed({
               Fuera de Antioquia
             </button>
           )}
+          <label
+            className={clsx(
+              "inline-flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-xs font-bold transition-colors",
+              focoFlujo !== "todos"
+                ? "border-savia-green bg-savia-ice text-savia-deep"
+                : "border-brand-gray3 bg-white text-brand-muted"
+            )}
+          >
+            <Filter size={13} />
+            <span className="sr-only">Corredores mostrados</span>
+            <select
+              value={focoFlujo}
+              onChange={(e) => setFocoFlujo(e.target.value as FocoFlujo)}
+              className="bg-transparent font-bold focus:outline-none"
+            >
+              {FOCO_OPCIONES.map((o) => (
+                <option key={o.id} value={o.id}>
+                  {o.label}
+                </option>
+              ))}
+            </select>
+          </label>
         </div>
-        <p className="text-[11px] text-brand-gray1">
-          Rueda para acercar · arrastra para desplazar
-        </p>
+        <div className="flex items-center gap-2 text-[11px] text-brand-gray1">
+          {etiquetaPeriodo && (
+            <span className="rounded-full bg-savia-ice text-savia-deep font-bold px-2 py-0.5 border border-savia-mint">
+              {etiquetaPeriodo}
+            </span>
+          )}
+          <span>Rueda para acercar · arrastra para desplazar</span>
+        </div>
       </div>
 
       {/* Cómo leer el mapa */}
@@ -474,7 +511,11 @@ export default function MapaRed({
           <svg width="26" height="10" aria-hidden>
             <line x1="1" y1="5" x2="25" y2="5" stroke="#00693b" strokeWidth="2.5" strokeDasharray="2 4" />
           </svg>
-          Punteado animado = los 8 corredores más cargados
+          {focoFlujo === "todos"
+            ? "Punteado animado = los 8 corredores más cargados"
+            : `Mostrando ${
+                FOCO_OPCIONES.find((o) => o.id === focoFlujo)?.corto
+              } · el resto está oculto`}
         </span>
         {animar && (
           <span className="flex items-center gap-1.5">
@@ -502,6 +543,23 @@ export default function MapaRed({
           Vista acercada a <b>{seleccionados.size}</b> municipio(s) de la
           selección y <b>{conectados.size}</b> conectado(s) por remisión. El
           resto de la red está oculto.
+        </p>
+      )}
+
+      {focoFlujo !== "todos" && (
+        <p className="mb-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-savia-deep bg-savia-ice border border-savia-mint rounded-lg px-3 py-2">
+          <span>
+            Mapa limitado a{" "}
+            <b>{FOCO_OPCIONES.find((o) => o.id === focoFlujo)?.corto}</b> —{" "}
+            <b>{flujosVisibles.length}</b> arco(s) y los{" "}
+            <b>{nodosVisibles.length}</b> municipio(s) que conectan.
+          </span>
+          <button
+            onClick={() => setFocoFlujo("todos")}
+            className="font-bold underline underline-offset-2 hover:text-savia-forest"
+          >
+            Ver todos
+          </button>
         </p>
       )}
 
