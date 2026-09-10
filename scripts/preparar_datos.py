@@ -772,6 +772,145 @@ def generar_clustering_perfil() -> None:
     )
 
 
+def generar_zonas_caracterizacion(df: pd.DataFrame) -> None:
+    """Detalle de cada ZAID y de cada comunidad RAS: qué sedes la componen,
+    en qué municipios / subregiones están y cuál es su perfil operativo
+    promedio. Sirve para responder «¿qué sedes hay aquí y qué las
+    caracteriza?» en las vistas Zonas·ZAID y Redes·RAS.
+
+    Cruza por nombre de sede (normalizado):
+      - ``zaid_voting.csv``            -> sede -> zaid / cluster / comunidad
+      - ``clusters_kmeans_reduced.csv`` -> sede -> variables de comportamiento
+      - ``comunidades_louvain.csv``    -> sede -> comunidad RAS
+      - remisiones                     -> sede -> municipio / subregión
+    Sobrescribe ``zaid_caracterizacion.json`` y ``comunidades_louvain.json``
+    con una versión enriquecida (mantiene las claves que ya consumían las
+    vistas).
+    """
+    ruta_zv = DIR_CLUSTERS / "zaid_voting.csv"
+    ruta_km = DIR_CLUSTERS / "clusters_kmeans_reduced.csv"
+    ruta_lou = DIR_CLUSTERS / "comunidades_louvain.csv"
+    if not (ruta_zv.exists() and ruta_km.exists()):
+        log.warning(
+            "Falta zaid_voting/clusters_kmeans_reduced — se omite la "
+            "caracterización de zonas"
+        )
+        return
+
+    km = pd.read_csv(ruta_km)
+    km["k"] = km["sede"].map(_sin_tildes)
+
+    # --- sede (normalizada) -> municipio / subregión / nombre legible ---
+    izq = df[
+        ["Desc_Sede_Prestador", "Municipio_Prestador", "Region_Prestador"]
+    ].rename(
+        columns={
+            "Desc_Sede_Prestador": "sede",
+            "Municipio_Prestador": "muni",
+            "Region_Prestador": "region",
+        }
+    )
+    der = df[
+        ["Desc_Sede_Destino", "Municipio_Destino", "Region_Destino"]
+    ].rename(
+        columns={
+            "Desc_Sede_Destino": "sede",
+            "Municipio_Destino": "muni",
+            "Region_Destino": "region",
+        }
+    )
+    sm = pd.concat([izq, der]).dropna(subset=["sede"])
+    sm["k"] = sm["sede"].map(_sin_tildes)
+
+    def _moda(serie: pd.Series):
+        vc = serie.dropna()
+        return vc.value_counts().index[0] if len(vc) else None
+
+    modo_muni = sm.groupby("k")["muni"].agg(lambda s: _titulo(_moda(s) or ""))
+    modo_reg = sm.groupby("k")["region"].agg(lambda s: _titulo(_moda(s) or ""))
+    nombre_sede = sm.groupby("k")["sede"].agg(lambda s: _titulo(_moda(s) or ""))
+
+    perfil = km.set_index("k").copy()
+    kser = perfil.index.to_series()
+    perfil["municipio"] = kser.map(modo_muni).replace("", np.nan)
+    perfil["region"] = kser.map(modo_reg).replace("", np.nan)
+    perfil["sede_bonito"] = (
+        kser.map(nombre_sede).replace("", np.nan).fillna(perfil["sede"].map(_titulo))
+    )
+    perfil = perfil.reset_index()
+    # Para cruzar sin chocar columnas con zaid_voting / louvain (que traen sus
+    # propias 'cluster' / 'comunidad' / 'metodo' / 'sede').
+    perfil_m = perfil.drop(columns=["sede", "cluster", "metodo"], errors="ignore")
+
+    def _agg_perfil(g: pd.DataFrame) -> dict:
+        regs = g["region"].dropna()
+        munis = g["municipio"].dropna()
+        return {
+            "num_sedes": int(len(g)),
+            "sedes_ubicadas": int(munis.shape[0]),
+            "num_municipios": int(munis.nunique()),
+            "municipios": [m for m, _ in munis.value_counts().head(6).items()],
+            "regiones": [r for r, _ in regs.value_counts().head(5).items()],
+            "region_dominante": (
+                regs.value_counts().index[0]
+                if len(regs)
+                else (munis.value_counts().index[0] if len(munis) else "—")
+            ),
+            "origen_prom": _num(g["total_remisiones_origen"].mean()),
+            "destino_prom": _num(g["total_remisiones_destino"].mean()),
+            "total_origen": _num(g["total_remisiones_origen"].sum()),
+            "nivel_prom": _num(g["nivel_complejidad_promedio"].mean()),
+            "dias_prom": _num(g["tiempo_promedio_cierre"].mean()),
+            "efect_prom": _num(g["tasa_remisiones_efectivas"].mean() * 100),
+            "pct_subsidiado": _num(g["proporcion_regimen_subsidiado"].mean() * 100),
+        }
+
+    N_SEDES_LISTA = 14
+
+    # --- ZAID ---
+    zv = pd.read_csv(ruta_zv)
+    zv["k"] = zv["sede"].map(_sin_tildes)
+    jz = zv.merge(perfil_m, on="k", how="left")
+    zaids_out = []
+    for zid, g in jz.groupby("zaid"):
+        gs = g.sort_values("total_remisiones_origen", ascending=False)
+        info = _agg_perfil(g)
+        zaids_out.append(
+            {
+                "zaid": f"ZAID {int(zid)}",
+                "cluster_principal": int(g["cluster"].value_counts().index[0]),
+                "comunidad_principal": int(g["comunidad"].value_counts().index[0]),
+                "sedes_lista": gs["sede_bonito"].head(N_SEDES_LISTA).tolist(),
+                "sedes_restantes": max(0, int(len(g)) - N_SEDES_LISTA),
+                **info,
+            }
+        )
+    zaids_out.sort(key=lambda z: z["num_sedes"], reverse=True)
+    escribir_json("zaid_caracterizacion", zaids_out)
+
+    # --- Comunidades RAS (Louvain) ---
+    if ruta_lou.exists():
+        lou = pd.read_csv(ruta_lou)
+        lou["k"] = lou["sede"].map(_sin_tildes)
+        jl = lou.merge(perfil_m, on="k", how="left")
+        com_out = []
+        for cid, g in jl.groupby("comunidad"):
+            gs = g.sort_values("total_remisiones_origen", ascending=False)
+            info = _agg_perfil(g)
+            com_out.append(
+                {
+                    "comunidad": f"C{int(cid)}",
+                    "id": int(cid),
+                    "sedes": info["num_sedes"],
+                    "sedes_lista": gs["sede_bonito"].head(N_SEDES_LISTA).tolist(),
+                    "sedes_restantes": max(0, info["num_sedes"] - N_SEDES_LISTA),
+                    **info,
+                }
+            )
+        com_out.sort(key=lambda c: c["sedes"], reverse=True)
+        escribir_json("comunidades_louvain", com_out)
+
+
 def _centroides_municipios() -> pd.DataFrame:
     """Centroide (lon/lat) por código DANE de municipio a partir de geo_merge.
 
@@ -1523,6 +1662,9 @@ def main() -> None:
 
     log.info("Generando perfil de clústeres RAD ...")
     generar_clustering_perfil()
+
+    log.info("Generando caracterización de zonas ZAID y comunidades RAS ...")
+    generar_zonas_caracterizacion(df)
 
     log.info("Generando mapa de red (municipios + flujos) ...")
     generar_mapa(df)

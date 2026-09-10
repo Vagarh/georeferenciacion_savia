@@ -39,10 +39,13 @@ export default function MapaRed({
   data,
   modoColorInicial = "region",
   permitirComunidad = true,
+  comunidadSel = null,
 }: {
   data: TMapaRed;
   modoColorInicial?: ModoColor;
   permitirComunidad?: boolean;
+  /** Si se pasa un id de comunidad RAS, el mapa muestra solo esa comunidad. */
+  comunidadSel?: number | null;
 }) {
   const [metrica, setMetrica] = useState<Metrica>("total");
   const [modoColor, setModoColor] = useState<ModoColor>(
@@ -111,6 +114,20 @@ export default function MapaRed({
     };
   }, [filtros.municipios, filtros.regiones]);
 
+  // Filtro por comunidad RAS (lo controla la vista Redes·RAS)
+  const comPorNombre = useMemo(
+    () => new Map(nodos.map((n) => [n.nombre, n.comunidad ?? null])),
+    [nodos]
+  );
+  const enComunidad = useCallback(
+    (nombre: string) =>
+      comunidadSel == null || comPorNombre.get(nombre) === comunidadSel,
+    [comunidadSel, comPorNombre]
+  );
+  useEffect(() => {
+    if (comunidadSel != null) setModoColor("comunidad");
+  }, [comunidadSel]);
+
   const { seleccionados, conectados } = useMemo(() => {
     const sel = new Set<string>();
     const con = new Set<string>();
@@ -127,13 +144,16 @@ export default function MapaRed({
 
   const visible = useCallback(
     (nombre: string) =>
-      !haySeleccion || seleccionados.has(nombre) || conectados.has(nombre),
-    [haySeleccion, seleccionados, conectados]
+      enComunidad(nombre) &&
+      (!haySeleccion || seleccionados.has(nombre) || conectados.has(nombre)),
+    [haySeleccion, seleccionados, conectados, enComunidad]
   );
   const flujoVisible = useCallback(
     (f: { o: string; d: string }) =>
-      !haySeleccion || seleccionados.has(f.o) || seleccionados.has(f.d),
-    [haySeleccion, seleccionados]
+      enComunidad(f.o) &&
+      enComunidad(f.d) &&
+      (!haySeleccion || seleccionados.has(f.o) || seleccionados.has(f.d)),
+    [haySeleccion, seleccionados, enComunidad]
   );
 
   const valorNodo = useCallback(
@@ -240,9 +260,9 @@ export default function MapaRed({
   }, [nodosVisibles]);
 
   // --- Auto-encuadre al filtrar: acerca a los nodos visibles ---
-  const claveSel = `${filtros.regiones.join()}|${filtros.municipios.join()}`;
+  const claveSel = `${filtros.regiones.join()}|${filtros.municipios.join()}|c${comunidadSel ?? ""}`;
   useEffect(() => {
-    if (!haySeleccion || nodosVisibles.length === 0) {
+    if ((!haySeleccion && comunidadSel == null) || nodosVisibles.length === 0) {
       setVista({ k: 1, tx: 0, ty: 0 });
       return;
     }

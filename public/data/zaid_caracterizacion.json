@@ -1,536 +1,2730 @@
 [
   {
     "zaid": "ZAID 5",
-    "num_sedes": 108,
     "cluster_principal": 1,
-    "comunidad_principal": 36
+    "comunidad_principal": 36,
+    "sedes_lista": [
+      "Fundacion Colombiana De Cancerologia Clinica Vida",
+      "Clinica Medellin Sa",
+      "Centro Cardiovascular Somer Incare S A",
+      "Especialidades Medicas Metropolitanas Emmsa Sa",
+      "Fundacion Colombiana De Cancerologia Clinica Vida",
+      "IPS Universitaria Sede Prado",
+      "Sede Ambulatoria 4. Hospital Alma Máter De Antioquia",
+      "Instituto Cardiovascular Y De Estudios Especiales Las Vegas",
+      "Clinica Medellin Poblado",
+      "Preventivamente Medellin",
+      "IPS Curativ Clinica De Heridas",
+      "Servicios De Salud San Vicente Fundacion Rionegro",
+      "IPS Curativ Clinica De Heridas Hiperbarica Sas",
+      "Sede Ambulatoria 2 Hospital Alma Mater De Antioquia"
+    ],
+    "sedes_restantes": 95,
+    "num_sedes": 109,
+    "sedes_ubicadas": 109,
+    "num_municipios": 21,
+    "municipios": [
+      "Medellín",
+      "Rionegro",
+      "Bello",
+      "Envigado",
+      "Sabaneta",
+      "Barranquilla"
+    ],
+    "regiones": [
+      "Medellin",
+      "Oriente",
+      "Valle De Aburra",
+      "Uraba",
+      "Bajo Cauca"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 5.93,
+    "destino_prom": 36.66,
+    "total_origen": 646,
+    "nivel_prom": 2.01,
+    "dias_prom": 5.68,
+    "efect_prom": 4.07,
+    "pct_subsidiado": 95.57
   },
   {
     "zaid": "ZAID 14",
-    "num_sedes": 63,
     "cluster_principal": 1,
-    "comunidad_principal": 8
+    "comunidad_principal": 8,
+    "sedes_lista": [
+      "Preventiva Mente Ips",
+      "IPS Curativ Clinica De Heridas Uraba",
+      "Colombia Saludable",
+      "Promedan IPS Centro De Especialistas N 2",
+      "Unidad Especial Psiquiatrica",
+      "Vision Total Sede Quirurgica Apartado",
+      "Centro Medico Cubis S.A.S",
+      "Consulta Externa - Fundacion Amigos De La Salud",
+      "Oic Uraba",
+      "Vision Integrados Caucasia",
+      "Alpha Ambulancias Sucursal Apartado",
+      "Hospital Neurologico De Colombia Fundacion Ivan Jimenez - El Neurologico Sede  Uraba",
+      "Arcal Proteccion Radiologica IPS Apartado",
+      "Arcal Proteccion Radiologica IPS Sede Turbo"
+    ],
+    "sedes_restantes": 51,
+    "num_sedes": 65,
+    "sedes_ubicadas": 63,
+    "num_municipios": 17,
+    "municipios": [
+      "Apartado",
+      "Monteria",
+      "Turbo",
+      "Medellín",
+      "Caucasia",
+      "Carepa"
+    ],
+    "regiones": [
+      "Uraba",
+      "Medellin",
+      "Bajo Cauca"
+    ],
+    "region_dominante": "Uraba",
+    "origen_prom": 0.32,
+    "destino_prom": 34.6,
+    "total_origen": 21,
+    "nivel_prom": 1.55,
+    "dias_prom": 4.87,
+    "efect_prom": 0.97,
+    "pct_subsidiado": 98.45
   },
   {
     "zaid": "ZAID 0",
-    "num_sedes": 61,
     "cluster_principal": 2,
-    "comunidad_principal": 36
+    "comunidad_principal": 36,
+    "sedes_lista": [
+      "Nueva ESE Departamental San Francisco De Asis",
+      "Clinica El Rosario Sede El Tesoro",
+      "Centro De Atención Primaria En Salud Mental",
+      "IPS Sura Los Molinos Medellin",
+      "E.S.E Hospital Universitario Erasmo Meoz",
+      "Empresa Social Del Estado Hospital Universitario San Jorge",
+      "Empresa Social Del Estado Hospital San Roque",
+      "IPS Sura  Cordoba Medellin",
+      "Clinivida Y Salud IPS Sas",
+      "Hospital Federico Lleras Acosta Ese",
+      "Hospital Internacional De Colombia",
+      "IPS Sura Las Vegas Medellin",
+      "Cooperativa De Salud San Esteban",
+      "ESE Hospital Universitario Del Quindio San Juan De Dios"
+    ],
+    "sedes_restantes": 47,
+    "num_sedes": 61,
+    "sedes_ubicadas": 59,
+    "num_municipios": 40,
+    "municipios": [
+      "Bogota D.C.",
+      "Medellín",
+      "Pereira",
+      "Riohacha",
+      "Cucuta",
+      "Cartagena"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra",
+      "Oriente",
+      "Norte"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 2.85,
+    "destino_prom": 0.66,
+    "total_origen": 174,
+    "nivel_prom": 1.79,
+    "dias_prom": 5.82,
+    "efect_prom": 88.44,
+    "pct_subsidiado": 88.32
   },
   {
     "zaid": "ZAID 26",
-    "num_sedes": 54,
     "cluster_principal": 2,
-    "comunidad_principal": 8
+    "comunidad_principal": 8,
+    "sedes_lista": [
+      "ESE Hospital La Misericordia (Nechi)",
+      "ESE Hospital Isabel La Catolica (Caceres)",
+      "Clinica Regional Del San Jorge  IPS  Sa",
+      "ESE Hospital Montelibano",
+      "Clinica Materno Infantil Casa Del Niño Sede Principal",
+      "Puesto De Salud De El Silencio -ESE Hospital Francisco Luis Jimenez Martinez (Carepa)",
+      "Centro De Salud Tablitas",
+      "ESE Hospital San Nicolas",
+      "Hospital Universitario De Sincelejo Ese",
+      "Medicauca Sas",
+      "Empresa Social Del Estado Vida Sinu",
+      "Nacersano Sas",
+      "IPS Indigena Capera Sede Acandi",
+      "Empresa Social Del Estado Hospital Sandiego De Cerete"
+    ],
+    "sedes_restantes": 40,
+    "num_sedes": 54,
+    "sedes_ubicadas": 51,
+    "num_municipios": 31,
+    "municipios": [
+      "Monteria",
+      "Caucasia",
+      "Montelibano",
+      "Carepa",
+      "Caceres",
+      "Turbo"
+    ],
+    "regiones": [
+      "Uraba",
+      "Bajo Cauca"
+    ],
+    "region_dominante": "Uraba",
+    "origen_prom": 8.43,
+    "destino_prom": 3.69,
+    "total_origen": 455,
+    "nivel_prom": 1.59,
+    "dias_prom": 2.13,
+    "efect_prom": 88.67,
+    "pct_subsidiado": 90.89
   },
   {
     "zaid": "ZAID 6",
-    "num_sedes": 46,
     "cluster_principal": 1,
-    "comunidad_principal": 2
-  },
-  {
-    "zaid": "ZAID 27",
-    "num_sedes": 35,
-    "cluster_principal": 2,
-    "comunidad_principal": 2
+    "comunidad_principal": 2,
+    "sedes_lista": [
+      "Clinica Del Prado Sede Salud Y Servicios",
+      "Union Temporal Salud Mental Por Antioquia",
+      "Vision Total Argentina",
+      "Vision Total San Juan",
+      "Vision Total Sas",
+      "Profamilia Soacha",
+      "Ut Lime_Laboratorios Integrados De Medicina Especializada",
+      "Union Temporal Vision Del Sur",
+      "Prodiagnostico Rionegro",
+      "Instituto Del Corazon La Union",
+      "Centro De Salud Llano De Bolivar Del Hospital San Juan De Dios De Santa Fe De Antioquia",
+      "ESE Hospital La Merced",
+      "ESE Hospital San Juan De Dios De Abriaqui",
+      "Puesto De Salud Alfonso Lopez - ESE Hospital La Merced (Ciudad Bolivar)"
+    ],
+    "sedes_restantes": 32,
+    "num_sedes": 46,
+    "sedes_ubicadas": 42,
+    "num_municipios": 28,
+    "municipios": [
+      "Medellín",
+      "Andes",
+      "Santafe De Antio",
+      "Caldas",
+      "Itagui",
+      "Bello"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra",
+      "Suroeste",
+      "Occidente",
+      "Oriente"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 0.09,
+    "destino_prom": 14.11,
+    "total_origen": 4,
+    "nivel_prom": 1.36,
+    "dias_prom": 3.58,
+    "efect_prom": 0.1,
+    "pct_subsidiado": 97.27
   },
   {
     "zaid": "ZAID 15",
-    "num_sedes": 35,
     "cluster_principal": 1,
-    "comunidad_principal": 3
+    "comunidad_principal": 3,
+    "sedes_lista": [
+      "Centro De Salud Belen Rincon - Metrosalud",
+      "E.S.E Metrosalud",
+      "Angiosur Sede Caucasia",
+      "Intergastro Sa",
+      "Prodiagnostico San Diego",
+      "Angiosur - Sede Andes",
+      "IPS Aug Kapital Sas",
+      "Estudios Endoscopicos Sas",
+      "Pro Diagnostico Las Vegas",
+      "Union Temporal Audiocai Ut",
+      "Promedan IPS Peru",
+      "Estudios Endoscopicos Fundadores",
+      "Angiosur-Sede Concordia",
+      "Rts Sucursal Medellin"
+    ],
+    "sedes_restantes": 21,
+    "num_sedes": 35,
+    "sedes_ubicadas": 34,
+    "num_municipios": 10,
+    "municipios": [
+      "Medellín",
+      "Caucasia",
+      "Sabaneta",
+      "Amalfi",
+      "Bogota D.C.",
+      "Concordia"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra",
+      "Bajo Cauca",
+      "Nordeste",
+      "Suroeste"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 0.43,
+    "destino_prom": 94.66,
+    "total_origen": 15,
+    "nivel_prom": 1.53,
+    "dias_prom": 4.3,
+    "efect_prom": 1.06,
+    "pct_subsidiado": 96.38
+  },
+  {
+    "zaid": "ZAID 27",
+    "cluster_principal": 2,
+    "comunidad_principal": 2,
+    "sedes_lista": [
+      "ESE Hospital San Pedro (Sabanalarga)",
+      "Profamilia Medellin",
+      "ESE Hospital San Isidro (Giraldo)",
+      "ESE Hospital San Miguel (Olaya)",
+      "ESE Hospital San Juan Del Suroeste (Hispania)",
+      "ESE Hospital San Martin De Porres (Armenia)",
+      "Profamilia Ciudad Del Rio",
+      "Nueva ESE Hospital San Rafael De Jerico",
+      "Profamilia Rionegro",
+      "Centro De Salud San Joaquin De Bolombolo - ESE Hospital San Rafael - Venecia",
+      "Profamilia - Los Molinos",
+      "Empresa Social Del Estado Hospital Tobias Puerta",
+      "ESE Hospital San Jose De Aguadas",
+      "Fundacion Valle Del Lili"
+    ],
+    "sedes_restantes": 21,
+    "num_sedes": 35,
+    "sedes_ubicadas": 34,
+    "num_municipios": 30,
+    "municipios": [
+      "Medellín",
+      "Bello",
+      "Cali",
+      "Frontino",
+      "La Estrella",
+      "Venecia"
+    ],
+    "regiones": [
+      "Occidente",
+      "Suroeste",
+      "Valle De Aburra",
+      "Medellin",
+      "Oriente"
+    ],
+    "region_dominante": "Occidente",
+    "origen_prom": 15.26,
+    "destino_prom": 5.29,
+    "total_origen": 534,
+    "nivel_prom": 1.36,
+    "dias_prom": 2.55,
+    "efect_prom": 74.11,
+    "pct_subsidiado": 94.93
   },
   {
     "zaid": "ZAID 13",
-    "num_sedes": 34,
     "cluster_principal": 0,
-    "comunidad_principal": 2
+    "comunidad_principal": 2,
+    "sedes_lista": [
+      "ESE Hospital Ivan Restrepo Gomez (Urrao)",
+      "ESE Hospital San Rafael (Andes)",
+      "ESE Hospital La Estrella",
+      "ESE Hospital San Juan De Dios De Concordia",
+      "ESE Hospital German Velez Gutierrez (Betulia)",
+      "ESE Hospital La Merced De Ciudad Bolivar",
+      "ESE Hospital Santa Maria Santa Barbara",
+      "ESE Hospital San Lorenzo (Liborina)",
+      "ESE Hospital Gabriel Pelaez Montoya (Jardin)",
+      "ESE Hospital San Jose (Salgar)",
+      "ESE Hospital Guillermo Gaviria Correa (Caicedo)",
+      "ESE Hospital San Luis Beltran (San Jeronimo)",
+      "ESE Hospital Santa Lucia (Fredonia)",
+      "ESE Hospital San Rafael (Ebejico)"
+    ],
+    "sedes_restantes": 20,
+    "num_sedes": 34,
+    "sedes_ubicadas": 34,
+    "num_municipios": 33,
+    "municipios": [
+      "Betulia",
+      "Caldas",
+      "Frontino",
+      "Ciudad Bolivar",
+      "Andes",
+      "San Jeronimo"
+    ],
+    "regiones": [
+      "Suroeste",
+      "Occidente",
+      "Valle De Aburra"
+    ],
+    "region_dominante": "Suroeste",
+    "origen_prom": 431.44,
+    "destino_prom": 141.03,
+    "total_origen": 14669,
+    "nivel_prom": 1.29,
+    "dias_prom": 1.67,
+    "efect_prom": 76.71,
+    "pct_subsidiado": 93.02
   },
   {
     "zaid": "ZAID 11",
-    "num_sedes": 31,
     "cluster_principal": 1,
-    "comunidad_principal": 1
+    "comunidad_principal": 1,
+    "sedes_lista": [
+      "ESE Hospital Nuestra Senora Del Perpetuo Socorro",
+      "Clinica Genezen S.A.S",
+      "Imagenes De Vida Y Salud S.A.S",
+      "ESE Hospital Integrado San Vicente De Paul",
+      "Imagenes De Vida Y Salud S.A.S Sede 80",
+      "Instituto Del Corazon Monterrey Piso 2",
+      "Centro De Salud Del Poblado - Metrosalud",
+      "Fundacion Colombiana De Cancerologia Clinica Vida Sede Yolombo",
+      "Union Temporal Unidos Por La Salud Mental De Antioquia",
+      "Brujula S M Palmas",
+      "Brujula Sm Girardota",
+      "Centro Integral De Servicios Ambulatorios Para La Mujer Y La Familia - Metrosalud",
+      "Clinica Metropolitana Cmo I.P.S. S.A.S. 02",
+      "Facultad De Medicina"
+    ],
+    "sedes_restantes": 18,
+    "num_sedes": 32,
+    "sedes_ubicadas": 32,
+    "num_municipios": 14,
+    "municipios": [
+      "Medellín",
+      "Bello",
+      "Envigado",
+      "Dabeiba",
+      "Onzaga",
+      "Yolombo"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra",
+      "Occidente",
+      "Nordeste"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 2.88,
+    "destino_prom": 33.09,
+    "total_origen": 92,
+    "nivel_prom": 1.53,
+    "dias_prom": 5.68,
+    "efect_prom": 2.53,
+    "pct_subsidiado": 91.82
   },
   {
     "zaid": "ZAID 23",
-    "num_sedes": 24,
     "cluster_principal": 0,
-    "comunidad_principal": 6
+    "comunidad_principal": 6,
+    "sedes_lista": [
+      "Clinica Genezen Sede Puerto Berrio",
+      "ESE Hospital San Vicente De Paul Barbosa",
+      "ESE Hospital San Antonio De Cisneros",
+      "ESE Hospital San Vicente De Paul (Remedios)",
+      "ESE Hospital San Juan De Dios (Segovia)",
+      "ESE Hospital San Camilo De Lelis (Vegachi)",
+      "ESE Hospital San Rafael (Santo Domingo)",
+      "ESE Hospital Marco A Cardona (Maceo)",
+      "ESE Hospital Municipal San Roque",
+      "Empresa Social Del Estado Hospital Octavio Olivares (Puerto Nare)",
+      "ESE Hospital La Misericordia (Yali)",
+      "ESE Hospital Pbro Luis Felipe Arbelaez (Alejandria)",
+      "ESE Hospital El Carmen (Amalfi)",
+      "ESE Hospital Hector Abad Gomez (Yondo)"
+    ],
+    "sedes_restantes": 10,
+    "num_sedes": 24,
+    "sedes_ubicadas": 24,
+    "num_municipios": 21,
+    "municipios": [
+      "San Roque",
+      "Puerto Berrio",
+      "Puerto Nare",
+      "Segovia",
+      "La Dorada",
+      "Cisneros"
+    ],
+    "regiones": [
+      "Nordeste",
+      "Magdalena Medio",
+      "Oriente",
+      "Norte",
+      "Valle De Aburra"
+    ],
+    "region_dominante": "Nordeste",
+    "origen_prom": 424.04,
+    "destino_prom": 129.08,
+    "total_origen": 10177,
+    "nivel_prom": 1.31,
+    "dias_prom": 1.54,
+    "efect_prom": 76.4,
+    "pct_subsidiado": 93.14
   },
   {
     "zaid": "ZAID 28",
-    "num_sedes": 24,
     "cluster_principal": 1,
-    "comunidad_principal": 6
+    "comunidad_principal": 6,
+    "sedes_lista": [
+      "E.S.E. Hospital Municipal Nuestra Senora De Guadalupe",
+      "Clinica Somer Sede Cordoba",
+      "Instituto Del Corazon",
+      "IPS Salud Integral Preventiva (Puerto Berrío)",
+      "Laboral Salud Integral Preventiva C.R.C (Puerto Berrío)",
+      "IPS Salud Antioquia Sede 2",
+      "Vision Integrados Bello",
+      "Union Temporal Ruta Salud Mental Uraba",
+      "ESE San Vicente De Paul De Garzon",
+      "Clinica Traumanorte Sas",
+      "Centro Cardiologico Del Norte Sede Copacabana",
+      "Vivasalud I.P.S S.A.S Floridablanca",
+      "Clinica Genezen Sede Ambulatoria Prado",
+      "Puesto De Salud Pueblo Nuevo"
+    ],
+    "sedes_restantes": 10,
+    "num_sedes": 24,
+    "sedes_ubicadas": 24,
+    "num_municipios": 20,
+    "municipios": [
+      "Puerto Berrio",
+      "Medellín",
+      "Guadalupe",
+      "Carepa",
+      "Bello",
+      "Rionegro"
+    ],
+    "regiones": [
+      "Magdalena Medio",
+      "Medellin",
+      "Valle De Aburra",
+      "Oriente",
+      "Uraba"
+    ],
+    "region_dominante": "Magdalena Medio",
+    "origen_prom": 0.12,
+    "destino_prom": 13.17,
+    "total_origen": 3,
+    "nivel_prom": 1.32,
+    "dias_prom": 2.5,
+    "efect_prom": 2.78,
+    "pct_subsidiado": 88.29
   },
   {
     "zaid": "ZAID 21",
-    "num_sedes": 22,
     "cluster_principal": 2,
-    "comunidad_principal": 6
+    "comunidad_principal": 6,
+    "sedes_lista": [
+      "Centro De Salud De Fraguas - ESE Hospital San Juan De Dios (Segovia)",
+      "Unidad Clinica La Magdalena Ltda",
+      "ESE Hospital San Felix",
+      "Empresa Social Del Estado Hospital Universitario De Santander",
+      "Hospital San Jose-Mariquita",
+      "ESE Hospital Diogenes Troncoso De Puerta",
+      "Hospital San Jose De Samana Caldas",
+      "Hospital San Vicente De Paul - (732830104001)",
+      "Centro De Salud- Casa De La Salud Urbana",
+      "E.S.E. Hospital Nelson Restrepo Martinez - (730550080201)",
+      "Traumacentro Sas",
+      "Hospital San Roque Ese",
+      "ESE Hospital Local San Pablo",
+      "ESE Hospital San Antonio De Tarqui"
+    ],
+    "sedes_restantes": 8,
+    "num_sedes": 22,
+    "sedes_ubicadas": 22,
+    "num_municipios": 20,
+    "municipios": [
+      "Samana",
+      "Barrancabermeja",
+      "Segovia",
+      "Yolombo",
+      "Armero",
+      "Bucaramanga"
+    ],
+    "regiones": [
+      "Nordeste",
+      "Medellin"
+    ],
+    "region_dominante": "Nordeste",
+    "origen_prom": 3.77,
+    "destino_prom": 2.23,
+    "total_origen": 83,
+    "nivel_prom": 1.35,
+    "dias_prom": 1.68,
+    "efect_prom": 83.76,
+    "pct_subsidiado": 96.96
   },
   {
     "zaid": "ZAID 3",
+    "cluster_principal": 0,
+    "comunidad_principal": 0,
+    "sedes_lista": [
+      "Clinica San Juan De Dios La Ceja",
+      "ESE Hospital San Juan De Dios De Sonson",
+      "ESE San Juan De Dios De Marinilla",
+      "ESE Hospital San Juan De Dios El Peñol",
+      "ESE Nuestra Señora De La Candelaria (Guarne)",
+      "Hospital San Juan De Dios El Santuario",
+      "Serviucis Sede Rionegro",
+      "ESE Hospital Presbitero Alonso Maria Giraldo (San Rafael)",
+      "ESE Hospital San Juan De Dios (Cocorna)",
+      "ESE Hospital San Roque (La Union)",
+      "ESE Hospital San Rafael De San Luis",
+      "ESE Hospital San Julian (Argelia)",
+      "ESE Hospital San Juan De Dios Del Carmen De Viboral",
+      "ESE Hospital La Inmaculada (Guatape)"
+    ],
+    "sedes_restantes": 7,
     "num_sedes": 21,
-    "cluster_principal": 0,
-    "comunidad_principal": 0
-  },
-  {
-    "zaid": "ZAID 22",
-    "num_sedes": 20,
-    "cluster_principal": 0,
-    "comunidad_principal": 8
+    "sedes_ubicadas": 21,
+    "num_municipios": 17,
+    "municipios": [
+      "Sonson",
+      "Rionegro",
+      "La Ceja",
+      "Guarne",
+      "Marinilla",
+      "La Union"
+    ],
+    "regiones": [
+      "Oriente",
+      "Magdalena Medio"
+    ],
+    "region_dominante": "Oriente",
+    "origen_prom": 389.76,
+    "destino_prom": 185.95,
+    "total_origen": 8185,
+    "nivel_prom": 1.38,
+    "dias_prom": 1.89,
+    "efect_prom": 69.68,
+    "pct_subsidiado": 90.8
   },
   {
     "zaid": "ZAID 9",
-    "num_sedes": 20,
     "cluster_principal": 2,
-    "comunidad_principal": 1
+    "comunidad_principal": 1,
+    "sedes_lista": [
+      "ESE Hospital Psiquiatrico San Camilo",
+      "ESE Hospital Universitario Del Valle Evaristo Garcia Empresa Social Del Estado",
+      "ESE Salud Pereira",
+      "Clinica La Sagrada Familia S.A.S",
+      "Hospital Sumapaz Ese",
+      "Hospital San Rafael De Pasto",
+      "Centro De Salud Maria Auxiliadora - ESE Hospital San Vicente De Paul (San Carlos)",
+      "Centro De Salud Santiago - ESE Hospital San Rafael (Santo Domingo)",
+      "Clinica Sahagun IPS Sa",
+      "E.S.E. Hospital Local Candelaria Valle Empresa Social Del Estado",
+      "E.S.E. Hospital Departamental Psiquiatrico Universitario Del Valle",
+      "Clinica Samen Ips",
+      "ESE Hospital Local Sagrada Familia - Toro Valle",
+      "Empresa Social Del Estado Hospital San Lorenzo Supia"
+    ],
+    "sedes_restantes": 6,
+    "num_sedes": 20,
+    "sedes_ubicadas": 20,
+    "num_municipios": 18,
+    "municipios": [
+      "Cali",
+      "San Carlos",
+      "Santo Domingo",
+      "Armenia",
+      "Sahagun",
+      "Villavicencio"
+    ],
+    "regiones": [
+      "Oriente",
+      "Nordeste",
+      "Medellin"
+    ],
+    "region_dominante": "Oriente",
+    "origen_prom": 1.6,
+    "destino_prom": 0.3,
+    "total_origen": 32,
+    "nivel_prom": 1.81,
+    "dias_prom": 6.34,
+    "efect_prom": 90.83,
+    "pct_subsidiado": 93.0
+  },
+  {
+    "zaid": "ZAID 22",
+    "cluster_principal": 0,
+    "comunidad_principal": 8,
+    "sedes_lista": [
+      "ESE Hospital Oscar Emiro Vergara Cruz (San Pedro De Uraba)",
+      "Empresa Social Del Estado Hospital Francisco Valderrama",
+      "ESE Hospital San Sebastian De Uraba (Necocli)",
+      "ESE Hospital Cesar Uribe Piedrahita (Caucasia)",
+      "ESE Hospital San Antonio (Taraza)",
+      "ESE Hospital Pedro Nel Cardona (Arboletes)",
+      "Clinica Panamericana",
+      "ESE Hospital Francisco Luis Jimenez Martinez (Carepa)",
+      "ESE Hospital Maria Auxiliadora (Chigorodo)",
+      "ESE Hospital Nuestra Senora Del Carmen (El Bagre)",
+      "Clinica Pajonal Limitada",
+      "ESE Hospital La Anunciacion (Mutata)",
+      "Centro Medico Cubis S.A.S Zaragoza",
+      "Uci Santa Maria Del Darien"
+    ],
+    "sedes_restantes": 6,
+    "num_sedes": 20,
+    "sedes_ubicadas": 19,
+    "num_municipios": 16,
+    "municipios": [
+      "Apartado",
+      "Caucasia",
+      "Carepa",
+      "Turbo",
+      "Zaragoza",
+      "Taraza"
+    ],
+    "regiones": [
+      "Uraba",
+      "Bajo Cauca"
+    ],
+    "region_dominante": "Uraba",
+    "origen_prom": 605.9,
+    "destino_prom": 342.15,
+    "total_origen": 12118,
+    "nivel_prom": 1.48,
+    "dias_prom": 1.77,
+    "efect_prom": 63.17,
+    "pct_subsidiado": 96.43
   },
   {
     "zaid": "ZAID 16",
-    "num_sedes": 17,
     "cluster_principal": 1,
-    "comunidad_principal": 0
+    "comunidad_principal": 0,
+    "sedes_lista": [
+      "Cambia Tu Vida Sas",
+      "Especialistas En Imagenes Diagnosticas Sas",
+      "Brujula Sm Sas Rionegro",
+      "Fundacion La Luz  Centro Nacional Para El Tratamiento De La Drogadiccion",
+      "Fundacion La Luz - Centro Nacional Para El Tratamiento De La Drogadiccion",
+      "Uramedicos",
+      "Ut Vision Integrados Oriente",
+      "Empresa Social Del Estado Hospital La Paz",
+      "Centro Cardiologico Del Norte",
+      "Vision Integrados Rionegro",
+      "Instituto Del Corazon Rionegro",
+      "Adilab Rionegro",
+      "Cead Especialistas En Alivio Del Dolor Sede 2",
+      "Cedimed-Almacentro"
+    ],
+    "sedes_restantes": 3,
+    "num_sedes": 17,
+    "sedes_ubicadas": 16,
+    "num_municipios": 7,
+    "municipios": [
+      "Rionegro",
+      "Medellín",
+      "Caucasia",
+      "Puerto Triunfo",
+      "Copacabana",
+      "El Carmen De Vib"
+    ],
+    "regiones": [
+      "Oriente",
+      "Medellin",
+      "Bajo Cauca",
+      "Magdalena Medio",
+      "Valle De Aburra"
+    ],
+    "region_dominante": "Oriente",
+    "origen_prom": 0.18,
+    "destino_prom": 22.47,
+    "total_origen": 3,
+    "nivel_prom": 1.68,
+    "dias_prom": 5.23,
+    "efect_prom": 1.6,
+    "pct_subsidiado": 97.68
   },
   {
     "zaid": "ZAID 2",
-    "num_sedes": 14,
     "cluster_principal": 0,
-    "comunidad_principal": 36
+    "comunidad_principal": 36,
+    "sedes_lista": [
+      "ESE Hospital Venancio Diaz Diaz (Sabaneta)",
+      "Savia Salud Eps (Centro Regulador)",
+      "Hospital Neurologico De Colombia Fundacion Ivan Jimenez - El Neurologico Sede Medellin",
+      "Fundacion Colombiana De Cancerologia Clinica Vida",
+      "Sociedad Medica Rionegro Sa Somer Sa",
+      "Clinica Medellin Occidente",
+      "Centro Oncologico De Antioquia Sede Envigado",
+      "Hospital Pablo Tobon Uribe Sede Poblado",
+      "Promotora Medica Las Americas Sa",
+      "Nueva Clinica Sagrado Corazon Sas",
+      "Corporacion Para Estudios En Salud Clinica Ces",
+      "Clinica El Rosario Sede Centro",
+      "Inversiones Medicas De Antioquia Sa Clinica Las Vegas",
+      "Clinica Antioquia Sur"
+    ],
+    "sedes_restantes": 1,
+    "num_sedes": 15,
+    "sedes_ubicadas": 15,
+    "num_municipios": 5,
+    "municipios": [
+      "Medellín",
+      "Sabaneta",
+      "Rionegro",
+      "Envigado",
+      "Itagui"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra",
+      "Oriente"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 297.2,
+    "destino_prom": 203.8,
+    "total_origen": 4458,
+    "nivel_prom": 2.13,
+    "dias_prom": 3.75,
+    "efect_prom": 70.03,
+    "pct_subsidiado": 90.84
   },
   {
     "zaid": "ZAID 7",
-    "num_sedes": 14,
     "cluster_principal": 0,
-    "comunidad_principal": 1
+    "comunidad_principal": 1,
+    "sedes_lista": [
+      "ESE Hospital San Rafael De Girardota",
+      "ESE Hospital Marco Fidel Suarez Sede 02 Niquia",
+      "ESE  Bellosalud Sede Hospital Rosalpi De Bello",
+      "ESE Hospital Santa Margarita Copacabana",
+      "ESE Hospital San Carlos (Cañasgordas)",
+      "ESE Hospital San Juan De Dios (Abejorral)",
+      "ESE Hospital San Joaquin (Nariño)",
+      "Centro De Salud Santo Domingo - Metrosalud",
+      "ESE Hospital San Vicente De Paul (San Carlos)",
+      "Fundacion Hospital San Vicente Ferrer",
+      "ESE Hospital Padre Clemente Giraldo (Granada)",
+      "ESE Hospital Carisma Sede Hospitalaria",
+      "ESE Hospital Nuestra Senora Del Perpetuo Socorro",
+      "Puerto Venus"
+    ],
+    "sedes_restantes": 1,
+    "num_sedes": 15,
+    "sedes_ubicadas": 14,
+    "num_municipios": 11,
+    "municipios": [
+      "Medellín",
+      "Dabeiba",
+      "Nariño",
+      "San Carlos",
+      "Cañasgordas",
+      "Abejorral"
+    ],
+    "regiones": [
+      "Oriente",
+      "Occidente",
+      "Valle De Aburra",
+      "Medellin"
+    ],
+    "region_dominante": "Oriente",
+    "origen_prom": 437.27,
+    "destino_prom": 137.93,
+    "total_origen": 6559,
+    "nivel_prom": 1.43,
+    "dias_prom": 2.53,
+    "efect_prom": 71.23,
+    "pct_subsidiado": 94.15
   },
   {
     "zaid": "ZAID 42",
-    "num_sedes": 13,
     "cluster_principal": 0,
-    "comunidad_principal": 5
+    "comunidad_principal": 5,
+    "sedes_lista": [
+      "Corporación Hospital Francisco Lopera Restrepo De Santa Rosa De Osos",
+      "ESE  Hospital San Juan De Dios De Ituango",
+      "ESE Hospital Santa Isabel De San Pedro De Los Milagros",
+      "ESE Hospital Gustavo Gonzalez Ochoa (San Andres Cuerquia)",
+      "ESE Hospital Francisco Eladio Barrera (Don Matias)",
+      "ESE Hospital La Sagrada Familia (Campamento)",
+      "ESE Hospital Nuestra Señora Del Rosario (Belmira)",
+      "ESE Hospital Presbitero Emigdio Palacio (Entrerrios)",
+      "ESE Hospital San Rafael Carolina Del Principe",
+      "ESE Hospital Pedro Claver Aguirre Yepes (Toledo)",
+      "ESE Hospital San Juan De Dios De Anori",
+      "ESE Hospital San Juan De Dios De Valdivia",
+      "ESE Hospital San Juan De Dios Anori"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 13,
+    "sedes_ubicadas": 12,
+    "num_municipios": 11,
+    "municipios": [
+      "Anori",
+      "Santa Rosa De Os",
+      "Don Matias",
+      "San Andres De Cu",
+      "Campamento",
+      "Belmira"
+    ],
+    "regiones": [
+      "Norte",
+      "Nordeste"
+    ],
+    "region_dominante": "Norte",
+    "origen_prom": 342.62,
+    "destino_prom": 73.92,
+    "total_origen": 4454,
+    "nivel_prom": 1.14,
+    "dias_prom": 1.24,
+    "efect_prom": 83.0,
+    "pct_subsidiado": 91.32
   },
   {
     "zaid": "ZAID 4",
-    "num_sedes": 12,
     "cluster_principal": 3,
-    "comunidad_principal": 36
+    "comunidad_principal": 36,
+    "sedes_lista": [
+      "Hospital Pablo Tobon Uribe",
+      "ESE Hospital General De Medellin Luz Castro De Gutierrez",
+      "ESE Hospital La Maria",
+      "IPS Universitaria Sede Clinica Leon Xiii",
+      "ESE Hospital Manuel Uribe Angel",
+      "Fundacion Hospitalaria San Vicente De Paul",
+      "Fundación Hospital San Vicente De Paul Rionegro",
+      "Clinica Central Fundadores",
+      "Fundacion Clinica Del Norte",
+      "Corporacion Colombia Saludable",
+      "Preventiva Salud S.A.S",
+      "Home Group Sas Sede Medellin"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 12,
+    "sedes_ubicadas": 12,
+    "num_municipios": 4,
+    "municipios": [
+      "Medellín",
+      "Bello",
+      "Envigado",
+      "Rionegro"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra",
+      "Oriente"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 1595.17,
+    "destino_prom": 2010.92,
+    "total_origen": 19142,
+    "nivel_prom": 2.26,
+    "dias_prom": 3.51,
+    "efect_prom": 36.85,
+    "pct_subsidiado": 93.46
   },
   {
     "zaid": "ZAID 29",
-    "num_sedes": 12,
     "cluster_principal": 2,
-    "comunidad_principal": 3
+    "comunidad_principal": 3,
+    "sedes_lista": [
+      "Fundacion Clinica Universitaria Bolivariana",
+      "Eps Suramericana",
+      "Centro De Salud Santamaria",
+      "Empresa Social Del Estado Hospital San Rafael De Caqueza",
+      "ESE Hospital  Nuestra Señora Del Pilar De Medina",
+      "ESE Hospital Regional De Aguachica Jose David Padilla Villafane",
+      "ESE Hospital Regional San Gil",
+      "ESE Hospital Santa Teresita De Pacora",
+      "Hospital Local De Aguachica",
+      "Hospital San Jose",
+      "Instituto Cardiovascular Del Cesar Sa",
+      "IPS Comfachoco San Pedro Claver Nuqui"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 12,
+    "sedes_ubicadas": 11,
+    "num_municipios": 9,
+    "municipios": [
+      "Medellín",
+      "Aguachica",
+      "Itagui",
+      "Caqueza",
+      "San Gil",
+      "Pacora"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 2.75,
+    "destino_prom": 0.83,
+    "total_origen": 33,
+    "nivel_prom": 1.61,
+    "dias_prom": 2.48,
+    "efect_prom": 85.26,
+    "pct_subsidiado": 90.58
   },
   {
     "zaid": "ZAID 33",
-    "num_sedes": 11,
     "cluster_principal": 0,
-    "comunidad_principal": 3
+    "comunidad_principal": 3,
+    "sedes_lista": [
+      "Unidad Hospitalaria De Castilla Jaime Tobon Arbelaez - Metrosalud",
+      "Unidad Hospitalaria Santa Cruz Victor Cardenas Jaramillo - Metrosalud",
+      "Unidad Hospitalaria Nuevo Occidente - Metrosalud",
+      "Unidad Hospitalaria San Cristobal Leonardo Betancur Taborda - Metrosalud",
+      "Unidad Hospitalaria Buenos Aires Braulio Henao Mejia - Metrosalud",
+      "Unidad Hospitalaria San Javier Jesus Pelaez Botero - Metrosalud",
+      "ESE Hospital Del Sur Gabriel Jaramillo Piedrahita",
+      "Unidad Hospitalaria De Manrique Hermenegildo De Fex - Metrosalud",
+      "Unidad Hospitalaria Doce De Octubre Luis Carlos Galan Sarmiento - Metrosalud",
+      "Unidad Hospitalaria San Antonio De Prado Diego Echavarria Misas - Metrosalud",
+      "Unidad De Salud Mental - Metrosalud"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 11,
+    "sedes_ubicadas": 11,
+    "num_municipios": 2,
+    "municipios": [
+      "Medellín",
+      "Itagui"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 1849.0,
+    "destino_prom": 645.55,
+    "total_origen": 20339,
+    "nivel_prom": 1.44,
+    "dias_prom": 2.78,
+    "efect_prom": 68.94,
+    "pct_subsidiado": 92.26
   },
   {
     "zaid": "ZAID 34",
-    "num_sedes": 10,
     "cluster_principal": 1,
-    "comunidad_principal": 5
+    "comunidad_principal": 5,
+    "sedes_lista": [
+      "Ut Vision Integrados",
+      "Corporacion Centro De Atencion Especializada Crecer",
+      "Visión Integrados Norte",
+      "Puesto De Salud Ochali",
+      "Rts_Pool_Medellin",
+      "IPS San Francisco Toledo",
+      "Adilab Yarumal",
+      "Empresa Social Del Estado Centro De Salud Briceño",
+      "Maruchenga",
+      "Puesto De Salud De Ovejas - ESE Hospital Santa Isabel - (San Pedro De Los Milagros)"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 10,
+    "sedes_ubicadas": 10,
+    "num_municipios": 6,
+    "municipios": [
+      "Yarumal",
+      "Medellín",
+      "Bello",
+      "Toledo",
+      "Briceño",
+      "San Pedro"
+    ],
+    "regiones": [
+      "Norte",
+      "Medellin",
+      "Valle De Aburra"
+    ],
+    "region_dominante": "Norte",
+    "origen_prom": 0.0,
+    "destino_prom": 4.8,
+    "total_origen": 0,
+    "nivel_prom": 1.38,
+    "dias_prom": 4.13,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 98.47
   },
   {
     "zaid": "ZAID 19",
-    "num_sedes": 8,
     "cluster_principal": 2,
-    "comunidad_principal": 5
+    "comunidad_principal": 5,
+    "sedes_lista": [
+      "ESE Hospital Laureano Pino San Jose De La Montaña",
+      "ESE Hospital El Sagrado Corazon (Briceño)",
+      "ESE Hospital San Rafael (Angostura)",
+      "Puesto De Salud Las Auras -ESE Hospital El Sagrado Corazon (Briceño)",
+      "Puesto De Salud El Carmelo",
+      "Puesto De Salud Cedeno",
+      "Centro De Atencion De Servicios Ambulatorios Casa - ESE Hospital Santa Isabel - (San Pedro De Los Milagros)",
+      "Puesto De Salud La Paz Berlin -ESE Hospital El Sagrado Corazon (Briceño)"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 8,
+    "sedes_ubicadas": 8,
+    "num_municipios": 6,
+    "municipios": [
+      "Briceño",
+      "San Pedro",
+      "Ituango",
+      "Yarumal",
+      "San Jose De La M",
+      "Angostura"
+    ],
+    "regiones": [
+      "Norte"
+    ],
+    "region_dominante": "Norte",
+    "origen_prom": 30.62,
+    "destino_prom": 7.25,
+    "total_origen": 245,
+    "nivel_prom": 1.09,
+    "dias_prom": 1.36,
+    "efect_prom": 73.68,
+    "pct_subsidiado": 89.76
   },
   {
     "zaid": "ZAID 35",
-    "num_sedes": 7,
     "cluster_principal": 1,
-    "comunidad_principal": 9
+    "comunidad_principal": 9,
+    "sedes_lista": [
+      "Ciudad Del Rio",
+      "Clínica Santa Teresita De Normandia",
+      "Salud Vida Sa Eps",
+      "Valentech Pharma Colombia Sas",
+      "Centro De Familia - Upb",
+      "IPS Universidad Pontificia Bolivariana",
+      "Universidad Pontificia Bolivariana Seccional Bucaramanga"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 7,
+    "sedes_ubicadas": 7,
+    "num_municipios": 4,
+    "municipios": [
+      "Medellín",
+      "Bogota",
+      "Piedecuesta",
+      "Bucaramanga"
+    ],
+    "regiones": [
+      "Medellin"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 0.14,
+    "destino_prom": 21.71,
+    "total_origen": 1,
+    "nivel_prom": 2.17,
+    "dias_prom": 3.2,
+    "efect_prom": 0.11,
+    "pct_subsidiado": 91.77
   },
   {
     "zaid": "ZAID 8",
-    "num_sedes": 6,
     "cluster_principal": 3,
-    "comunidad_principal": 3
+    "comunidad_principal": 3,
+    "sedes_lista": [
+      "Unidad Hospitalaria De Belen Hector Abad Gomez - Metrosalud",
+      "ESE Hospital San Rafael De Itagui",
+      "Corporacion Hospital Infantil Concejo De Medellin",
+      "Clinica Angiosur",
+      "Angiosur Sas",
+      "Coraxon Sas"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 6,
+    "sedes_ubicadas": 6,
+    "num_municipios": 2,
+    "municipios": [
+      "Itagui",
+      "Medellín"
+    ],
+    "regiones": [
+      "Valle De Aburra",
+      "Medellin"
+    ],
+    "region_dominante": "Valle De Aburra",
+    "origen_prom": 1347.17,
+    "destino_prom": 3333.17,
+    "total_origen": 8083,
+    "nivel_prom": 1.94,
+    "dias_prom": 3.3,
+    "efect_prom": 21.68,
+    "pct_subsidiado": 93.95
   },
   {
     "zaid": "ZAID 85",
+    "cluster_principal": 2,
+    "comunidad_principal": 41,
+    "sedes_lista": [
+      "Unidad De Servicios De Salud 29 Kennedy",
+      "Unidad De Servicios De Salud Bosa",
+      "Unidad De Servicios De Salud Laureles",
+      "Unidad De Servicios De Salud Patio Bonito Tintal",
+      "Unidad De Servicios De Salud Victoria"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 5,
-    "cluster_principal": 2,
-    "comunidad_principal": 41
-  },
-  {
-    "zaid": "ZAID 20",
-    "num_sedes": 4,
-    "cluster_principal": 2,
-    "comunidad_principal": 9
-  },
-  {
-    "zaid": "ZAID 72",
-    "num_sedes": 4,
-    "cluster_principal": 2,
-    "comunidad_principal": 30
+    "sedes_ubicadas": 5,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 5,
+    "nivel_prom": 3.0,
+    "dias_prom": 3.92,
+    "efect_prom": 71.67,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 10",
-    "num_sedes": 4,
     "cluster_principal": 3,
-    "comunidad_principal": 2
+    "comunidad_principal": 2,
+    "sedes_lista": [
+      "ESE Hospital San Juan De Dios Antioquia (Santa Fe De Antioquia)",
+      "ESE Hospital San Vicente De Paul De Caldas",
+      "Sociedad Medica Antioquena Sa Soma",
+      "Clinica Del Prado Sa"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 4,
+    "sedes_ubicadas": 4,
+    "num_municipios": 3,
+    "municipios": [
+      "Medellín",
+      "Caldas",
+      "Santafe De Antio"
+    ],
+    "regiones": [
+      "Medellin",
+      "Valle De Aburra",
+      "Occidente"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 943.5,
+    "destino_prom": 3028.75,
+    "total_origen": 3774,
+    "nivel_prom": 1.6,
+    "dias_prom": 2.29,
+    "efect_prom": 23.31,
+    "pct_subsidiado": 91.07
+  },
+  {
+    "zaid": "ZAID 20",
+    "cluster_principal": 2,
+    "comunidad_principal": 9,
+    "sedes_lista": [
+      "Virrey Solis IPS Sa San Diego",
+      "Centro De Atencion Psicologica De La Universidad Pontificia Bolivariana",
+      "Clinica Medilaser-Tunja",
+      "Clinica Putumayo"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 4,
+    "sedes_ubicadas": 4,
+    "num_municipios": 3,
+    "municipios": [
+      "Medellín",
+      "Tunja",
+      "Puerto Asis"
+    ],
+    "regiones": [
+      "Medellin"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 1.25,
+    "destino_prom": 0.75,
+    "total_origen": 5,
+    "nivel_prom": 2.16,
+    "dias_prom": 4.62,
+    "efect_prom": 81.25,
+    "pct_subsidiado": 93.75
+  },
+  {
+    "zaid": "ZAID 72",
+    "cluster_principal": 2,
+    "comunidad_principal": 30,
+    "sedes_lista": [
+      "Hospital Centro Nivel I Planadas",
+      "Hospital San Juan Bautista E.S.E.",
+      "Hospital Nuestra Senora De Lourdes",
+      "Hospital San Jose De Ortega"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 4,
+    "sedes_ubicadas": 4,
+    "num_municipios": 4,
+    "municipios": [
+      "Planadas",
+      "Chaparral",
+      "Ataco",
+      "Ortega"
+    ],
+    "regiones": [],
+    "region_dominante": "Planadas",
+    "origen_prom": 2.0,
+    "destino_prom": 1.5,
+    "total_origen": 8,
+    "nivel_prom": 1.06,
+    "dias_prom": 0.88,
+    "efect_prom": 78.57,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 17",
-    "num_sedes": 3,
     "cluster_principal": 3,
-    "comunidad_principal": 8
-  },
-  {
-    "zaid": "ZAID 51",
+    "comunidad_principal": 8,
+    "sedes_lista": [
+      "Clinica Central Fundadores Apartado",
+      "Hospital San Jeronimo De Monteria",
+      "Fundacion Amigos De La Salud"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 3,
-    "cluster_principal": 2,
-    "comunidad_principal": 18
+    "sedes_ubicadas": 3,
+    "num_municipios": 2,
+    "municipios": [
+      "Monteria",
+      "Apartado"
+    ],
+    "regiones": [
+      "Uraba"
+    ],
+    "region_dominante": "Uraba",
+    "origen_prom": 958.67,
+    "destino_prom": 1766.0,
+    "total_origen": 2876,
+    "nivel_prom": 1.96,
+    "dias_prom": 2.74,
+    "efect_prom": 31.11,
+    "pct_subsidiado": 97.07
   },
   {
     "zaid": "ZAID 36",
+    "cluster_principal": 2,
+    "comunidad_principal": 10,
+    "sedes_lista": [
+      "Clinica Alta Complejidad De Aguachica Sas",
+      "ESE Hospital San Rafael - San Juan Del Cesar - La Guajira",
+      "Hospital Eduardo Arredondo Daza - Centro De Salud San Martin"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 3,
-    "cluster_principal": 2,
-    "comunidad_principal": 10
+    "sedes_ubicadas": 3,
+    "num_municipios": 3,
+    "municipios": [
+      "Aguachica",
+      "San Juan Del Ces",
+      "Valledupar"
+    ],
+    "regiones": [],
+    "region_dominante": "Aguachica",
+    "origen_prom": 1.67,
+    "destino_prom": 0.67,
+    "total_origen": 5,
+    "nivel_prom": 1.5,
+    "dias_prom": 2.0,
+    "efect_prom": 77.78,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 81",
-    "num_sedes": 2,
+    "zaid": "ZAID 51",
     "cluster_principal": 2,
-    "comunidad_principal": 35
-  },
-  {
-    "zaid": "ZAID 73",
-    "num_sedes": 2,
-    "cluster_principal": 2,
-    "comunidad_principal": 31
-  },
-  {
-    "zaid": "ZAID 32",
-    "num_sedes": 2,
-    "cluster_principal": 0,
-    "comunidad_principal": 9
+    "comunidad_principal": 18,
+    "sedes_lista": [
+      "ESE Hospital Universitario Hernando Moncaleano Perdomo De Neiva",
+      "ESE Hospital Divino Niño",
+      "Hospital Departamental Hospital Maria Inmaculada Ese"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 3,
+    "sedes_ubicadas": 3,
+    "num_municipios": 3,
+    "municipios": [
+      "Rivera",
+      "Neiva",
+      "Florencia"
+    ],
+    "regiones": [],
+    "region_dominante": "Rivera",
+    "origen_prom": 2.0,
+    "destino_prom": 1.0,
+    "total_origen": 6,
+    "nivel_prom": 1.14,
+    "dias_prom": 3.56,
+    "efect_prom": 85.71,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 12",
-    "num_sedes": 2,
     "cluster_principal": 3,
-    "comunidad_principal": 1
+    "comunidad_principal": 1,
+    "sedes_lista": [
+      "Empresa Social Del Estado Hospital Marco Fidel Suarez",
+      "ESE Hospital Mental De Antioquia"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 2,
+    "sedes_ubicadas": 2,
+    "num_municipios": 1,
+    "municipios": [
+      "Bello"
+    ],
+    "regiones": [
+      "Valle De Aburra"
+    ],
+    "region_dominante": "Valle De Aburra",
+    "origen_prom": 2538.5,
+    "destino_prom": 5344.0,
+    "total_origen": 5077,
+    "nivel_prom": 2.08,
+    "dias_prom": 3.47,
+    "efect_prom": 32.63,
+    "pct_subsidiado": 91.46
   },
   {
-    "zaid": "ZAID 63",
+    "zaid": "ZAID 32",
+    "cluster_principal": 0,
+    "comunidad_principal": 9,
+    "sedes_lista": [
+      "Clinica Cardio Vid",
+      "Clinica Universitaria Bolivariana"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 2,
-    "cluster_principal": 1,
-    "comunidad_principal": 24
+    "sedes_ubicadas": 2,
+    "num_municipios": 1,
+    "municipios": [
+      "Medellín"
+    ],
+    "regiones": [
+      "Medellin"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 443.5,
+    "destino_prom": 494.0,
+    "total_origen": 887,
+    "nivel_prom": 2.65,
+    "dias_prom": 3.25,
+    "efect_prom": 46.1,
+    "pct_subsidiado": 93.69
   },
   {
     "zaid": "ZAID 62",
-    "num_sedes": 2,
     "cluster_principal": 2,
-    "comunidad_principal": 24
+    "comunidad_principal": 24,
+    "sedes_lista": [
+      "ESE Hospital San Jose De Maicao",
+      "ESE Hospital San Rafael De Albania Sede Principal"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 2,
+    "sedes_ubicadas": 2,
+    "num_municipios": 2,
+    "municipios": [
+      "Maicao",
+      "Albania"
+    ],
+    "regiones": [],
+    "region_dominante": "Maicao",
+    "origen_prom": 2.5,
+    "destino_prom": 1.0,
+    "total_origen": 5,
+    "nivel_prom": 1.0,
+    "dias_prom": 0.5,
+    "efect_prom": 80.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 63",
+    "cluster_principal": 1,
+    "comunidad_principal": 24,
+    "sedes_lista": [
+      "Clinica San Juan Bautista Sas",
+      "Unidad Psiquiatrica Especializada Amigos De Sion"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 2,
+    "sedes_ubicadas": 2,
+    "num_municipios": 2,
+    "municipios": [
+      "San Juan Del Ces",
+      "Barrancas"
+    ],
+    "regiones": [],
+    "region_dominante": "San Juan Del Ces",
+    "origen_prom": 0.0,
+    "destino_prom": 1.5,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 1.25,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 73",
+    "cluster_principal": 2,
+    "comunidad_principal": 31,
+    "sedes_lista": [
+      "Hospital Heli Moreno Blanco Ese",
+      "Hospital Inmaculada Concepcion De Chimichagua"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 2,
+    "sedes_ubicadas": 2,
+    "num_municipios": 2,
+    "municipios": [
+      "Pailitas",
+      "Chimichagua"
+    ],
+    "regiones": [],
+    "region_dominante": "Pailitas",
+    "origen_prom": 1.5,
+    "destino_prom": 0.0,
+    "total_origen": 3,
+    "nivel_prom": 1.25,
+    "dias_prom": 2.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 81",
+    "cluster_principal": 2,
+    "comunidad_principal": 35,
+    "sedes_lista": [
+      "Mired Barranquilla Camino Metropolitano",
+      "Mired Barranquilla Hospital General De Barranquilla"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 2,
+    "sedes_ubicadas": 2,
+    "num_municipios": 1,
+    "municipios": [
+      "Barranquilla"
+    ],
+    "regiones": [],
+    "region_dominante": "Barranquilla",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 2,
+    "nivel_prom": 1.0,
+    "dias_prom": 1.75,
+    "efect_prom": 66.67,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 82",
-    "num_sedes": 2,
     "cluster_principal": 1,
-    "comunidad_principal": 37
+    "comunidad_principal": 37,
+    "sedes_lista": [
+      "Subred Integrada De Servicios De Salud Centro Oriente Ese",
+      "Unidad De Servicios De Salud Ambulatoria Santa Clara"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 2,
+    "sedes_ubicadas": 2,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 1.0,
+    "destino_prom": 1.5,
+    "total_origen": 2,
+    "nivel_prom": 1.83,
+    "dias_prom": 15.67,
+    "efect_prom": 25.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 1",
-    "num_sedes": 1,
     "cluster_principal": 3,
-    "comunidad_principal": 0
-  },
-  {
-    "zaid": "ZAID 24",
+    "comunidad_principal": 0,
+    "sedes_lista": [
+      "ESE Hospital San Juan De Dios (Rionegro)"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 1,
-    "cluster_principal": 3,
-    "comunidad_principal": 5
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Rionegro"
+    ],
+    "regiones": [
+      "Oriente"
+    ],
+    "region_dominante": "Oriente",
+    "origen_prom": 2403.0,
+    "destino_prom": 2417.0,
+    "total_origen": 2403,
+    "nivel_prom": 1.31,
+    "dias_prom": 3.34,
+    "efect_prom": 49.85,
+    "pct_subsidiado": 92.07
   },
   {
     "zaid": "ZAID 18",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 4
+    "comunidad_principal": 4,
+    "sedes_lista": [
+      "Centro De Atencion Complementaria Especializado Pediatrico Cace Pediatrico"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Barranquilla"
+    ],
+    "regiones": [],
+    "region_dominante": "Barranquilla",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 2.0,
+    "dias_prom": 5.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 40",
+    "zaid": "ZAID 24",
+    "cluster_principal": 3,
+    "comunidad_principal": 5,
+    "sedes_lista": [
+      "ESE Hospital San Juan De Dios Yarumal"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 12
-  },
-  {
-    "zaid": "ZAID 41",
-    "num_sedes": 1,
-    "cluster_principal": 4,
-    "comunidad_principal": 9
-  },
-  {
-    "zaid": "ZAID 45",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 15
-  },
-  {
-    "zaid": "ZAID 46",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 15
-  },
-  {
-    "zaid": "ZAID 47",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 0
-  },
-  {
-    "zaid": "ZAID 44",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 14
-  },
-  {
-    "zaid": "ZAID 48",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 16
-  },
-  {
-    "zaid": "ZAID 39",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 12
-  },
-  {
-    "zaid": "ZAID 43",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 13
-  },
-  {
-    "zaid": "ZAID 31",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 7
-  },
-  {
-    "zaid": "ZAID 37",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 10
-  },
-  {
-    "zaid": "ZAID 38",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 11
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Yarumal"
+    ],
+    "regiones": [
+      "Norte"
+    ],
+    "region_dominante": "Norte",
+    "origen_prom": 1519.0,
+    "destino_prom": 3756.0,
+    "total_origen": 1519,
+    "nivel_prom": 1.16,
+    "dias_prom": 2.23,
+    "efect_prom": 28.8,
+    "pct_subsidiado": 91.93
   },
   {
     "zaid": "ZAID 25",
-    "num_sedes": 1,
     "cluster_principal": 3,
-    "comunidad_principal": 6
+    "comunidad_principal": 6,
+    "sedes_lista": [
+      "ESE Hospital San Rafael De Yolombo"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Yolombo"
+    ],
+    "regiones": [
+      "Nordeste"
+    ],
+    "region_dominante": "Nordeste",
+    "origen_prom": 1095.0,
+    "destino_prom": 4263.0,
+    "total_origen": 1095,
+    "nivel_prom": 1.12,
+    "dias_prom": 1.35,
+    "efect_prom": 20.44,
+    "pct_subsidiado": 92.14
   },
   {
     "zaid": "ZAID 30",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 7
+    "comunidad_principal": 7,
+    "sedes_lista": [
+      "Centro De Salud Santiago Perez - (730670081802)"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Ataco"
+    ],
+    "regiones": [],
+    "region_dominante": "Ataco",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 2.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 56",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 21
-  },
-  {
-    "zaid": "ZAID 55",
-    "num_sedes": 1,
+    "zaid": "ZAID 31",
     "cluster_principal": 1,
-    "comunidad_principal": 20
+    "comunidad_principal": 7,
+    "sedes_lista": [
+      "Nuevo Hospital La Candelaria Empresa Social Del Estado"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Purificacion"
+    ],
+    "regiones": [],
+    "region_dominante": "Purificacion",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 2.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 54",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 20
-  },
-  {
-    "zaid": "ZAID 53",
-    "num_sedes": 1,
+    "zaid": "ZAID 37",
     "cluster_principal": 1,
-    "comunidad_principal": 19
+    "comunidad_principal": 10,
+    "sedes_lista": [
+      "Clinica Medicos Sa"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Valledupar"
+    ],
+    "regiones": [],
+    "region_dominante": "Valledupar",
+    "origen_prom": 0.0,
+    "destino_prom": 3.0,
+    "total_origen": 0,
+    "nivel_prom": 1.33,
+    "dias_prom": 2.33,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 52",
-    "num_sedes": 1,
+    "zaid": "ZAID 38",
     "cluster_principal": 2,
-    "comunidad_principal": 19
+    "comunidad_principal": 11,
+    "sedes_lista": [
+      "Clinica Avidanti Ibague"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Ibague"
+    ],
+    "regiones": [],
+    "region_dominante": "Ibague",
+    "origen_prom": 2.0,
+    "destino_prom": 2.0,
+    "total_origen": 2,
+    "nivel_prom": 1.0,
+    "dias_prom": 9.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 50",
-    "num_sedes": 1,
+    "zaid": "ZAID 39",
     "cluster_principal": 2,
-    "comunidad_principal": 17
+    "comunidad_principal": 12,
+    "sedes_lista": [
+      "Clinica Cedes Ltda"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Riohacha"
+    ],
+    "regiones": [],
+    "region_dominante": "Riohacha",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 2.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 40",
+    "cluster_principal": 1,
+    "comunidad_principal": 12,
+    "sedes_lista": [
+      "Unidad De Cuidados Intensivos Renacer Ltda"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Riohacha"
+    ],
+    "regiones": [],
+    "region_dominante": "Riohacha",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 2.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 41",
+    "cluster_principal": 4,
+    "comunidad_principal": 9,
+    "sedes_lista": [
+      "Programa Madre Canguro Integral Sede Medellin"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Medellín"
+    ],
+    "regiones": [
+      "Medellin"
+    ],
+    "region_dominante": "Medellin",
+    "origen_prom": 75.0,
+    "destino_prom": 73.0,
+    "total_origen": 75,
+    "nivel_prom": 2.02,
+    "dias_prom": 0.08,
+    "efect_prom": 50.68,
+    "pct_subsidiado": 92.11
+  },
+  {
+    "zaid": "ZAID 43",
+    "cluster_principal": 2,
+    "comunidad_principal": 13,
+    "sedes_lista": [
+      "Clinica San Rafael Dumian Girardot"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Girardot"
+    ],
+    "regiones": [],
+    "region_dominante": "Girardot",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 3.0,
+    "dias_prom": 0.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 44",
+    "cluster_principal": 2,
+    "comunidad_principal": 14,
+    "sedes_lista": [
+      "Empresa Social Del Estado Hospital Emiro Quintero Canizares"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Ocaña"
+    ],
+    "regiones": [],
+    "region_dominante": "Ocaña",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 5.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 45",
+    "cluster_principal": 2,
+    "comunidad_principal": 15,
+    "sedes_lista": [
+      "Empresa Social Del Estado Hospital Jose Maria Hernandez"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Mocoa"
+    ],
+    "regiones": [],
+    "region_dominante": "Mocoa",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.5,
+    "dias_prom": 1.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 46",
+    "cluster_principal": 1,
+    "comunidad_principal": 15,
+    "sedes_lista": [
+      "Mental Health IPS Sas Matamundo"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Neiva"
+    ],
+    "regiones": [],
+    "region_dominante": "Neiva",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.5,
+    "dias_prom": 1.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 47",
+    "cluster_principal": 2,
+    "comunidad_principal": 0,
+    "sedes_lista": [
+      "Empresa Social Del Estado Hospital Salazar De Villeta"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Villeta"
+    ],
+    "regiones": [],
+    "region_dominante": "Villeta",
+    "origen_prom": 2.0,
+    "destino_prom": 0.0,
+    "total_origen": 2,
+    "nivel_prom": 1.25,
+    "dias_prom": 2.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 48",
+    "cluster_principal": 2,
+    "comunidad_principal": 16,
+    "sedes_lista": [
+      "ESE Centro De Salud Cartagena De Indias Corozal"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Corozal"
+    ],
+    "regiones": [],
+    "region_dominante": "Corozal",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.5,
+    "dias_prom": 40.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 49",
-    "num_sedes": 1,
     "cluster_principal": 1,
-    "comunidad_principal": 16
+    "comunidad_principal": 16,
+    "sedes_lista": [
+      "IPS San Miguel Arcangel Sede Sincelejo"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Sincelejo"
+    ],
+    "regiones": [],
+    "region_dominante": "Sincelejo",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.5,
+    "dias_prom": 40.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 50",
+    "cluster_principal": 2,
+    "comunidad_principal": 17,
+    "sedes_lista": [
+      "ESE Hospital Departamental San Antonio De Padua De La Plata"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "La Plata"
+    ],
+    "regiones": [],
+    "region_dominante": "La Plata",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 8.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 52",
+    "cluster_principal": 2,
+    "comunidad_principal": 19,
+    "sedes_lista": [
+      "ESE Hospital Ismael Silva"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Silvania"
+    ],
+    "regiones": [],
+    "region_dominante": "Silvania",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 7.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 53",
+    "cluster_principal": 1,
+    "comunidad_principal": 19,
+    "sedes_lista": [
+      "Health & Life IPS Sas Sede Montevideo"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota"
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 7.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 54",
+    "cluster_principal": 2,
+    "comunidad_principal": 20,
+    "sedes_lista": [
+      "ESE Hospital La Divina Misericordia Magangue"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Magangue"
+    ],
+    "regiones": [],
+    "region_dominante": "Magangue",
+    "origen_prom": 2.0,
+    "destino_prom": 1.0,
+    "total_origen": 2,
+    "nivel_prom": 1.0,
+    "dias_prom": 15.0,
+    "efect_prom": 66.67,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 55",
+    "cluster_principal": 1,
+    "comunidad_principal": 20,
+    "sedes_lista": [
+      "Vital Caribe Sas"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Magangue"
+    ],
+    "regiones": [],
+    "region_dominante": "Magangue",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 27.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 56",
+    "cluster_principal": 2,
+    "comunidad_principal": 21,
+    "sedes_lista": [
+      "ESE Hospital Local Curumani Cristian Moreno Pallares"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Curumani"
+    ],
+    "regiones": [],
+    "region_dominante": "Curumani",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 1.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 57",
-    "num_sedes": 1,
     "cluster_principal": 1,
-    "comunidad_principal": 21
-  },
-  {
-    "zaid": "ZAID 64",
+    "comunidad_principal": 21,
+    "sedes_lista": [
+      "Centro Materno Infantil De Poponte"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 25
-  },
-  {
-    "zaid": "ZAID 65",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 26
-  },
-  {
-    "zaid": "ZAID 67",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 18
-  },
-  {
-    "zaid": "ZAID 66",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 26
-  },
-  {
-    "zaid": "ZAID 60",
-    "num_sedes": 1,
-    "cluster_principal": 2,
-    "comunidad_principal": 23
-  },
-  {
-    "zaid": "ZAID 59",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 22
-  },
-  {
-    "zaid": "ZAID 61",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 23
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Chiriguana"
+    ],
+    "regiones": [],
+    "region_dominante": "Chiriguana",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 1.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 58",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 22
+    "comunidad_principal": 22,
+    "sedes_lista": [
+      "ESE Hospital Piloto Jamundi"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Jamundi"
+    ],
+    "regiones": [],
+    "region_dominante": "Jamundi",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 5.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 71",
-    "num_sedes": 1,
+    "zaid": "ZAID 59",
     "cluster_principal": 1,
-    "comunidad_principal": 29
+    "comunidad_principal": 22,
+    "sedes_lista": [
+      "E.S.E. Hospital Departamental Mario Correa Rengifo"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Cali"
+    ],
+    "regiones": [],
+    "region_dominante": "Cali",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 5.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 70",
-    "num_sedes": 1,
+    "zaid": "ZAID 60",
     "cluster_principal": 2,
-    "comunidad_principal": 29
+    "comunidad_principal": 23,
+    "sedes_lista": [
+      "ESE Hospital San Antonio De Padua Simiti Bolivar"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Simiti"
+    ],
+    "regiones": [],
+    "region_dominante": "Simiti",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 0.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 69",
+    "zaid": "ZAID 61",
+    "cluster_principal": 1,
+    "comunidad_principal": 23,
+    "sedes_lista": [
+      "Sermultisalud"
+    ],
+    "sedes_restantes": 0,
     "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Valledupar"
+    ],
+    "regiones": [],
+    "region_dominante": "Valledupar",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 0.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 64",
     "cluster_principal": 2,
-    "comunidad_principal": 28
+    "comunidad_principal": 25,
+    "sedes_lista": [
+      "ESE Hospital San Juan De Sahagun"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Sahagun"
+    ],
+    "regiones": [],
+    "region_dominante": "Sahagun",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 0.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 65",
+    "cluster_principal": 2,
+    "comunidad_principal": 26,
+    "sedes_lista": [
+      "ESE Hospital San Vicente De Ramiriqui"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Ramiriqui"
+    ],
+    "regiones": [],
+    "region_dominante": "Ramiriqui",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.5,
+    "dias_prom": 2.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 66",
+    "cluster_principal": 1,
+    "comunidad_principal": 26,
+    "sedes_lista": [
+      "Mental Health IPS Sas"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.5,
+    "dias_prom": 2.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 67",
+    "cluster_principal": 1,
+    "comunidad_principal": 18,
+    "sedes_lista": [
+      "Laboratorio De Inmunogenetica"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Neiva"
+    ],
+    "regiones": [],
+    "region_dominante": "Neiva",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 2.0,
+    "dias_prom": 4.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 68",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 27
+    "comunidad_principal": 27,
+    "sedes_lista": [
+      "ESE Hospital Universitario La Samaritana Zipaquira"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Zipaquira"
+    ],
+    "regiones": [],
+    "region_dominante": "Zipaquira",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 2.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 77",
-    "num_sedes": 1,
+    "zaid": "ZAID 69",
     "cluster_principal": 2,
-    "comunidad_principal": 33
+    "comunidad_principal": 28,
+    "sedes_lista": [
+      "Fundacion Hospital De La Misericordia"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 5.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 70",
+    "cluster_principal": 2,
+    "comunidad_principal": 29,
+    "sedes_lista": [
+      "Fundacion Hospital San Jose"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Guadalajara De B"
+    ],
+    "regiones": [],
+    "region_dominante": "Guadalajara De B",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.5,
+    "dias_prom": 21.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 71",
+    "cluster_principal": 1,
+    "comunidad_principal": 29,
+    "sedes_lista": [
+      "Centro De Alta Tecnologia Diagnostica Del Eje Cafetero S.A"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Pereira"
+    ],
+    "regiones": [],
+    "region_dominante": "Pereira",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.5,
+    "dias_prom": 21.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 74",
-    "num_sedes": 1,
     "cluster_principal": 1,
-    "comunidad_principal": 31
+    "comunidad_principal": 31,
+    "sedes_lista": [
+      "Hospital Regional San Andres Ese"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Chiriguana"
+    ],
+    "regiones": [],
+    "region_dominante": "Chiriguana",
+    "origen_prom": 0.0,
+    "destino_prom": 3.0,
+    "total_origen": 0,
+    "nivel_prom": 1.17,
+    "dias_prom": 1.67,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 75",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 32
+    "comunidad_principal": 32,
+    "sedes_lista": [
+      "Hospital Reina Sofia De Espana Empresa Social Del Estado"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Lerida"
+    ],
+    "regiones": [],
+    "region_dominante": "Lerida",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 4.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 76",
-    "num_sedes": 1,
     "cluster_principal": 1,
-    "comunidad_principal": 32
+    "comunidad_principal": 32,
+    "sedes_lista": [
+      "Grupo Linea Vital Ips"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bucaramanga"
+    ],
+    "regiones": [],
+    "region_dominante": "Bucaramanga",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 4.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
-    "zaid": "ZAID 80",
-    "num_sedes": 1,
-    "cluster_principal": 1,
-    "comunidad_principal": 34
-  },
-  {
-    "zaid": "ZAID 79",
-    "num_sedes": 1,
+    "zaid": "ZAID 77",
     "cluster_principal": 2,
-    "comunidad_principal": 34
+    "comunidad_principal": 33,
+    "sedes_lista": [
+      "Hospital San Antonio De Tame"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Tame"
+    ],
+    "regiones": [],
+    "region_dominante": "Tame",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 0.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 78",
-    "num_sedes": 1,
     "cluster_principal": 1,
-    "comunidad_principal": 33
+    "comunidad_principal": 33,
+    "sedes_lista": [
+      "ESE Hospital Del Sarare"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Saravena"
+    ],
+    "regiones": [],
+    "region_dominante": "Saravena",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.0,
+    "dias_prom": 0.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 79",
+    "cluster_principal": 2,
+    "comunidad_principal": 34,
+    "sedes_lista": [
+      "Mired Barranquilla Camino Bosque De Maria"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Barranquilla"
+    ],
+    "regiones": [],
+    "region_dominante": "Barranquilla",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 1.5,
+    "dias_prom": 19.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
+  },
+  {
+    "zaid": "ZAID 80",
+    "cluster_principal": 1,
+    "comunidad_principal": 34,
+    "sedes_lista": [
+      "Centro De Atencion Complementaria Especializado Alta Complejidad Adultos - Cace Alta Complejidad Adultos"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Barranquilla"
+    ],
+    "regiones": [],
+    "region_dominante": "Barranquilla",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 1.5,
+    "dias_prom": 19.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 83",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 38
+    "comunidad_principal": 38,
+    "sedes_lista": [
+      "Subred Integrada De Servicios De Salud Sur Occidente Ese"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 2.0,
+    "destino_prom": 1.0,
+    "total_origen": 2,
+    "nivel_prom": 1.5,
+    "dias_prom": 1.0,
+    "efect_prom": 66.67,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 84",
-    "num_sedes": 1,
     "cluster_principal": 1,
-    "comunidad_principal": 38
+    "comunidad_principal": 38,
+    "sedes_lista": [
+      "Unidad De Servicios De Salud Nuevas Delicias"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 0.0,
+    "destino_prom": 1.0,
+    "total_origen": 0,
+    "nivel_prom": 2.0,
+    "dias_prom": 1.0,
+    "efect_prom": 0.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 86",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 39
+    "comunidad_principal": 39,
+    "sedes_lista": [
+      "Unidad De Servicios De Salud Centro De Servicios Especializa"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 4.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 0.0
   },
   {
     "zaid": "ZAID 87",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 40
+    "comunidad_principal": 40,
+    "sedes_lista": [
+      "Unidad De Servicios De Salud Chapinero"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 1.0,
+    "destino_prom": 1.0,
+    "total_origen": 1,
+    "nivel_prom": 1.0,
+    "dias_prom": 12.0,
+    "efect_prom": 50.0,
+    "pct_subsidiado": 100.0
   },
   {
     "zaid": "ZAID 88",
-    "num_sedes": 1,
     "cluster_principal": 2,
-    "comunidad_principal": 37
+    "comunidad_principal": 37,
+    "sedes_lista": [
+      "Unidad De Servicios De Salud San Blas"
+    ],
+    "sedes_restantes": 0,
+    "num_sedes": 1,
+    "sedes_ubicadas": 1,
+    "num_municipios": 1,
+    "municipios": [
+      "Bogota D.C."
+    ],
+    "regiones": [],
+    "region_dominante": "Bogota D.C.",
+    "origen_prom": 1.0,
+    "destino_prom": 0.0,
+    "total_origen": 1,
+    "nivel_prom": 2.0,
+    "dias_prom": 5.0,
+    "efect_prom": 100.0,
+    "pct_subsidiado": 100.0
   }
 ]

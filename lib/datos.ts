@@ -299,8 +299,29 @@ export interface RasAlgoritmo {
   tam_max: number;
 }
 
-export interface ComunidadTam {
+export interface PerfilZona {
+  num_sedes: number;
+  /** cuántas sedes de la zona se pudieron ubicar en un municipio. */
+  sedes_ubicadas: number;
+  num_municipios: number;
+  municipios: string[];
+  regiones: string[];
+  region_dominante: string;
+  origen_prom: number | null;
+  destino_prom: number | null;
+  total_origen: number | null;
+  nivel_prom: number | null;
+  dias_prom: number | null;
+  efect_prom: number | null;
+  pct_subsidiado: number | null;
+  sedes_lista: string[];
+  sedes_restantes: number;
+}
+
+export interface ComunidadTam extends PerfilZona {
   comunidad: string;
+  id: number;
+  /** compat: algunas vistas leen `sedes`. */
   sedes: number;
 }
 
@@ -312,9 +333,8 @@ export interface ZaidResumen {
   coherencia: Record<string, number>;
 }
 
-export interface ZaidFila {
+export interface ZaidFila extends PerfilZona {
   zaid: string;
-  num_sedes: number;
   cluster_principal: number;
   comunidad_principal: number;
 }

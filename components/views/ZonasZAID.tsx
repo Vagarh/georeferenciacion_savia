@@ -13,6 +13,7 @@ import {
   Scatter,
   ZAxis,
 } from "recharts";
+import { useState } from "react";
 import {
   Layers,
   Building2,
@@ -21,6 +22,7 @@ import {
   Vote,
   HelpCircle,
   Split,
+  MapPin,
 } from "lucide-react";
 import KPICard from "@/components/KPICard";
 import Hero from "@/components/Hero";
@@ -37,9 +39,128 @@ import {
   type ZaidFila,
 } from "@/lib/datos";
 
+function MetricaZ({
+  label,
+  valor,
+  sufijo = "",
+}: {
+  label: string;
+  valor: number | null | undefined;
+  sufijo?: string;
+}) {
+  return (
+    <div className="bg-brand-low rounded-lg px-3 py-2">
+      <p className="text-[10px] font-bold uppercase tracking-wide text-brand-gray1">
+        {label}
+      </p>
+      <p className="text-lg font-black text-savia-forest leading-tight">
+        {valor == null
+          ? "—"
+          : Math.abs(valor) >= 100
+          ? fmtEntero(valor)
+          : fmtDecimal(valor)}
+        {valor == null ? "" : sufijo}
+      </p>
+    </div>
+  );
+}
+
+function ZonaDetalle({ z }: { z: ZaidFila | null }) {
+  if (!z) {
+    return (
+      <div className="rounded-xl border border-brand-gray3 bg-white p-6 text-sm text-brand-gray1">
+        Selecciona una zona de la lista.
+      </div>
+    );
+  }
+  return (
+    <div className="rounded-xl border border-brand-gray3 bg-white p-5 space-y-4">
+      <div className="flex flex-wrap items-baseline justify-between gap-2">
+        <h4 className="text-lg font-bold text-savia-forest">{z.zaid}</h4>
+        <span className="text-xs font-bold text-brand-gray1">
+          {fmtEntero(z.num_sedes)} sedes · {fmtEntero(z.num_municipios)} municipio(s)
+          {" · "}Cluster RAD {z.cluster_principal} · Comunidad RAS{" "}
+          {z.comunidad_principal}
+        </span>
+      </div>
+
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+        <MetricaZ label="Emite (prom/sede)" valor={z.origen_prom} />
+        <MetricaZ label="Recibe (prom/sede)" valor={z.destino_prom} />
+        <MetricaZ label="Nivel complej." valor={z.nivel_prom} />
+        <MetricaZ label="Días de cierre" valor={z.dias_prom} />
+        <MetricaZ label="Tasa efectivas" valor={z.efect_prom} sufijo="%" />
+        <MetricaZ label="Subsidiado" valor={z.pct_subsidiado} sufijo="%" />
+      </div>
+
+      {z.regiones?.length > 0 || z.municipios?.length > 0 ? (
+        <div className="space-y-1.5">
+          <p className="flex items-center gap-1.5 text-xs font-bold text-brand-gray1">
+            <MapPin size={13} /> Ubicación
+            {z.sedes_ubicadas < z.num_sedes && (
+              <span className="font-medium text-brand-gray1">
+                (de {fmtEntero(z.sedes_ubicadas)} de {fmtEntero(z.num_sedes)} sedes)
+              </span>
+            )}
+          </p>
+          {z.regiones?.length > 0 && (
+            <div className="flex flex-wrap gap-1.5">
+              {z.regiones.map((r) => (
+                <span
+                  key={r}
+                  className="rounded-full bg-savia-ice text-savia-deep text-[11px] font-semibold px-2 py-0.5 border border-savia-mint"
+                >
+                  {r}
+                </span>
+              ))}
+            </div>
+          )}
+          {z.municipios?.length > 0 && (
+            <p className="text-xs text-brand-muted">
+              <span className="font-bold text-brand-gray1">
+                Municipios principales:
+              </span>{" "}
+              {z.municipios.join(" · ")}
+            </p>
+          )}
+        </div>
+      ) : (
+        <p className="text-[11px] text-brand-gray1">
+          Sin ubicación geográfica: sus sedes son prestadores fuera de Antioquia
+          o con nombre no cruzable con el maestro de municipios.
+        </p>
+      )}
+
+      {z.sedes_lista?.length > 0 && (
+        <div>
+          <p className="flex items-center gap-1.5 text-xs font-bold text-brand-gray1 mb-1.5">
+            <Building2 size={13} /> Sedes (por volumen emitido)
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-0.5 text-xs text-brand-muted">
+            {z.sedes_lista.map((s, i) => (
+              <li key={i} className="truncate">
+                • {s}
+              </li>
+            ))}
+          </ul>
+          {z.sedes_restantes > 0 && (
+            <p className="text-[11px] text-brand-gray1 mt-1">
+              + {fmtEntero(z.sedes_restantes)} sedes más
+            </p>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ZonasZAID() {
   const [resumen] = useDatos<ZaidResumen | null>("zaid_resumen", null);
   const [zaids] = useDatos<ZaidFila[]>("zaid_caracterizacion", []);
+  const [zaidSel, setZaidSel] = useState<string | null>(null);
+  const zaidsOrden = [...zaids].sort((a, b) => b.num_sedes - a.num_sedes);
+  const zonaActiva =
+    zaidsOrden.find((z) => z.zaid === zaidSel) ?? zaidsOrden[0] ?? null;
 
   const top = [...zaids]
     .sort((a, b) => b.num_sedes - a.num_sedes)
@@ -157,6 +278,54 @@ export default function ZonasZAID() {
           </ResponsiveContainer>
         </div>
       </ChartCard>
+
+      {/* Detalle: sedes y características de cada ZAID */}
+      <section className="space-y-4">
+        <div>
+          <h3 className="text-xl font-bold text-savia-forest">
+            Detalle por zona
+          </h3>
+          <p className="text-sm text-brand-muted">
+            Qué sedes componen cada ZAID, en qué subregiones están y cuál es su
+            perfil operativo promedio (volumen, complejidad, oportunidad).
+          </p>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,15rem)_1fr] gap-4">
+          <div className="rounded-xl border border-brand-gray3 bg-white overflow-hidden max-h-[520px] overflow-y-auto">
+            {zaidsOrden.map((z) => (
+              <button
+                key={z.zaid}
+                onClick={() =>
+                  setZaidSel(zaidSel === z.zaid ? null : z.zaid)
+                }
+                className={
+                  "w-full text-left px-4 py-2.5 border-b border-brand-gray3 last:border-0 transition-colors " +
+                  (zonaActiva?.zaid === z.zaid
+                    ? "bg-savia-ice"
+                    : "hover:bg-brand-low")
+                }
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-sm font-bold text-savia-forest">
+                    {z.zaid}
+                  </span>
+                  <span className="text-xs font-bold tabular-nums text-brand-charcoal">
+                    {fmtEntero(z.num_sedes)} sedes
+                  </span>
+                </div>
+                <p className="text-[11px] text-brand-gray1 truncate">
+                  {z.region_dominante && z.region_dominante !== "—"
+                    ? z.region_dominante
+                    : "Ubicación mixta"}{" "}
+                  · {fmtEntero(z.num_municipios)} municipio(s)
+                </p>
+              </button>
+            ))}
+          </div>
+
+          <ZonaDetalle z={zonaActiva} />
+        </div>
+      </section>
 
       <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <ChartCard
