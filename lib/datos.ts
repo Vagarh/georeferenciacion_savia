@@ -341,6 +341,8 @@ export interface ZaidFila extends PerfilZona {
 
 // --- Mapa de red ---
 export interface NodoMapa {
+  /** `false` si el municipio solo toca corredores no principales (vista general). */
+  base?: boolean;
   nombre: string;
   region: string;
   /** id de comunidad RAS del municipio (puede faltar). */
@@ -364,6 +366,11 @@ export interface FlujoMapa {
   valor: number;
   /** serie mensual: [idxMes, valor]. */
   serie?: number[][];
+  /**
+   * `true` en los corredores principales (vista general). Los demás solo se
+   * dibujan al aislar un municipio o subregión. Si falta, se considera base.
+   */
+  base?: boolean;
 }
 
 export interface ComunidadMapa {
@@ -383,7 +390,23 @@ export interface LugarExterno {
   ancla: string | null;
 }
 
+/** Intercambio de un municipio de Antioquia con un lugar fuera del departamento. */
+export interface ExternoPorMuni {
+  /** municipio de Antioquia */
+  m: string;
+  /** s = salida (el destino queda fuera) · e = entrada (el origen está fuera) */
+  t: "s" | "e";
+  /** lugar externo (municipio o departamento) */
+  l: string;
+  /** serie mensual [idxMes, valor] */
+  serie: number[][];
+}
+
 export interface ExternosMapa {
+  /** Detalle por municipio y mes: permite filtrar los externos del mapa. */
+  por_muni?: ExternoPorMuni[];
+  /** Coordenadas [lon, lat] de cada lugar externo. */
+  lugares?: Record<string, [number, number]>;
   total_salidas: number;
   total_entradas: number;
   pct_salidas: number;

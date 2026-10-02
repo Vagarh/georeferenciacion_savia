@@ -1,56 +1,56 @@
 [
   {
     "mes": "2025-01",
-    "Contributivo": 584,
-    "Subsidiado": 7491,
+    "Contributivo": 579,
+    "Subsidiado": 7496,
     "mes_label": "Ene"
   },
   {
     "mes": "2025-02",
-    "Contributivo": 449,
-    "Subsidiado": 6879,
+    "Contributivo": 457,
+    "Subsidiado": 6871,
     "mes_label": "Feb"
   },
   {
     "mes": "2025-03",
-    "Contributivo": 541,
-    "Subsidiado": 7400,
+    "Contributivo": 549,
+    "Subsidiado": 7392,
     "mes_label": "Mar"
   },
   {
     "mes": "2025-04",
-    "Contributivo": 515,
-    "Subsidiado": 7244,
+    "Contributivo": 535,
+    "Subsidiado": 7224,
     "mes_label": "Abr"
   },
   {
     "mes": "2025-05",
-    "Contributivo": 520,
-    "Subsidiado": 7761,
+    "Contributivo": 538,
+    "Subsidiado": 7743,
     "mes_label": "May"
   },
   {
     "mes": "2025-06",
-    "Contributivo": 517,
-    "Subsidiado": 6979,
+    "Contributivo": 524,
+    "Subsidiado": 6972,
     "mes_label": "Jun"
   },
   {
     "mes": "2025-07",
-    "Contributivo": 544,
-    "Subsidiado": 7391,
+    "Contributivo": 562,
+    "Subsidiado": 7373,
     "mes_label": "Jul"
   },
   {
     "mes": "2025-08",
-    "Contributivo": 581,
-    "Subsidiado": 7056,
+    "Contributivo": 588,
+    "Subsidiado": 7049,
     "mes_label": "Ago"
   },
   {
     "mes": "2025-09",
-    "Contributivo": 552,
-    "Subsidiado": 7098,
+    "Contributivo": 554,
+    "Subsidiado": 7096,
     "mes_label": "Sep"
   },
   {
@@ -61,68 +61,74 @@
   },
   {
     "mes": "2025-11",
-    "Contributivo": 499,
-    "Subsidiado": 6570,
+    "Contributivo": 511,
+    "Subsidiado": 6558,
     "mes_label": "Nov"
   },
   {
     "mes": "2025-12",
-    "Contributivo": 498,
-    "Subsidiado": 7053,
+    "Contributivo": 507,
+    "Subsidiado": 7044,
     "mes_label": "Dic"
   },
   {
     "mes": "2026-01",
-    "Contributivo": 519,
-    "Subsidiado": 7588,
+    "Contributivo": 526,
+    "Subsidiado": 7581,
     "mes_label": "Ene"
   },
   {
     "mes": "2026-02",
-    "Contributivo": 453,
-    "Subsidiado": 7046,
+    "Contributivo": 471,
+    "Subsidiado": 7028,
     "mes_label": "Feb"
   },
   {
     "mes": "2026-03",
-    "Contributivo": 497,
-    "Subsidiado": 7772,
+    "Contributivo": 501,
+    "Subsidiado": 7768,
     "mes_label": "Mar"
   },
   {
     "mes": "2026-04",
-    "Contributivo": 478,
-    "Subsidiado": 7113,
+    "Contributivo": 492,
+    "Subsidiado": 7099,
     "mes_label": "Abr"
   },
   {
     "mes": "2026-05",
-    "Contributivo": 509,
-    "Subsidiado": 7391,
+    "Contributivo": 520,
+    "Subsidiado": 7380,
     "mes_label": "May"
   },
   {
     "mes": "2026-06",
-    "Contributivo": 498,
-    "Subsidiado": 6876,
+    "Contributivo": 513,
+    "Subsidiado": 6861,
     "mes_label": "Jun"
   },
   {
     "mes": "2026-07",
-    "Contributivo": 463,
-    "Subsidiado": 7029,
+    "Contributivo": 479,
+    "Subsidiado": 7013,
     "mes_label": "Jul"
   },
   {
     "mes": "2026-08",
-    "Contributivo": 531,
-    "Subsidiado": 6757,
+    "Contributivo": 546,
+    "Subsidiado": 6742,
     "mes_label": "Ago"
   },
   {
     "mes": "2026-09",
-    "Contributivo": 145,
-    "Subsidiado": 1965,
+    "Contributivo": 537,
+    "Subsidiado": 6982,
     "mes_label": "Sep"
+  },
+  {
+    "mes": "2026-10",
+    "Contributivo": 17,
+    "Subsidiado": 276,
+    "mes_label": "Oct"
   }
 ]

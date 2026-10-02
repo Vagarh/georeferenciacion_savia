@@ -1,34 +1,38 @@
 [
   {
     "name": "Cerrada",
-    "value": 80113
+    "value": 82708
   },
   {
     "name": "Cancelada",
-    "value": 69183
+    "value": 72018
   },
   {
     "name": "Anulada",
-    "value": 5582
+    "value": 5826
   },
   {
     "name": "Gestión de regulación",
-    "value": 777
+    "value": 863
   },
   {
     "name": "Direccionada",
-    "value": 318
-  },
-  {
-    "name": "Pertinencia médica",
-    "value": 9
-  },
-  {
-    "name": "Auditoría",
-    "value": 3
+    "value": 265
   },
   {
     "name": "Cama Fija",
+    "value": 3
+  },
+  {
+    "name": "Pertinencia médica",
+    "value": 2
+  },
+  {
+    "name": "Auditoría",
+    "value": 2
+  },
+  {
+    "name": "Gestión Teleorientación",
     "value": 2
   },
   {

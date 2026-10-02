@@ -38,6 +38,9 @@ const VACIO: FlujoDiagnosticos = {
   por_diagnostico: {},
 };
 
+/** Corredores por diagnóstico que forman la vista general del mapa. */
+const TOP_FLUJOS_BASE = 60;
+
 export default function RutasDiagnostico() {
   const [data] = useDatos<FlujoDiagnosticos>("flujo_diagnosticos", VACIO);
   const [rawH] = useDatos<HechosRaw>("hechos", HECHOS_RAW_VACIO);
@@ -70,8 +73,17 @@ export default function RutasDiagnostico() {
       orig.set(o, (orig.get(o) ?? 0) + v);
       dest.set(d, (dest.get(d) ?? 0) + v);
     }
+    // Los primeros corredores (ya vienen ordenados por volumen) forman la vista
+    // general; el resto solo aparece al aislar un municipio o subregión.
+    const baseIdx = bloque.flujos.slice(0, TOP_FLUJOS_BASE);
+    const enBase = new Set<number>();
+    for (const [o, d] of baseIdx) {
+      enBase.add(o);
+      enBase.add(d);
+    }
     const usados = new Set<number>([...orig.keys(), ...dest.keys()]);
     const nodos = [...usados].map((i) => ({
+      base: enBase.has(i),
       nombre: M[i].nombre,
       region: M[i].region,
       lon: M[i].lon,
@@ -79,7 +91,8 @@ export default function RutasDiagnostico() {
       origen: orig.get(i) ?? 0,
       destino: dest.get(i) ?? 0,
     }));
-    const flujos = bloque.flujos.map(([o, d, v]) => ({
+    const flujos = bloque.flujos.map(([o, d, v], k) => ({
+      base: k < TOP_FLUJOS_BASE,
       o: M[o].nombre,
       d: M[d].nombre,
       region_o: M[o].region,

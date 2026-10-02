@@ -1,34 +1,34 @@
 [
   {
-    "algoritmo": "louvain",
-    "num_comunidades": 42,
-    "modularidad": 0.553661847171048,
-    "tam_promedio": 19.30952380952381,
+    "algoritmo": "greedy_modularity",
+    "num_comunidades": 44,
+    "modularidad": 0.5551135947161252,
+    "tam_promedio": 18.772727272727277,
     "tam_min": 1,
-    "tam_max": 195
+    "tam_max": 142
   },
   {
-    "algoritmo": "greedy_modularity",
-    "num_comunidades": 48,
-    "modularidad": 0.5506660236162743,
-    "tam_promedio": 16.895833333333332,
+    "algoritmo": "louvain",
+    "num_comunidades": 42,
+    "modularidad": 0.5543073079077069,
+    "tam_promedio": 19.666666666666668,
     "tam_min": 1,
-    "tam_max": 138
+    "tam_max": 143
   },
   {
     "algoritmo": "label_propagation",
-    "num_comunidades": 64,
-    "modularidad": 0.0016272847604359,
-    "tam_promedio": 12.671875,
+    "num_comunidades": 65,
+    "modularidad": 0.0015947079994808,
+    "tam_promedio": 12.707692307692309,
     "tam_min": 1,
-    "tam_max": 687
+    "tam_max": 701
   },
   {
     "algoritmo": "girvan_newman",
-    "num_comunidades": 33,
-    "modularidad": 0.000958535432549,
-    "tam_promedio": 24.57575757575757,
+    "num_comunidades": 32,
+    "modularidad": 0.0009093105444315,
+    "tam_promedio": 25.8125,
     "tam_min": 1,
-    "tam_max": 742
+    "tam_max": 759
   }
 ]

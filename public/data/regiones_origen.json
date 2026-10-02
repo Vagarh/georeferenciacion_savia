@@ -1,42 +1,42 @@
 [
   {
     "region": "Medellin",
-    "remisiones": 59502
+    "remisiones": 61763
   },
   {
     "region": "Valle De Aburra",
-    "remisiones": 22253
+    "remisiones": 23073
   },
   {
     "region": "Oriente",
-    "remisiones": 16024
+    "remisiones": 16651
   },
   {
     "region": "Uraba",
-    "remisiones": 12862
+    "remisiones": 13324
   },
   {
     "region": "Suroeste",
-    "remisiones": 12027
+    "remisiones": 12449
   },
   {
     "region": "Norte",
-    "remisiones": 7337
+    "remisiones": 7622
   },
   {
     "region": "Occidente",
-    "remisiones": 6713
+    "remisiones": 6932
   },
   {
     "region": "Nordeste",
-    "remisiones": 6566
+    "remisiones": 6782
   },
   {
     "region": "Magdalena Medio",
-    "remisiones": 3785
+    "remisiones": 3893
   },
   {
     "region": "Bajo Cauca",
-    "remisiones": 3669
+    "remisiones": 3791
   }
 ]

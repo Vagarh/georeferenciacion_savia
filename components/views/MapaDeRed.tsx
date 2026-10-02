@@ -17,7 +17,9 @@ import FiltroBar from "@/components/FiltroBar";
 import MapaRed from "@/components/MapaRed";
 import PanelInsights from "@/components/PanelInsights";
 import { useDatos } from "@/lib/useDatos";
-import { useMapaPeriodo } from "@/lib/mapaPeriodo";
+import { useMemo } from "react";
+import { useFiltros } from "@/lib/filtros";
+import { useMapaPeriodo, calcularSeleccion } from "@/lib/mapaPeriodo";
 import {
   fmtEntero,
   fmtPct,
@@ -104,8 +106,48 @@ export default function MapaDeRed() {
   // Nodos y flujos reagregados al rango de meses activo: así el filtro de
   // fecha cambia también los KPIs, las listas y los insights de esta vista,
   // no solo el mapa.
-  const { nodos, flujos, recortado } = useMapaPeriodo(data);
+  const { nodos: nodosPeriodo, flujos: flujosPeriodo, recortado } =
+    useMapaPeriodo(data);
   const sufijoPeriodo = recortado ? " · todo el período" : "";
+
+  // Con un municipio o subregión elegidos, listas y KPIs se limitan a esa
+  // selección y a lo que está conectado con ella (igual que el mapa).
+  const { filtros } = useFiltros();
+  const { haySeleccion, seleccionados, conectados } = useMemo(
+    () => calcularSeleccion(nodosPeriodo, flujosPeriodo, filtros),
+    [nodosPeriodo, flujosPeriodo, filtros]
+  );
+  const nodos = useMemo(
+    () =>
+      haySeleccion
+        ? nodosPeriodo.filter(
+            (n) => seleccionados.has(n.nombre) || conectados.has(n.nombre)
+          )
+        : nodosPeriodo,
+    [haySeleccion, nodosPeriodo, seleccionados, conectados]
+  );
+  const flujos = useMemo(
+    () =>
+      haySeleccion
+        ? flujosPeriodo.filter(
+            (f) => seleccionados.has(f.o) || seleccionados.has(f.d)
+          )
+        : flujosPeriodo,
+    [haySeleccion, flujosPeriodo, seleccionados]
+  );
+
+  // KPIs que dependen de la selección: comunidades presentes y % de lo que
+  // el municipio/subregión emite y se resuelve en otro municipio.
+  const comunidadesEnVista = new Set(
+    nodos.filter((n) => n.comunidad != null).map((n) => n.comunidad)
+  ).size;
+  const emitidoSel = nodosPeriodo
+    .filter((n) => seleccionados.has(n.nombre))
+    .reduce((a, n) => a + n.origen, 0);
+  const salenSel = flujos
+    .filter((f) => seleccionados.has(f.o) && f.o !== f.d)
+    .reduce((a, f) => a + f.valor, 0);
+  const pctInterSel = emitidoSel ? (salenSel / emitidoSel) * 100 : 0;
 
   const topFlujos = [...flujos]
     .filter((f) => f.o !== f.d)
@@ -152,17 +194,30 @@ export default function MapaDeRed() {
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <KPICard
           title="Municipios en la red"
-          value={fmtEntero(recortado ? municipiosActivos : data.resumen.municipios)}
-          subtitle="Con remisiones emitidas o recibidas"
+          value={fmtEntero(
+            recortado || haySeleccion ? municipiosActivos : data.resumen.municipios
+          )}
+          subtitle={
+            haySeleccion
+              ? "En la selección y sus conexiones"
+              : "Con remisiones emitidas o recibidas"
+          }
           icon={<MapPinned size={18} />}
           delay={0}
         />
         <KPICard
           title="Flujo intermunicipal"
-          value={fmtPct(data.resumen.pct_intermunicipal, 0)}
-          subtitle={`${fmtEntero(
-            data.resumen.flujos_intermunicipales
-          )} remisiones cruzan de municipio${sufijoPeriodo}`}
+          value={fmtPct(
+            haySeleccion ? pctInterSel : data.resumen.pct_intermunicipal,
+            0
+          )}
+          subtitle={
+            haySeleccion
+              ? `${fmtEntero(salenSel)} remisiones de la selección salen a otro municipio`
+              : `${fmtEntero(
+                  data.resumen.flujos_intermunicipales
+                )} remisiones cruzan de municipio${sufijoPeriodo}`
+          }
           trend="neutral"
           trendLabel="del total"
           icon={<Route size={18} />}
@@ -172,8 +227,12 @@ export default function MapaDeRed() {
         />
         <KPICard
           title="Comunidades RAS"
-          value={fmtEntero(numComunidades)}
-          subtitle={`Circuitos de remisión detectados (Louvain)${sufijoPeriodo}`}
+          value={fmtEntero(haySeleccion ? comunidadesEnVista : numComunidades)}
+          subtitle={
+            haySeleccion
+              ? "Presentes en la selección y sus conexiones"
+              : `Circuitos de remisión detectados (Louvain)${sufijoPeriodo}`
+          }
           icon={<Waypoints size={18} />}
           iconBg="#eaf2df"
           iconColor="#5c8a1f"

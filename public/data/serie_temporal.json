@@ -141,9 +141,16 @@
   },
   {
     "mes": "2026-09",
-    "remisiones": 2110,
+    "remisiones": 7519,
     "mes_label": "Sep",
-    "contrarreferencias": 52,
-    "referencias": 2058
+    "contrarreferencias": 200,
+    "referencias": 7319
+  },
+  {
+    "mes": "2026-10",
+    "remisiones": 293,
+    "mes_label": "Oct",
+    "contrarreferencias": 6,
+    "referencias": 287
   }
 ]

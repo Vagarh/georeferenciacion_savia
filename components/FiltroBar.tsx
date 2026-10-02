@@ -53,15 +53,16 @@ function Chip({
 export default function FiltroBar({
   dims,
   soloGeo = false,
+  sinPeriodo = false,
 }: {
   dims: DimsHechos;
   /** Si `true`, solo período + subregión + municipio (para el mapa). */
   soloGeo?: boolean;
+  /** Si `true`, oculta el rango de meses (vistas sin dimensión temporal). */
+  sinPeriodo?: boolean;
 }) {
   const { filtros, set, toggle, limpiar, activos } = useFiltros();
   const [busca, setBusca] = useState("");
-  // Al filtrar por municipio se usa una tabla que no tiene régimen ni nivel.
-  const modoMunicipio = filtros.municipios.length > 0;
 
   // Municipios disponibles: acotados a las subregiones elegidas, si hay
   const municipiosDisponibles = useMemo(() => {
@@ -102,7 +103,7 @@ export default function FiltroBar({
 
       <div className="grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-x-8 gap-y-4">
         {/* Período */}
-        <div>
+        <div className={sinPeriodo ? "hidden" : undefined}>
           <p className="kicker mb-1.5">Período</p>
           <div className="flex items-center gap-2">
             <select
@@ -160,7 +161,7 @@ export default function FiltroBar({
         </div>
 
         {/* Municipio */}
-        <div className="lg:col-start-2">
+        <div className={sinPeriodo ? undefined : "lg:col-start-2"}>
           <p className="kicker mb-1.5">
             Municipio del prestador
             {filtros.regiones.length > 0 && (
@@ -232,7 +233,7 @@ export default function FiltroBar({
             soloGeo && "hidden"
           )}
         >
-          <div className={modoMunicipio ? "opacity-40 pointer-events-none" : ""}>
+          <div>
             <p className="kicker mb-1.5">Régimen</p>
             <div className="flex flex-wrap gap-1.5">
               {dims.regimenes.map((r) => (
@@ -246,7 +247,7 @@ export default function FiltroBar({
               ))}
             </div>
           </div>
-          <div className={modoMunicipio ? "opacity-40 pointer-events-none" : ""}>
+          <div>
             <p className="kicker mb-1.5">Tipo</p>
             <div className="flex flex-wrap gap-1.5">
               {dims.tipos.map((t) => (
@@ -260,7 +261,7 @@ export default function FiltroBar({
               ))}
             </div>
           </div>
-          <div className={modoMunicipio ? "opacity-40 pointer-events-none" : ""}>
+          <div>
             <p className="kicker mb-1.5">Complejidad</p>
             <div className="flex flex-wrap gap-1.5">
               {dims.niveles.map((n) => (
@@ -276,14 +277,6 @@ export default function FiltroBar({
           </div>
         </div>
 
-        {modoMunicipio && !soloGeo && (
-          <p className="lg:col-span-2 text-[11px] text-brand-gray1">
-            Con un municipio seleccionado se usa una tabla más detallada que solo
-            tiene volumen y oportunidad de cierre: los filtros de <b>régimen</b>,{" "}
-            <b>tipo</b> y <b>complejidad</b> y el desglose referencia /
-            contrarreferencia no aplican.
-          </p>
-        )}
         {soloGeo && (
           <p className="lg:col-span-2 text-[11px] text-brand-gray1">
             Al elegir una <b>subregión</b> o un <b>municipio</b>, el mapa deja

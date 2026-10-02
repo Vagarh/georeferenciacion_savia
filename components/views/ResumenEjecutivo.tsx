@@ -86,23 +86,13 @@ export default function ResumenEjecutivo() {
         />
         <KPICard
           title="Referencias"
-          value={
-            usaMuni
-              ? "—"
-              : fmtPct(
-                  hayHechos ? agg.pctReferencias : resumen?.pct_referencias,
-                  0
-                )
-          }
-          subtitle={
-            usaMuni
-              ? "Sin desglose por tipo en modo municipio"
-              : `${fmtEntero(
-                  hayHechos
-                    ? agg.contrarreferencias
-                    : resumen?.contrarreferencias
-                )} contrarreferencias`
-          }
+          value={fmtPct(
+            hayHechos ? agg.pctReferencias : resumen?.pct_referencias,
+            0
+          )}
+          subtitle={`${fmtEntero(
+            hayHechos ? agg.contrarreferencias : resumen?.contrarreferencias
+          )} contrarreferencias`}
           trend="neutral"
           trendLabel="del total"
           icon={<Activity size={18} />}
@@ -153,20 +143,16 @@ export default function ResumenEjecutivo() {
                 <AlcancePill alcance="filtros" />
               </div>
               <p className="text-sm text-brand-muted">
-                {usaMuni
-                  ? "Volumen mensual del municipio"
-                  : "Referencias frente a contrarreferencias"}
+                Referencias frente a contrarreferencias
                 {activos > 0 && " · filtrado"}
               </p>
             </div>
-            {!usaMuni && (
-              <Leyenda
-                items={[
-                  { color: PALETA.green, label: "Referencias" },
-                  { color: PALETA.teal, label: "Contrarreferencias" },
-                ]}
-              />
-            )}
+            <Leyenda
+              items={[
+                { color: PALETA.green, label: "Referencias" },
+                { color: PALETA.teal, label: "Contrarreferencias" },
+              ]}
+            />
           </div>
 
           <div className="h-[300px]">
@@ -207,26 +193,24 @@ export default function ResumenEjecutivo() {
                 <Area
                   isAnimationActive={false}
                   type="monotone"
-                  dataKey={usaMuni ? "remisiones" : "referencias"}
-                  name={usaMuni ? "Remisiones" : "Referencias"}
+                  dataKey="referencias"
+                  name="Referencias"
                   stroke={PALETA.green}
                   strokeWidth={3}
                   fill="url(#gradRef)"
                   dot={{ r: 3, fill: PALETA.green, strokeWidth: 2, stroke: "#fff" }}
                   activeDot={{ r: 6, strokeWidth: 0 }}
                 />
-                {!usaMuni && (
-                  <Area
-                    isAnimationActive={false}
-                    type="monotone"
-                    dataKey="contrarreferencias"
-                    name="Contrarreferencias"
-                    stroke={PALETA.teal}
-                    strokeWidth={2.5}
-                    fill="url(#gradContra)"
-                    dot={{ r: 3, fill: PALETA.teal, strokeWidth: 2, stroke: "#fff" }}
-                  />
-                )}
+                <Area
+                  isAnimationActive={false}
+                  type="monotone"
+                  dataKey="contrarreferencias"
+                  name="Contrarreferencias"
+                  stroke={PALETA.teal}
+                  strokeWidth={2.5}
+                  fill="url(#gradContra)"
+                  dot={{ r: 3, fill: PALETA.teal, strokeWidth: 2, stroke: "#fff" }}
+                />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -247,13 +231,6 @@ export default function ResumenEjecutivo() {
           </div>
 
           <div className="space-y-6 relative z-10">
-            {usaMuni && (
-              <p className="text-xs text-white/60 leading-relaxed">
-                El desglose por régimen no está disponible al filtrar por
-                municipio. Total: <b className="text-white">{fmtEntero(agg.total)}</b>{" "}
-                remisiones.
-              </p>
-            )}
             {agg.porRegimen.map((r, i) => {
               const pct = (r.value / totalRegimen) * 100;
               return (
@@ -415,24 +392,15 @@ export default function ResumenEjecutivo() {
               Predominio de referencia
             </h5>
             <p className="text-xs text-brand-muted leading-relaxed">
-              {usaMuni ? (
-                <>
-                  El desglose referencia / contrarreferencia no está disponible
-                  al filtrar por municipio.
-                </>
-              ) : (
-                <>
-                  <b>
-                    {fmtPct(
-                      hayHechos ? agg.pctReferencias : resumen?.pct_referencias,
-                      0
-                    )}
-                  </b>{" "}
-                  del flujo {activos > 0 ? "filtrado " : ""}son referencias. Un
-                  registro más completo de contrarreferencias mejoraría la
-                  trazabilidad del retorno del paciente.
-                </>
-              )}
+              <b>
+                {fmtPct(
+                  hayHechos ? agg.pctReferencias : resumen?.pct_referencias,
+                  0
+                )}
+              </b>{" "}
+              del flujo {activos > 0 ? "filtrado " : ""}son referencias. Un
+              registro más completo de contrarreferencias mejoraría la
+              trazabilidad del retorno del paciente.
             </p>
           </div>
         </div>

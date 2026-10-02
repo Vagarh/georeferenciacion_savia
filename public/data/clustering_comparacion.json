@@ -1,38 +1,38 @@
 [
   {
     "metodo": "kmeans_reduced",
-    "silhouette": 0.3140850057536253,
-    "calinski_harabasz": 243.62232939143567,
-    "davies_bouldin": 1.0184034941280002
+    "silhouette": 0.3126313714399753,
+    "calinski_harabasz": 248.9567612210342,
+    "davies_bouldin": 1.0164987722221166
   },
   {
     "metodo": "kmeans",
-    "silhouette": 0.2943655298342779,
-    "calinski_harabasz": 222.7911610684257,
-    "davies_bouldin": 1.0813374223223913
+    "silhouette": 0.2957280131799651,
+    "calinski_harabasz": 227.6767619911932,
+    "davies_bouldin": 1.0744449654152493
   },
   {
     "metodo": "hierarchical_reduced",
-    "silhouette": 0.2811774520875166,
-    "calinski_harabasz": 215.13691106290125,
-    "davies_bouldin": 1.126753824639302
-  },
-  {
-    "metodo": "kmedians_reduced",
-    "silhouette": 0.2432418071713254,
-    "calinski_harabasz": 133.37384040532243,
-    "davies_bouldin": 1.754899850193322
+    "silhouette": 0.2859526891436162,
+    "calinski_harabasz": 220.58918326312715,
+    "davies_bouldin": 1.0886834459558528
   },
   {
     "metodo": "hierarchical",
-    "silhouette": 0.2196960847937928,
-    "calinski_harabasz": 186.31350407839872,
-    "davies_bouldin": 1.180388308519151
+    "silhouette": 0.2617757116244824,
+    "calinski_harabasz": 196.21780130053423,
+    "davies_bouldin": 1.22184261354986
   },
   {
     "metodo": "kmedians",
-    "silhouette": 0.122954935828113,
-    "calinski_harabasz": 136.76676452466387,
-    "davies_bouldin": 2.1041589509880625
+    "silhouette": 0.1714974295464416,
+    "calinski_harabasz": 121.40964257663066,
+    "davies_bouldin": 1.8753500897316813
+  },
+  {
+    "metodo": "kmedians_reduced",
+    "silhouette": 0.1465277119914639,
+    "calinski_harabasz": 122.12407403453366,
+    "davies_bouldin": 2.069799049099417
   }
 ]

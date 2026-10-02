@@ -14,7 +14,7 @@ import {
 } from "@/lib/datos";
 import { useDatos } from "@/lib/useDatos";
 import { useFiltros } from "@/lib/filtros";
-import { useMapaPeriodo } from "@/lib/mapaPeriodo";
+import { useMapaPeriodo, calcularSeleccion } from "@/lib/mapaPeriodo";
 
 type Metrica = "total" | "origen" | "destino";
 type ModoColor = "region" | "comunidad";
@@ -101,18 +101,10 @@ export default function MapaRed({
   }, [rango, meses]);
 
   // --- Selección geográfica: subregión / municipio ---
-  const haySeleccion =
-    filtros.municipios.length > 0 || filtros.regiones.length > 0;
-
-  const esSeleccionado = useMemo(() => {
-    const munis = new Set(filtros.municipios);
-    const regs = new Set(filtros.regiones);
-    return (nombre: string, region: string) => {
-      if (munis.size) return munis.has(nombre);
-      if (regs.size) return regs.has(region);
-      return false;
-    };
-  }, [filtros.municipios, filtros.regiones]);
+  const { haySeleccion, seleccionados, conectados } = useMemo(
+    () => calcularSeleccion(nodos, flujos, filtros),
+    [nodos, flujos, filtros]
+  );
 
   // Filtro por comunidad RAS (lo controla la vista Redes·RAS)
   const comPorNombre = useMemo(
@@ -128,31 +120,28 @@ export default function MapaRed({
     if (comunidadSel != null) setModoColor("comunidad");
   }, [comunidadSel]);
 
-  const { seleccionados, conectados } = useMemo(() => {
-    const sel = new Set<string>();
-    const con = new Set<string>();
-    if (!haySeleccion) return { seleccionados: sel, conectados: con };
-    for (const n of nodos)
-      if (esSeleccionado(n.nombre, n.region)) sel.add(n.nombre);
-    for (const f of flujos) {
-      if (sel.has(f.o)) con.add(f.d);
-      if (sel.has(f.d)) con.add(f.o);
-    }
-    for (const s of sel) con.delete(s);
-    return { seleccionados: sel, conectados: con };
-  }, [nodos, flujos, haySeleccion, esSeleccionado]);
+  // Sin selección, los municipios que solo tocan corredores no principales
+  // (si el JSON los marca) quedan fuera de la vista general.
+  const baseNodo = useMemo(
+    () => new Map(nodos.map((n) => [n.nombre, n.base])),
+    [nodos]
+  );
 
   const visible = useCallback(
     (nombre: string) =>
       enComunidad(nombre) &&
-      (!haySeleccion || seleccionados.has(nombre) || conectados.has(nombre)),
-    [haySeleccion, seleccionados, conectados, enComunidad]
+      (haySeleccion
+        ? seleccionados.has(nombre) || conectados.has(nombre)
+        : baseNodo.get(nombre) !== false),
+    [haySeleccion, seleccionados, conectados, enComunidad, baseNodo]
   );
   const flujoVisible = useCallback(
-    (f: { o: string; d: string }) =>
+    (f: { o: string; d: string; base?: boolean }) =>
       enComunidad(f.o) &&
       enComunidad(f.d) &&
-      (!haySeleccion || seleccionados.has(f.o) || seleccionados.has(f.d)),
+      (haySeleccion
+        ? seleccionados.has(f.o) || seleccionados.has(f.d)
+        : f.base !== false),
     [haySeleccion, seleccionados, enComunidad]
   );
 
@@ -258,6 +247,13 @@ export default function MapaRed({
     for (const n of nodosVisibles) if (n.comunidad != null) ids.add(n.comunidad);
     return [...ids].sort((a, b) => a - b);
   }, [nodosVisibles]);
+
+  // Al elegir un territorio el mapa arranca en sus 10 corredores más fuertes
+  // (legible); al limpiar la selección vuelve a mostrar todos.
+  const hayFiltroTerr = haySeleccion;
+  useEffect(() => {
+    setFocoFlujo(hayFiltroTerr ? "top10" : "todos");
+  }, [hayFiltroTerr]);
 
   // --- Auto-encuadre al filtrar: acerca a los nodos visibles ---
   const claveSel = `${filtros.regiones.join()}|${filtros.municipios.join()}|c${comunidadSel ?? ""}`;
@@ -374,14 +370,55 @@ export default function MapaRed({
   };
 
   // --- Lugares fuera de Antioquia (borde del recuadro) ---
+  // Se reagregan desde el detalle por municipio y mes: así responden al
+  // período y a la selección (solo los externos de los municipios elegidos).
+  // Sin ese detalle (JSON antiguo) se usa el resumen departamental.
   const externos = useMemo(() => {
     if (!data.externos) return [];
     const pos = new Map(nodos.map((n) => [n.nombre, proy(n.lon, n.lat)]));
     const m = 18;
-    const arm = (
-      arr: NonNullable<TMapaRed["externos"]>["destinos"],
-      tipo: "salida" | "entrada"
-    ) =>
+
+    type Acc = { valor: number; porAncla: Map<string, number> };
+    const detalle = data.externos.por_muni;
+    const lugares = data.externos.lugares;
+    let salidas: { nombre: string; lon: number; lat: number; valor: number; ancla: string | null }[];
+    let entradas: typeof salidas;
+
+    if (detalle && lugares) {
+      const acc = { s: new Map<string, Acc>(), e: new Map<string, Acc>() };
+      for (const r of detalle) {
+        if (haySeleccion && !seleccionados.has(r.m)) continue;
+        if (!enComunidad(r.m)) continue;
+        let v = 0;
+        for (const [i, sv] of r.serie)
+          if (!rango || (i >= rango[0] && i <= rango[1])) v += sv;
+        if (v <= 0) continue;
+        const mapa = acc[r.t];
+        const a = mapa.get(r.l) ?? { valor: 0, porAncla: new Map() };
+        a.valor += v;
+        a.porAncla.set(r.m, (a.porAncla.get(r.m) ?? 0) + v);
+        mapa.set(r.l, a);
+      }
+      const armar = (mapa: Map<string, Acc>) =>
+        [...mapa.entries()]
+          .map(([nombre, a]) => {
+            const [lon, lat] = lugares[nombre];
+            const ancla =
+              [...a.porAncla.entries()].sort(([, x], [, y]) => y - x)[0]?.[0] ??
+              null;
+            return { nombre, lon, lat, valor: a.valor, ancla };
+          })
+          .sort((x, y) => y.valor - x.valor)
+          .slice(0, 9);
+      salidas = armar(acc.s);
+      entradas = armar(acc.e);
+    } else {
+      if (haySeleccion) return [];
+      salidas = data.externos.destinos;
+      entradas = data.externos.origenes;
+    }
+
+    const arm = (arr: typeof salidas, tipo: "salida" | "entrada") =>
       arr.map((e) => {
         const [rx, ry] = proy(e.lon, e.lat);
         // pequeño desfase por tipo para que no se solapen salida y entrada
@@ -391,11 +428,16 @@ export default function MapaRed({
         const a = (e.ancla && pos.get(e.ancla)) || [ANCHO / 2, ALTO * 0.62];
         return { ...e, tipo, x, y, ax: a[0], ay: a[1] };
       });
-    return [
-      ...arm(data.externos.destinos, "salida"),
-      ...arm(data.externos.origenes, "entrada"),
-    ];
-  }, [data.externos, nodos, proy]);
+    return [...arm(salidas, "salida"), ...arm(entradas, "entrada")];
+  }, [
+    data.externos,
+    nodos,
+    proy,
+    haySeleccion,
+    seleccionados,
+    enComunidad,
+    rango,
+  ]);
   const maxExterno = Math.max(1, ...externos.map((e) => e.valor));
   const colorExterno = (t: "salida" | "entrada") =>
     t === "salida" ? "#d97706" : "#0ea5e9";
@@ -558,11 +600,23 @@ export default function MapaRed({
         )}
       </div>
 
-      {haySeleccion && (
+      {haySeleccion && seleccionados.size === 0 && (
+        <p className="mb-3 text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+          La selección no tiene remisiones en este mapa (por el período elegido,
+          porque el municipio no figura entre los de este análisis o porque
+          queda fuera del departamento). Prueba con otro municipio o amplía el
+          rango de meses.
+        </p>
+      )}
+      {haySeleccion && seleccionados.size > 0 && (
         <p className="mb-3 text-xs text-savia-deep bg-savia-ice border border-savia-mint rounded-lg px-3 py-2">
-          Vista acercada a <b>{seleccionados.size}</b> municipio(s) de la
-          selección y <b>{conectados.size}</b> conectado(s) por remisión. El
-          resto de la red está oculto.
+          Selección: <b>{seleccionados.size}</b> municipio(s), con{" "}
+          <b>{conectados.size}</b> conectado(s) por remisión (
+          <b>{flujos.filter(flujoVisible).length}</b> corredores). El resto de la
+          red y los lugares fuera de Antioquia no relacionados están ocultos
+          {focoFlujo === "todos"
+            ? "."
+            : "; se muestran los corredores más fuertes — cambia a «Todos los corredores» para ver las demás conexiones."}
         </p>
       )}
 

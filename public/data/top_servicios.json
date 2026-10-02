@@ -1,15 +1,15 @@
 [
   {
     "nombre": "Medicina Interna (Consulta Ext)",
-    "count": 18104
+    "count": 18632
   },
   {
     "nombre": "Imagenes Diagnosticas - No Ionizantes",
-    "count": 15040
+    "count": 16166
   },
   {
     "nombre": "Cirugia General (Quirurgico)",
-    "count": 14045
+    "count": 14552
   },
   {
     "nombre": "Radiologia E Imagenes Diagnosticas",
@@ -17,26 +17,26 @@
   },
   {
     "nombre": "Ortopedia Y/O Traumatologia (Consulta Ext)",
-    "count": 11720
+    "count": 12131
   },
   {
     "nombre": "Ginecobstetricia (Consulta Ext)",
-    "count": 9120
+    "count": 9453
   },
   {
     "nombre": "Psiquiatria (Consulta Ext)",
-    "count": 7521
+    "count": 7897
   },
   {
     "nombre": "Imagenes Diagnosticas- Ionizantes",
-    "count": 6362
+    "count": 6705
   },
   {
     "nombre": "Pediatria (Consulta Ext)",
-    "count": 6199
+    "count": 6342
   },
   {
     "nombre": "Cuidado Intensivo Adultos",
-    "count": 5518
+    "count": 5691
   }
 ]

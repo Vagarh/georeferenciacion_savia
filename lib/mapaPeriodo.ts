@@ -70,3 +70,42 @@ export function useMapaPeriodo(data: TMapaRed): MapaPeriodo {
 
   return { nodos, flujos, meses, rango, recortado: rango != null };
 }
+
+// =====================================================================
+// Selección geográfica (subregión / municipio) compartida por mapa y vista
+// =====================================================================
+
+export interface SeleccionMapa {
+  /** ¿Hay un municipio o subregión elegidos en los filtros? */
+  haySeleccion: boolean;
+  /** Nodos elegidos directamente (el municipio o los de la subregión). */
+  seleccionados: Set<string>;
+  /** Nodos que se remiten con alguno de los elegidos (vecindario). */
+  conectados: Set<string>;
+}
+
+export function calcularSeleccion(
+  nodos: TMapaRed["nodos"],
+  flujos: TMapaRed["flujos"],
+  filtros: { municipios: string[]; regiones: string[] }
+): SeleccionMapa {
+  const haySeleccion =
+    filtros.municipios.length > 0 || filtros.regiones.length > 0;
+  const seleccionados = new Set<string>();
+  const conectados = new Set<string>();
+  if (!haySeleccion) return { haySeleccion, seleccionados, conectados };
+
+  // El municipio tiene prioridad sobre la subregión (igual que el filtro).
+  const munis = new Set(filtros.municipios);
+  const regs = new Set(filtros.regiones);
+  for (const n of nodos) {
+    const elegido = munis.size ? munis.has(n.nombre) : regs.has(n.region);
+    if (elegido) seleccionados.add(n.nombre);
+  }
+  for (const f of flujos) {
+    if (seleccionados.has(f.o)) conectados.add(f.d);
+    if (seleccionados.has(f.d)) conectados.add(f.o);
+  }
+  for (const s of seleccionados) conectados.delete(s);
+  return { haySeleccion, seleccionados, conectados };
+}

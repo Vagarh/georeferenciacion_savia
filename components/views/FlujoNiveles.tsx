@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import clsx from "clsx";
 import {
   ArrowUpNarrowWide,
@@ -17,11 +17,23 @@ import Hero from "@/components/Hero";
 import ChartCard from "@/components/ChartCard";
 import DiagramaNiveles from "@/components/DiagramaNiveles";
 import PanelInsights, { ComoLeer } from "@/components/PanelInsights";
+import FiltroBar from "@/components/FiltroBar";
 import { useDatos } from "@/lib/useDatos";
+import { useFiltros } from "@/lib/filtros";
+import {
+  agregarNiveles,
+  hayFiltroGeo,
+  TABLA_VACIA,
+  type TablaColumnar,
+} from "@/lib/territorio";
 import {
   fmtEntero,
   fmtPct,
   fmtDecimal,
+  HECHOS_RAW_VACIO,
+  DIMS_VACIAS,
+  mapaMunicipioRegion,
+  type HechosRaw,
   type MovilidadNiveles,
   type Resumen,
 } from "@/lib/datos";
@@ -51,18 +63,47 @@ const VACIO: MovilidadNiveles = {
 };
 
 export default function FlujoNiveles() {
-  const [data] = useDatos<MovilidadNiveles>("movilidad_niveles", VACIO);
+  const [base] = useDatos<MovilidadNiveles>("movilidad_niveles", VACIO);
   const [resumen] = useDatos<Resumen | null>("resumen", null);
+  const [rawH] = useDatos<HechosRaw>("hechos", HECHOS_RAW_VACIO);
   const [tipo, setTipo] = useState<Tipo>("referencia");
+  const { filtros } = useFiltros();
+
+  // La tabla por municipio solo se descarga cuando hay un filtro activo.
+  const filtrado = hayFiltroGeo(filtros);
+  const [tabla] = useDatos<TablaColumnar>("hechos_niveles", TABLA_VACIA, filtrado);
+  const dims = rawH.dims ?? DIMS_VACIAS;
+  const hayHechos = (rawH.filas?.length ?? 0) > 0;
+  const agg = useMemo(
+    () =>
+      filtrado
+        ? agregarNiveles(tabla, mapaMunicipioRegion(dims), filtros, base)
+        : null,
+    [filtrado, tabla, dims, filtros, base]
+  );
+  const data = agg ? agg.movilidad : base;
 
   const b = data[tipo];
   const conNivel = b.sube + b.igual + b.baja || 1;
 
-  const estados = resumen
+  const estadosBase = agg
+    ? {
+        cerradas: agg.estados.cerradas,
+        canceladas: agg.estados.canceladas,
+        anuladas: agg.estados.anuladas,
+      }
+    : resumen
+    ? {
+        cerradas: resumen.cerradas,
+        canceladas: resumen.canceladas,
+        anuladas: resumen.anuladas,
+      }
+    : null;
+  const estados = estadosBase
     ? [
-        { name: "Cerrada", value: resumen.cerradas, color: "#00954c" },
-        { name: "Cancelada", value: resumen.canceladas, color: "#f2a900" },
-        { name: "Anulada", value: resumen.anuladas, color: "#c2cec8" },
+        { name: "Cerrada", value: estadosBase.cerradas, color: "#00954c" },
+        { name: "Cancelada", value: estadosBase.canceladas, color: "#f2a900" },
+        { name: "Anulada", value: estadosBase.anuladas, color: "#c2cec8" },
       ]
     : [];
   const totalEstados = estados.reduce((s, e) => s + e.value, 0) || 1;
@@ -75,6 +116,8 @@ export default function FlujoNiveles() {
         resaltado="Niveles"
         descripcion="Cómo se mueve el paciente entre niveles de complejidad al ser remitido y qué proporción de las remisiones cierra efectivamente su ciclo. Una referencia bien indicada escala de nivel; una contrarreferencia devuelve al paciente a su nivel de origen para seguimiento."
       />
+
+      {hayHechos && <FiltroBar dims={dims} soloGeo />}
 
       {/* Selector de tipo */}
       <div className="inline-flex rounded-lg border border-brand-gray3 overflow-hidden text-sm font-bold">
@@ -184,7 +227,9 @@ export default function FlujoNiveles() {
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ChartCard
           titulo="Desenlace de la gestión"
-          subtitulo="Estado final del evento de remisión · período completo"
+          subtitulo={`Estado final del evento de remisión · ${
+            filtrado ? "con los filtros aplicados" : "período completo"
+          }`}
         >
           <div className="space-y-4">
             {estados.map((e) => {

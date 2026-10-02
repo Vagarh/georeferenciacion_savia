@@ -1,62 +1,62 @@
 [
   {
     "sede": "Empresa Social Del Estado Hospital Marco Fidel Suarez",
-    "remisiones": 7812
+    "remisiones": 8028
   },
   {
     "sede": "ESE Hospital San Rafael De Itagui",
-    "remisiones": 6472
+    "remisiones": 6598
   },
   {
     "sede": "IPS Universitaria Sede Clinica Leon Xiii",
-    "remisiones": 4801
+    "remisiones": 4867
   },
   {
     "sede": "ESE Hospital San Vicente De Paul De Caldas",
-    "remisiones": 4571
+    "remisiones": 4700
   },
   {
     "sede": "ESE Hospital San Rafael De Yolombo",
-    "remisiones": 4263
+    "remisiones": 4372
   },
   {
     "sede": "Coraxon Sas",
-    "remisiones": 4219
+    "remisiones": 4361
   },
   {
     "sede": "Clinica Angiosur",
-    "remisiones": 4069
+    "remisiones": 4303
   },
   {
     "sede": "ESE Hospital San Juan De Dios Yarumal",
-    "remisiones": 3756
+    "remisiones": 3899
   },
   {
     "sede": "Sociedad Medica Antioquena Sa Soma",
-    "remisiones": 3268
+    "remisiones": 3399
   },
   {
     "sede": "ESE Hospital General De Medellin Luz Castro De Gutierrez",
-    "remisiones": 3260
+    "remisiones": 3353
   },
   {
     "sede": "ESE Hospital Mental De Antioquia",
-    "remisiones": 2876
+    "remisiones": 3015
   },
   {
     "sede": "ESE Hospital San Juan De Dios Antioquia (Santa Fe De Antioquia)",
-    "remisiones": 2865
+    "remisiones": 2957
   },
   {
     "sede": "Hospital Pablo Tobon Uribe",
-    "remisiones": 2759
-  },
-  {
-    "sede": "ESE Hospital San Juan De Dios (Rionegro)",
-    "remisiones": 2417
+    "remisiones": 2860
   },
   {
     "sede": "Corporacion Colombia Saludable",
-    "remisiones": 2397
+    "remisiones": 2629
+  },
+  {
+    "sede": "ESE Hospital San Juan De Dios (Rionegro)",
+    "remisiones": 2494
   }
 ]

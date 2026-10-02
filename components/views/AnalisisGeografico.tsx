@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import {
   BarChart,
   Bar,
@@ -24,9 +25,21 @@ import Hero from "@/components/Hero";
 import ChartCard from "@/components/ChartCard";
 import ChartTooltip from "@/components/ChartTooltip";
 import PanelInsights from "@/components/PanelInsights";
+import FiltroBar from "@/components/FiltroBar";
 import { useDatos } from "@/lib/useDatos";
+import { useFiltros } from "@/lib/filtros";
+import {
+  agregarGeografico,
+  hayFiltroGeo,
+  TABLA_VACIA,
+  type TablaColumnar,
+} from "@/lib/territorio";
 import {
   fmtEntero,
+  HECHOS_RAW_VACIO,
+  DIMS_VACIAS,
+  mapaMunicipioRegion,
+  type HechosRaw,
   PALETA,
   escalaVerde,
   type Resumen,
@@ -37,13 +50,42 @@ import {
 
 export default function AnalisisGeografico() {
   const [resumen] = useDatos<Resumen | null>("resumen", null);
-  const [regOrigen] = useDatos<RegionRanking[]>("regiones_origen", []);
-  const [regDestino] = useDatos<RegionRanking[]>("regiones_destino", []);
-  const [conexiones] = useDatos<Conexion[]>("top_conexiones", []);
-  const [matriz] = useDatos<MatrizFlujo>("matriz_flujo_regiones", {
+  const [regOrigenBase] = useDatos<RegionRanking[]>("regiones_origen", []);
+  const [regDestinoBase] = useDatos<RegionRanking[]>("regiones_destino", []);
+  const [conexionesBase] = useDatos<Conexion[]>("top_conexiones", []);
+  const [matrizBase] = useDatos<MatrizFlujo>("matriz_flujo_regiones", {
     regiones: [],
     celdas: [],
   });
+  const [rawH] = useDatos<HechosRaw>("hechos", HECHOS_RAW_VACIO);
+  const { filtros } = useFiltros();
+
+  // Las tablas por municipio solo se descargan cuando hay un filtro activo.
+  const filtrado = hayFiltroGeo(filtros);
+  const [flujo] = useDatos<TablaColumnar>("hechos_flujo", TABLA_VACIA, filtrado);
+  const [sedes] = useDatos<TablaColumnar>("hechos_sedes", TABLA_VACIA, filtrado);
+  const dims = rawH.dims ?? DIMS_VACIAS;
+  const hayHechos = (rawH.filas?.length ?? 0) > 0;
+  const geo = useMemo(
+    () =>
+      filtrado
+        ? agregarGeografico(flujo, sedes, mapaMunicipioRegion(dims), filtros)
+        : null,
+    [filtrado, flujo, sedes, dims, filtros]
+  );
+
+  const porMuni = geo?.porMunicipio ?? false;
+  const regOrigen = geo ? geo.origen : regOrigenBase;
+  const regDestino = geo ? geo.destino : regDestinoBase;
+  const conexiones = geo ? geo.conexiones : conexionesBase;
+  const matriz = geo
+    ? geo.matriz
+    : {
+        filas: matrizBase.regiones,
+        columnas: matrizBase.regiones,
+        celdas: matrizBase.celdas,
+      };
+  const sufijo = filtrado ? " · con filtros" : "";
 
   const regionTop = regOrigen[0]?.region ?? "—";
   const maxFlujo = conexiones[0]?.flujo ?? 1;
@@ -62,18 +104,20 @@ export default function AnalisisGeografico() {
         descripcion="Origen y destino de las remisiones por región de Antioquia, matriz de flujo interregional y las conexiones sede a sede más intensas de la red."
       />
 
+      {hayHechos && <FiltroBar dims={dims} soloGeo />}
+
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <KPICard
           title="Sedes que remiten"
-          value={fmtEntero(resumen?.sedes_origen)}
-          subtitle="Prestadores de origen"
+          value={fmtEntero(geo ? geo.sedesOrigen : resumen?.sedes_origen)}
+          subtitle={`Prestadores de origen${sufijo}`}
           icon={<Building2 size={18} />}
           delay={0}
         />
         <KPICard
           title="Sedes receptoras"
-          value={fmtEntero(resumen?.sedes_destino)}
-          subtitle="Prestadores de destino"
+          value={fmtEntero(geo ? geo.sedesDestino : resumen?.sedes_destino)}
+          subtitle={`Prestadores de destino${sufijo}`}
           icon={<Building2 size={18} />}
           iconBg="#e0f2f3"
           iconColor="#009ca6"
@@ -81,15 +125,15 @@ export default function AnalisisGeografico() {
         />
         <KPICard
           title="Municipios"
-          value={fmtEntero(resumen?.municipios_origen)}
-          subtitle="Con actividad de remisión"
+          value={fmtEntero(geo ? geo.municipios : resumen?.municipios_origen)}
+          subtitle={`Con actividad de remisión${sufijo}`}
           icon={<MapPinned size={18} />}
           iconBg="#eaf2df"
           iconColor="#5c8a1f"
           delay={150}
         />
         <KPICard
-          title="Región líder"
+          title={porMuni ? "Municipio líder" : "Región líder"}
           value={regionTop}
           subtitle={`${fmtEntero(regOrigen[0]?.remisiones)} remisiones de origen`}
           icon={<MapPinned size={18} />}
@@ -100,7 +144,7 @@ export default function AnalisisGeografico() {
       {/* Barras origen / destino */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <ChartCard
-          titulo="Remisiones por región de origen"
+          titulo={`Remisiones por ${porMuni ? "municipio" : "región"} de origen`}
           subtitulo="Dónde se genera la solicitud"
         >
           <div className="h-[360px]">
@@ -147,8 +191,12 @@ export default function AnalisisGeografico() {
         </ChartCard>
 
         <ChartCard
-          titulo="Remisiones por región de destino"
-          subtitulo="Dónde se resuelve la atención"
+          titulo={`Remisiones por ${porMuni ? "municipio" : "región"} de destino`}
+          subtitulo={
+            porMuni
+              ? "Municipios que reciben a los pacientes · top 12"
+              : "Dónde se resuelve la atención"
+          }
         >
           <div className="h-[360px]">
             <ResponsiveContainer width="100%" height="100%">
@@ -197,16 +245,18 @@ export default function AnalisisGeografico() {
       {/* Matriz de flujo interregional */}
       <ChartCard
         titulo="Matriz de flujo interregional"
-        subtitulo="Origen (fila) → Destino (columna) · top 10 regiones"
+        subtitulo={`Origen (fila: ${
+          porMuni ? "municipio" : "subregión"
+        }) → Destino (columna: subregión) · top 10`}
         className="overflow-x-auto"
       >
-        {matriz.regiones.length > 0 ? (
+        {matriz.filas.length > 0 ? (
           <div className="min-w-[720px]">
             <table className="w-full border-separate border-spacing-1">
               <thead>
                 <tr>
                   <th className="w-32" />
-                  {matriz.regiones.map((r) => (
+                  {matriz.columnas.map((r) => (
                     <th
                       key={r}
                       className="text-[10px] font-bold text-brand-muted uppercase tracking-wide pb-2 align-bottom"
@@ -221,12 +271,12 @@ export default function AnalisisGeografico() {
                 </tr>
               </thead>
               <tbody>
-                {matriz.regiones.map((o) => (
+                {matriz.filas.map((o) => (
                   <tr key={o}>
                     <td className="text-[11px] font-bold text-savia-forest pr-3 text-right whitespace-nowrap">
                       {o}
                     </td>
-                    {matriz.regiones.map((d) => {
+                    {matriz.columnas.map((d) => {
                       const v = celda(o, d);
                       const t = v / maxCelda;
                       return (
@@ -256,7 +306,11 @@ export default function AnalisisGeografico() {
       {/* Top conexiones sede a sede */}
       <ChartCard
         titulo="Conexiones sede a sede más intensas"
-        subtitulo="Top 20 pares prestador de origen → destino (matriz OD)"
+        subtitulo={
+          filtrado
+            ? "Top 20 pares prestador de origen → destino · con los filtros aplicados"
+            : "Top 20 pares prestador de origen → destino (matriz OD)"
+        }
         accion={
           <span className="badge-green">
             <Network size={13} /> Red RAS

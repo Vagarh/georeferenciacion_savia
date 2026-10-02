@@ -159,7 +159,7 @@ export default function InformeFinal() {
     focos.push(
       `La tasa de efectividad en el alcance actual es ${fmtPct(agg.tasaEfectividad, 1)} (eventos cerrados). Revisar el cierre y el registro de la gestión eleva la trazabilidad.`
     );
-  if (!usaMuni && agg.pctReferencias > 90)
+  if (agg.pctReferencias > 90)
     focos.push(
       `Las contrarreferencias son solo el ${fmtPct(100 - agg.pctReferencias, 1)} del flujo. Sin el registro del retorno del paciente, el ciclo de referencia queda incompleto.`
     );
@@ -262,13 +262,7 @@ export default function InformeFinal() {
           icon={<ArrowLeftRight size={18} />}
           titulo="Referencia y contrarreferencia"
         >
-          {usaMuni ? (
-            <p>
-              Al filtrar por municipio no hay desglose por tipo de solicitud. El
-              total del alcance es <b>{fmtEntero(agg.total)}</b> remisiones.
-            </p>
-          ) : (
-            <>
+          <>
               <p>
                 El <b>{fmtPct(agg.pctReferencias, 1)}</b> del flujo son
                 referencias y <b>{fmtEntero(agg.contrarreferencias)}</b> son
@@ -279,8 +273,7 @@ export default function InformeFinal() {
                 contrarreferencia limitan la trazabilidad del retorno del
                 paciente a su nivel de origen.
               </p>
-            </>
-          )}
+          </>
         </Seccion>
 
         <Seccion icon={<Timer size={18} />} titulo="Oportunidad y resolución">

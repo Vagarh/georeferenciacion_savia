@@ -13,7 +13,7 @@ import {
   Scatter,
   ZAxis,
 } from "recharts";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import {
   Layers,
   Building2,
@@ -29,11 +29,16 @@ import Hero from "@/components/Hero";
 import ChartCard from "@/components/ChartCard";
 import ChartTooltip from "@/components/ChartTooltip";
 import PanelInsights from "@/components/PanelInsights";
+import FiltroBar from "@/components/FiltroBar";
 import { useDatos } from "@/lib/useDatos";
+import { useFiltros } from "@/lib/filtros";
 import {
   fmtEntero,
   fmtDecimal,
   fmtNum,
+  HECHOS_RAW_VACIO,
+  DIMS_VACIAS,
+  type HechosRaw,
   PALETA,
   type ZaidResumen,
   type ZaidFila,
@@ -156,8 +161,36 @@ function ZonaDetalle({ z }: { z: ZaidFila | null }) {
 
 export default function ZonasZAID() {
   const [resumen] = useDatos<ZaidResumen | null>("zaid_resumen", null);
-  const [zaids] = useDatos<ZaidFila[]>("zaid_caracterizacion", []);
+  const [todas] = useDatos<ZaidFila[]>("zaid_caracterizacion", []);
+  const [rawH] = useDatos<HechosRaw>("hechos", HECHOS_RAW_VACIO);
+  const { filtros } = useFiltros();
   const [zaidSel, setZaidSel] = useState<string | null>(null);
+
+  // Una ZAID agrupa sedes de varios municipios: con filtro territorial se
+  // muestran las zonas que incluyen al menos un municipio/subregión elegidos.
+  const dims = rawH.dims ?? DIMS_VACIAS;
+  const hayHechos = (rawH.filas?.length ?? 0) > 0;
+  const filtrado = filtros.municipios.length > 0 || filtros.regiones.length > 0;
+  const zaids = useMemo(() => {
+    if (!filtrado) return todas;
+    return todas.filter((z) => {
+      if (
+        filtros.municipios.length &&
+        !z.municipios.some((m) => filtros.municipios.includes(m))
+      )
+        return false;
+      if (
+        !filtros.municipios.length &&
+        filtros.regiones.length &&
+        !z.regiones.some((r) => filtros.regiones.includes(r))
+      )
+        return false;
+      return true;
+    });
+  }, [todas, filtros.municipios, filtros.regiones, filtrado]);
+  const totalSedes = zaids.reduce((a, z) => a + z.num_sedes, 0);
+  const zonaMayor = Math.max(0, ...zaids.map((z) => z.num_sedes));
+  const promedioSedes = zaids.length ? totalSedes / zaids.length : 0;
   const zaidsOrden = [...zaids].sort((a, b) => b.num_sedes - a.num_sedes);
   const zonaActiva =
     zaidsOrden.find((z) => z.zaid === zaidSel) ?? zaidsOrden[0] ?? null;
@@ -190,17 +223,26 @@ export default function ZonasZAID() {
         descripcion="Síntesis por consenso (voting) entre la partición de clustering (RAD) y la de comunidades (RAS). Cada ZAID agrupa sedes que coinciden en ambos enfoques, definiendo territorios operativos para la gestión de la red."
       />
 
+      {hayHechos && <FiltroBar dims={dims} soloGeo sinPeriodo />}
+      {filtrado && (
+        <p className="text-xs text-brand-muted -mt-8">
+          Mostrando las <b>{fmtEntero(zaids.length)}</b> zonas ZAID que incluyen
+          sedes del territorio elegido. Las zonas se calculan sobre toda la red,
+          por eso no dependen del período.
+        </p>
+      )}
+
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <KPICard
           title="Zonas ZAID"
-          value={fmtEntero(resumen?.num_zaid)}
+          value={fmtEntero(filtrado ? zaids.length : resumen?.num_zaid)}
           subtitle="Territorios definidos por consenso"
           icon={<Layers size={18} />}
           delay={0}
         />
         <KPICard
           title="Sedes caracterizadas"
-          value={fmtEntero(resumen?.total_sedes)}
+          value={fmtEntero(filtrado ? totalSedes : resumen?.total_sedes)}
           subtitle="Con ZAID asignada"
           icon={<Building2 size={18} />}
           iconBg="#e0f2f3"
@@ -209,8 +251,10 @@ export default function ZonasZAID() {
         />
         <KPICard
           title="Zona más grande"
-          value={fmtEntero(resumen?.sedes_zona_mayor)}
-          subtitle={`Promedio: ${fmtDecimal(resumen?.promedio_sedes)} sedes/zona`}
+          value={fmtEntero(filtrado ? zonaMayor : resumen?.sedes_zona_mayor)}
+          subtitle={`Promedio: ${fmtDecimal(
+            filtrado ? promedioSedes : resumen?.promedio_sedes
+          )} sedes/zona`}
           icon={<Crown size={18} />}
           iconBg="#eaf2df"
           iconColor="#5c8a1f"

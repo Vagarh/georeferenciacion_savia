@@ -1103,7 +1103,10 @@ def _lugar_ext(nombre: str) -> tuple[float, float] | None:
 
 
 def _calcular_externos(
-    df: pd.DataFrame, cent_por_nombre: dict, info_por_nombre: dict
+    df: pd.DataFrame,
+    cent_por_nombre: dict,
+    info_por_nombre: dict,
+    mes_idx: dict | None = None,
 ) -> dict:
     """Remisiones que cruzan la frontera del departamento (origen o destino).
 
@@ -1167,7 +1170,39 @@ def _calcular_externos(
         )
     origenes.sort(key=lambda x: x["valor"], reverse=True)
 
+    # --- Detalle por municipio de Antioquia y mes (para filtrar el mapa) ---
+    # t: "s" salida (destino fuera) · "e" entrada (origen fuera). ``l`` es el
+    # nombre del lugar externo y ``serie`` = [[idxMes, valor]].
+    por_muni: list[dict] = []
+    lugares: dict[str, list[float]] = {}
+    mes_idx = mes_idx or {}
+
+    def _acumular(sub: pd.DataFrame, col_ext: str, col_ant: str, tipo: str) -> None:
+        sub = sub.assign(
+            _m=sub["Fecha_Diligenciamiento_Solicitud"].dt.strftime("%Y-%m"),
+            _a=sub[col_ant].map(_sin_tildes),
+        )
+        sub = sub[sub["_a"].isin(ant_muni) & sub["_m"].isin(mes_idx.keys())]
+        for (a, ext), g in sub.groupby(["_a", col_ext]):
+            coord = _lugar_ext(str(ext))
+            if not coord:
+                continue
+            nombre_ext = _titulo(str(ext))
+            lugares[nombre_ext] = [coord[0], coord[1]]
+            serie = [
+                [mes_idx[m], int(v)]
+                for m, v in sorted(g.groupby("_m").size().items())
+            ]
+            por_muni.append(
+                {"m": _bonito(a), "t": tipo, "l": nombre_ext, "serie": serie}
+            )
+
+    _acumular(sal, "Municipio_Destino", "Municipio_Prestador", "s")
+    _acumular(ent, "Departamento_Prestador", "Municipio_Destino", "e")
+
     return {
+        "por_muni": por_muni,
+        "lugares": lugares,
         "total_salidas": int(mask_dest_ext.sum()),
         "total_entradas": int(mask_orig_ext.sum()),
         "pct_salidas": _num(int(mask_dest_ext.sum()) / total * 100 if total else 0),
@@ -1175,6 +1210,9 @@ def _calcular_externos(
         "destinos": destinos[:9],
         "origenes": origenes[:9],
     }
+
+
+TOP_FLUJOS_BASE = 180  # corredores visibles en la vista general del mapa
 
 
 def generar_mapa(df: pd.DataFrame) -> None:
@@ -1246,7 +1284,7 @@ def generar_mapa(df: pd.DataFrame) -> None:
         o, dd = r["o"], r["dd"]
         if o not in cent_por_nombre or dd not in cent_por_nombre:
             continue
-        if r["valor"] < 12:  # descarta ruido
+        if r["valor"] < 3:  # descarta ruido
             continue
         olon, olat = cent_por_nombre[o]
         dlon, dlat = cent_por_nombre[dd]
@@ -1267,11 +1305,12 @@ def generar_mapa(df: pd.DataFrame) -> None:
                 "dlon": round(dlon, 5),
                 "dlat": round(dlat, 5),
                 "valor": int(r["valor"]),
+                # Los 180 corredores principales forman la vista general; el
+                # resto solo aparece al aislar un municipio o subregión.
+                "base": len(flujos) < TOP_FLUJOS_BASE,
                 "serie": serie,
             }
         )
-        if len(flujos) >= 180:
-            break
 
     if not nodos:
         log.warning("Mapa: sin nodos con coordenadas — se omite")
@@ -1293,7 +1332,9 @@ def generar_mapa(df: pd.DataFrame) -> None:
             "nodos": nodos,
             "flujos": flujos,
             "comunidades": comunidades_info,
-            "externos": _calcular_externos(df, cent_por_nombre, info_por_nombre),
+            "externos": _calcular_externos(
+                df, cent_por_nombre, info_por_nombre, mes_idx
+            ),
             "bbox": bbox,
             "resumen": {
                 "municipios": len(nodos),
@@ -1383,7 +1424,7 @@ def generar_flujo_diagnosticos(df: pd.DataFrame) -> None:
             if o not in m_idx or dd not in m_idx or r["v"] < 2:
                 continue
             flujos.append([m_idx[o], m_idx[dd], int(r["v"])])
-            if len(flujos) >= 60:
+            if len(flujos) >= 400:
                 break
 
         rg = (
@@ -1542,9 +1583,9 @@ def generar_hechos(df: pd.DataFrame) -> None:
     """Dos tablas de hechos agregadas para los filtros del dashboard (sin PII).
 
     - ``hechos.json``      : mes × subregión × régimen × tipo × nivel.
-    - ``hechos_muni.json`` : mes × municipio (para el filtro de municipio; al
-      usarlo, el desglose por régimen, tipo y complejidad no aplica — solo
-      volumen y oportunidad de cierre).
+    - ``hechos_muni.json`` : mes × municipio × régimen × tipo × nivel (para el
+      filtro de municipio; conserva todos los desgloses, sin la subregión, que
+      el cliente repone desde ``dims.municipios_por_region``).
 
     Se separan para que ambos archivos queden pequeños. El cliente elige uno u
     otro según si hay municipios seleccionados.
@@ -1613,15 +1654,127 @@ def generar_hechos(df: pd.DataFrame) -> None:
     # Tabla por municipio (grano mínimo para que el archivo sea pequeño)
     g2 = (
         d[d["municipio"] != "Sin dato"]
-        .groupby(["mes", "municipio"])
+        .groupby(["mes", "municipio", "regimen", "tipo", "nivel"])
         .agg(**agg_kw)
         .reset_index()
     )
-    campos2, filas2 = _columnar(g2, ["mes", "municipio"])
+    campos2, filas2 = _columnar(g2, ["mes", "municipio", "regimen", "tipo", "nivel"])
     # La región de cada municipio se repone en el cliente a partir de
     # dims.municipios_por_region (ya viene en hechos.json).
     escribir_json(
         "hechos_muni", {"campos": campos2, "filas": filas2}, compacto=True
+    )
+
+
+def generar_hechos_territoriales(df: pd.DataFrame) -> None:
+    """Tablas agregadas para que el filtro de municipio recalcule las vistas
+    de Análisis Geográfico y Flujo entre Niveles (sin PII).
+
+    El municipio es el del prestador que remite (origen), igual que en
+    ``hechos_muni``.
+
+    - ``hechos_flujo.json``   : mes × municipio origen × municipio/región destino.
+    - ``hechos_sedes.json``   : mes × municipio origen × sede origen × sede destino
+      (sedes codificadas por índice en ``sedes``).
+    - ``hechos_niveles.json`` : mes × municipio × tipo × nivel origen × nivel destino.
+    """
+    d = df.dropna(subset=["Fecha_Diligenciamiento_Solicitud"]).copy()
+    d["mes"] = d["Fecha_Diligenciamiento_Solicitud"].dt.strftime("%Y-%m")
+    for col, sal in (("Municipio_Prestador", "mo"), ("Municipio_Destino", "md")):
+        d[sal] = (
+            d[col].map(lambda x: _titulo(str(x))).replace("", pd.NA).fillna("Sin dato")
+        )
+    d["rd"] = (
+        d["Region_Destino"].map(lambda x: _titulo(str(x))).replace("", pd.NA)
+        .fillna("Sin región")
+    )
+    d["cerrada"] = (d["Estado_Evento"].str.lower() == "cerrada").astype(int)
+    d = d[d["mo"] != "Sin dato"]
+
+    # --- Flujo municipio origen -> municipio destino ---
+    g = (
+        d.groupby(["mes", "mo", "md", "rd"])
+        .agg(n=("mes", "size"), cerradas=("cerrada", "sum"))
+        .reset_index()
+    )
+    escribir_json(
+        "hechos_flujo",
+        {
+            "campos": ["mes", "mo", "md", "rd", "n", "cerradas"],
+            "filas": [
+                [r.mes, r.mo, r.md, r.rd, int(r.n), int(r.cerradas)]
+                for r in g.itertuples()
+            ],
+        },
+        compacto=True,
+    )
+
+    # --- Sedes (origen -> destino) por municipio de origen ---
+    # Se excluyen las filas sin nombre de sede de origen o destino.
+    ds = d.dropna(subset=["Desc_Sede_Prestador", "Desc_Sede_Destino"]).copy()
+    ds["so"] = ds["Desc_Sede_Prestador"].map(lambda x: _titulo(str(x)))
+    ds["sd"] = ds["Desc_Sede_Destino"].map(lambda x: _titulo(str(x)))
+    sedes = sorted(set(ds["so"]) | set(ds["sd"]))
+    idx = {s: i for i, s in enumerate(sedes)}
+    g = ds.groupby(["mes", "mo", "so", "sd"]).size().reset_index(name="n")
+    escribir_json(
+        "hechos_sedes",
+        {
+            "sedes": sedes,
+            "campos": ["mes", "mo", "so", "sd", "n"],
+            "filas": [
+                [r.mes, r.mo, idx[r.so], idx[r.sd], int(r.n)]
+                for r in g.itertuples()
+            ],
+        },
+        compacto=True,
+    )
+
+    # --- Movilidad entre niveles por municipio ---
+    est = d["Estado_Evento"].str.lower()
+    d["tipo"] = d["tipo_solicitud"].map(
+        lambda t: "contrarreferencia" if "CONTRA" in _sin_tildes(t) else "referencia"
+    )
+    d["no"] = (
+        pd.to_numeric(d["Nivel_Complejidad_Prestador"], errors="coerce")
+        .fillna(0).astype(int)
+    )
+    d["nd"] = (
+        pd.to_numeric(d["Nivel_Complejidad_Destino"], errors="coerce")
+        .fillna(0).astype(int)
+    )
+    d["cancelada"] = (est == "cancelada").astype(int)
+    d["anulada"] = (est == "anulada").astype(int)
+    d["dias"] = pd.to_numeric(d["Tiempo_Dias_Cierre"], errors="coerce")
+    g = (
+        d.groupby(["mes", "mo", "tipo", "no", "nd"])
+        .agg(
+            n=("mes", "size"),
+            cerradas=("cerrada", "sum"),
+            canceladas=("cancelada", "sum"),
+            anuladas=("anulada", "sum"),
+            dias_sum=("dias", "sum"),
+            dias_cnt=("dias", "count"),
+        )
+        .reset_index()
+    )
+    escribir_json(
+        "hechos_niveles",
+        {
+            "campos": [
+                "mes", "mo", "tipo", "no", "nd",
+                "n", "cerradas", "canceladas", "anuladas", "dias_sum", "dias_cnt",
+            ],
+            "filas": [
+                [
+                    r.mes, r.mo, r.tipo, int(r.no), int(r.nd), int(r.n),
+                    int(r.cerradas), int(r.canceladas), int(r.anuladas),
+                    int(round(float(r.dias_sum))), int(r.dias_cnt),
+                ]
+                for r in g.itertuples()
+            ],
+        },
+        compacto=True,
     )
 
 
@@ -1677,6 +1830,7 @@ def main() -> None:
 
     log.info("Generando tabla de hechos para filtros ...")
     generar_hechos(df)
+    generar_hechos_territoriales(df)
 
     # Índice de archivos generados
     archivos = sorted(p.name for p in DIR_SALIDA.glob("*.json") if p.name != "_index.json")

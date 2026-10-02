@@ -1,30 +1,30 @@
 {
   "referencia": {
-    "total": 150866,
-    "sube": 48382,
-    "igual": 66429,
-    "baja": 8856,
-    "sin_dato": 27199,
-    "pct_sube": 39.12280559890674,
-    "pct_igual": 53.71602771960183,
-    "pct_baja": 7.161166681491425,
-    "dias_promedio": 2.87,
-    "tasa_resolucion": 53.44,
+    "total": 156414,
+    "sube": 49915,
+    "igual": 69082,
+    "baja": 9199,
+    "sin_dato": 28218,
+    "pct_sube": 38.93647227682611,
+    "pct_igual": 53.88779681113295,
+    "pct_baja": 7.175730912040937,
+    "dias_promedio": 2.91,
+    "tasa_resolucion": 53.22,
     "celdas": [
       {
         "o": 1,
         "d": 1,
-        "value": 43005
+        "value": 44708
       },
       {
         "o": 1,
         "d": 2,
-        "value": 25485
+        "value": 26244
       },
       {
         "o": 1,
         "d": 3,
-        "value": 18110
+        "value": 18761
       },
       {
         "o": 1,
@@ -34,37 +34,37 @@
       {
         "o": 2,
         "d": 1,
-        "value": 1262
+        "value": 1339
       },
       {
         "o": 2,
         "d": 2,
-        "value": 11878
+        "value": 12355
       },
       {
         "o": 2,
         "d": 3,
-        "value": 4771
+        "value": 4893
       },
       {
         "o": 2,
         "d": 4,
-        "value": 4
+        "value": 5
       },
       {
         "o": 3,
         "d": 1,
-        "value": 980
+        "value": 1014
       },
       {
         "o": 3,
         "d": 2,
-        "value": 6614
+        "value": 6846
       },
       {
         "o": 3,
         "d": 3,
-        "value": 11546
+        "value": 12019
       },
       {
         "o": 3,
@@ -74,31 +74,31 @@
     ]
   },
   "contrarreferencia": {
-    "total": 5123,
-    "sube": 1356,
-    "igual": 1480,
-    "baja": 1258,
-    "sin_dato": 1029,
-    "pct_sube": 33.12164142647777,
-    "pct_igual": 36.1504640937958,
-    "pct_baja": 30.72789447972643,
-    "dias_promedio": 2.25,
-    "tasa_resolucion": 60.37,
+    "total": 5277,
+    "sube": 1380,
+    "igual": 1529,
+    "baja": 1312,
+    "sin_dato": 1056,
+    "pct_sube": 32.69367448471926,
+    "pct_igual": 36.223643686330256,
+    "pct_baja": 31.082681828950488,
+    "dias_promedio": 2.28,
+    "tasa_resolucion": 60.39,
     "celdas": [
       {
         "o": 1,
         "d": 1,
-        "value": 754
+        "value": 773
       },
       {
         "o": 1,
         "d": 2,
-        "value": 916
+        "value": 929
       },
       {
         "o": 1,
         "d": 3,
-        "value": 333
+        "value": 340
       },
       {
         "o": 2,
@@ -108,27 +108,27 @@
       {
         "o": 2,
         "d": 2,
-        "value": 318
+        "value": 339
       },
       {
         "o": 2,
         "d": 3,
-        "value": 107
+        "value": 111
       },
       {
         "o": 3,
         "d": 1,
-        "value": 124
+        "value": 128
       },
       {
         "o": 3,
         "d": 2,
-        "value": 1116
+        "value": 1166
       },
       {
         "o": 3,
         "d": 3,
-        "value": 408
+        "value": 417
       }
     ]
   },
